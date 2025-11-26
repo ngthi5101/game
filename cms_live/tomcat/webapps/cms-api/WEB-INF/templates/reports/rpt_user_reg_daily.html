@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Doanh thu</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+        <link rel="stylesheet" type="text/css" media="all" href="bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 4">
+			<div data-th-replace="solieu/sb-solieu :: top-nav"></div>
+			<div data-th-replace="solieu/sb-solieu :: vert-nav-admin"></div>
+		</div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Báo cáo doanh thu</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="panel-body">
+                        <form role="form" method="post" id="formMoney" action="revenues.html">
+                            <div class="row">
+                                <input hidden="true" value="0" name="type" />
+                                <div class="col-lg-3">
+                                    <label>Từ ngày - đến ngày</label>
+                                    <div class="input-prepend input-group">
+                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                        <input type="text" name = "from_date" id = "from_date" hidden="true" th:value="${from_date}"/>
+                                        <input type="text" name = "to_date" id = "to_date" hidden="true"  th:value="${to_date}"/> 
+                                        <input type="text" style="width: 100%" name="date_range" id="reservationtime" class="form-control span4"
+                                               value="08/01/2013 - 08/01/2013" th:value="${from_date} + ' - ' + ${to_date}" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Đối tác</label>
+                                    <select name="provider" id="provider" class="form-control">
+                                        <option value="">Lựa chọn</option>
+                                        <option th:each="provider : ${providers}" 
+                                                th:value="${provider.refCode}"
+                                                th:text="${provider.name}">Lựa chọn</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Platform</label>
+                                    <select name="platform" id="platform" class="form-control">
+                                        <option value="">Lựa chọn</option>
+                                        <option value="Android">Android</option>
+                                        <option value="iPhone OS">IPhone OS</option>
+                                		<option value="Windows">Windows</option>
+                                		<option value="PC">WEB</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <button type="submit" class="btn btn-info">Xem doanh thu</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+                        </form>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+                <!-- Tạo các tab Hàng ngày hàng tuần hàng tháng_start             -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Biểu Đồ				  
+                                <div class="pull-right">
+                                    <div class="btn-group" >
+                                        <button type="button" class="btn btn-success btn-xs" id="option1" autofocus="autofocus">Hàng ngày</button>
+                                        <button type="button" class="btn btn-success btn-xs" id="option2">Tuần</button>
+                                        <button type="button" class="btn btn-success btn-xs" id="option3">Tháng</button>
+                                    </div>	
+                                </div>	
+                            </div>	                    
+                            <div class="panel-body">	                    
+                                <div id="morris-card-chart"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- col-lg-12 -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>	    
+                <div class="row">
+                    <div hidden="true" id = "jsonChart" th:text="${msgChart}">
+                    </div>
+                    <div hidden="true" id = "providerId" th:text="${providerId}">
+                    </div>
+                    <div hidden="true" id = "platformId" th:text="${platformId}">
+                    </div>
+                </div>  
+                <!--     dungdv_27/10/2014_end          -->
+                <div id="dataDay" class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default" th:if="${dashboard} != null">
+                            <div class="panel-heading">
+                                Tổng doanh thu:  <span style="color: red;" th:text="${#numbers.formatDecimal(dashboard.cardTotalMoney+dashboard.smsTotalMoney+dashboard.iapTotalMoney, 0, 'COMMA', 0, 'POINT')}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dataDay" class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-default" th:if="${dashboard} != null">
+                            <div class="panel-heading">
+                                Doanh thu thẻ cào: <span style="color: red;" th:text="${#numbers.formatDecimal(dashboard.cardTotalMoney, 0, 'COMMA', 0, 'POINT')}"></span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Loại thẻ</th>
+                                                <th>Số lượng</th>
+                                                <th>Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneCard, iterStat : ${dashboard.listCard}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td th:text="'Thẻ ' + ${#numbers.formatDecimal(oneCard.money,0,0)}">Thẻ 10K</td>
+                                                <td th:text="${oneCard.count}" class="numbers_align"> 5 </td>
+                                                <td th:text="${oneCard.count * oneCard.money}" class="numbers_align"> 100K </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="panel panel-default"  th:if="${dashboard} != null">
+                            <div class="panel-heading">
+                                Doanh thu SMS: <span style="color: red;" th:text="${#numbers.formatDecimal(dashboard.smsTotalMoney, 0, 'COMMA', 0, 'POINT')}"></span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Đầu số</th>
+                                                <th class="numbers_align"> Số lượng</th>
+                                                <th class="numbers_align"> Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneSms, iterStat : ${dashboard.listSms}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td th:text="'Đầu số ' + ${oneSms.serviceNumber}"> Đầu số 7635 </td>
+                                                <td th:text="${oneSms.count}" class="numbers_align"> 20 </td>
+                                                <td class="numbers_align"> ?K </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    
+                    
+                    <!-- revenues IAP -->
+                    <div class="col-lg-6">
+                        <div class="panel panel-default"  th:if="${dashboard} != null">
+                            <div class="panel-heading">
+                                Doanh thu IAP: <span style="color: red;" th:text="${#numbers.formatDecimal(dashboard.iapTotalMoney, 0, 'COMMA', 0, 'POINT')}"></span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th> Dịch vụ</th>
+                                                <th class="numbers_align"> Mệnh giá</th>
+                                                <th class="numbers_align"> Số lượng</th>
+                                                <th class="numbers_align"> Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="iap,iterStat : ${dashboard.listIap}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td th:text="${iap.service_name}"> Đầu số 7635 </td>
+                                                <td th:text="${#numbers.formatDecimal(iap.denomination, 0, 'COMMA', 0, 'POINT')}"> Đầu số 7635 </td>
+                                                <td th:text="${#numbers.formatDecimal(iap.quantity, 0, 'COMMA', 0, 'POINT')}" class="numbers_align"> 20 </td>
+                                                <td th:text="${#numbers.formatDecimal(iap.total_money, 0, 'COMMA', 0, 'POINT')}"> ?K </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    
+                    
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="../js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+        <script src="../js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js}"></script>
+
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+        <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+        <script type="text/javascript" src="bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+        <script type="text/javascript" src="bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var data = [];
+            var dataDashboard = [];
+            var currUrl = /*[[@{/}]]*/ "";
+            /*]]>*/
+        </script>
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+            //            dungdv_27/10/2014_start
+            var graphChart = Morris.Line({
+                element: 'morris-card-chart',
+                data: data,
+                xkey: 'date',
+                ykeys: ['moneyCard','moneySms','moneyIap','money'],
+                labels: ['Doanh thu Card','Doanh thu SMS','Doanh thu Iap','Tổng doanh thu'],
+                parseTime: false,
+                ymin: 0,
+                ymax: 'auto',
+                hideHover: 'auto',
+                resize: true
+            }); 
+
+            //            dungdv_27/10/2014_start
+            function doViewRevenueReport() {
+            };
+		
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };  
+              
+            $(document).ready(function() {  
+                var  providerId = $("#providerId").html();
+                $("#provider").val(providerId);
+                var  platformId = $("#platformId").html();
+                $("#platform").val(platformId);
+                data = $("#jsonChart").html();
+                data = $.parseJSON( data );           
+                if (data.status == "0") {
+                    graphChart.setData(data.data);
+                }    	 
+    	   
+            });  
+              
+            $('#reservationtime').daterangepicker({
+                timePicker: false, 
+                format: 'YYYY/MM/DD'
+            }, function(start, end, label) {
+                console.log('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                $('#from_date').val(start.format('YYYY-MM-DD'));
+                $('#to_date').val(end.format('YYYY-MM-DD'));
+            });
+            
+            $('#option1').on('click', function () {
+                $('#formMoney').attr('action',currUrl+ '/reports/revenues.html?type=0');
+                $("#formMoney").submit();
+                data = $("#jsonChart").html();
+                data = $.parseJSON( data );           
+                if (data.status == "0") {
+                    graphChart.setData(data.data);
+                } 
+            });
+            $('#option2').on('click', function () {
+                $('#formMoney').attr('action', currUrl+'/reports/revenues.html?type=1');
+                $("#formMoney").submit();
+                data = $("#jsonChart").html();
+                data = $.parseJSON( data );
+                if (data.status == "0") {
+                    graphChart.setData(data.data);
+                } 
+            });
+            $('#option3').on('click', function () {
+                $('#formMoney').attr('action', currUrl+'/reports/revenues.html?type=2');
+                $("#formMoney").submit();
+                data = $("#jsonChart").html();
+                data = $.parseJSON( data );
+                if (data.status == "0") {
+                    graphChart.setData(data.data);
+                } 
+            }); 
+            
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,319 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "UserHistoryItem",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "UserHistoryItem",
+    "_children": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 4
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 6
+      }
+    ],
+    "_level": 1,
+    "_components": [
+      {
+        "__type__": "cc.Widget",
+        "node": {
+          "__id__": 1
+        },
+        "alignMode": 0,
+        "_alignFlags": 40,
+        "_originalWidth": 713
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "d8d5kWM55ML5k3gJWMhXrG"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 770,
+      "height": 35
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "y": -17.5
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "LineBg",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 2
+        },
+        "_spriteFrame": {
+          "__uuid__": "9bvaMerUlDyary99mJa6xp"
+        },
+        "_type": 1,
+        "_sizeMode": 0
+      },
+      {
+        "__type__": "cc.Widget",
+        "node": {
+          "__id__": 2
+        },
+        "alignMode": 0,
+        "_alignFlags": 45,
+        "_originalWidth": 695,
+        "_originalHeight": 31
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "48C+BTHwpAlpNJDHZXAeJk"
+    },
+    "_opacity": 100,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 37,
+      "g": 82,
+      "b": 163
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 770,
+      "height": 35
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_Phien",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.Label",
+        "node": {
+          "__id__": 3
+        },
+        "_useOriginalSize": false,
+        "_string": "---",
+        "_N$string": "---",
+        "_fontSize": 15,
+        "_lineHeight": 35,
+        "_N$horizontalAlign": 1,
+        "_N$verticalAlign": 1
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "f1KHEy8cBIA5If01CMrGgW"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 14.99,
+      "height": 35
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -296
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_ThoiGian",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.Label",
+        "node": {
+          "__id__": 4
+        },
+        "_useOriginalSize": false,
+        "_string": "---",
+        "_N$string": "---",
+        "_fontSize": 15,
+        "_lineHeight": 35,
+        "_N$horizontalAlign": 1,
+        "_N$verticalAlign": 1
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "50HGxseJRFwqNal6asfTQ9"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 14.99,
+      "height": 35
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -91
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_Cuoc",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.Label",
+        "node": {
+          "__id__": 5
+        },
+        "_useOriginalSize": false,
+        "_string": "---",
+        "_N$string": "---",
+        "_fontSize": 15,
+        "_lineHeight": 35,
+        "_N$horizontalAlign": 1,
+        "_N$verticalAlign": 1
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "b2NSFqbw9G7Lc6utFrpkd2"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 14.99,
+      "height": 35
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 120
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_Nhan",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.Label",
+        "node": {
+          "__id__": 6
+        },
+        "_useOriginalSize": false,
+        "_string": "---",
+        "_N$string": "---",
+        "_fontSize": 15,
+        "_lineHeight": 35,
+        "_N$horizontalAlign": 1,
+        "_N$verticalAlign": 1
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "05mTX1EW9BgKgb80ZTfdrv"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 14.99,
+      "height": 35
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 300
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btnk1",
+    "texture": "12debd993",
+    "rect": [
+      932,
+      253,
+      130,
+      54
+    ],
+    "offset": [
+      0,
+      0.5
+    ],
+    "originalSize": [
+      132,
+      55
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

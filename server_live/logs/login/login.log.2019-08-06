@@ -1,0 +1,100 @@
+2019-08-06 00:02:48.203,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1185996588, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 00:02:48.220,127.0.0.1,1,0 
+2019-08-06 00:03:53.647,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1459229965, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 00:03:53.658,Session 1459229965 trying to reconnect. kuakua123 
+2019-08-06 00:03:53.659,Tài khoản của bạn đang đăng nhập ở thiết bị khác. kuakua123 i 127.0.0.1 
+2019-08-06 00:03:53.661,127.0.0.1,1,0 
+2019-08-06 00:34:42.634,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBALXpr5Aw3hxfygZBlIZBZBPbqVIl4rXZCPAvQAGxqk1ZBQwlunk038kJuDh1ScppZCjQKIavsp8zGp84xojJZBKsDAlcui8mxvBKHDGzbIcRrA3GBEZBs8L9bgGcLptun2oX0JLsf2X7OMz5YeNzIZC1mQZC5HTDiInfgNGcR6FtJmOwQW10ZCM0vH2QVdbgKZCzswZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 00:34:43.100,127.0.0.1,1,0 
+2019-08-06 00:35:53.740,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"sharonshop"}] 
+2019-08-06 00:35:53.764,127.0.0.1,1,0 
+2019-08-06 01:06:01.543,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAIexS4c8S59jWlagUfFxOmFglxznonwHKJuhiwyjNVjOETlHWSah1S3CYgc8TDd0TnKLZAfZCFO6Sm9ghVvxQtuEmZBQrvUteZCxCOdtOzVK5EImOWqpZBKjEy0aUkw9WB5hKplCM1L5mAZCLKZC0oLvqeQ4kb16xO0sAsRHUZAdQyBPq4T4QpV1yz85bu6zrAZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 01:06:01.945,127.0.0.1,1,0 
+2019-08-06 01:49:08.456,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-06 01:49:08.475,127.0.0.1,1,0 
+2019-08-06 01:55:09.962,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-06 01:55:09.976,127.0.0.1,1,0 
+2019-08-06 01:56:55.973,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ddragon11"}] 
+2019-08-06 01:56:55.991,127.0.0.1,1,0 
+2019-08-06 04:24:05.704,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBACY2UY8QFiJKLbCE2E9dtW8ZBnElYZBt6OHqwIoZAWkhRKHaVBpHaW1sH86CeLLR7vmXA3X1DvGJSGRnSYoKH81bumRrbgioLDVdppGcPzKv4FDjieXeWU7ZAoxkZBVzEE1XcPEQ3nrzIorarq1hnvjb2ct98woYJn9piB7Ssj55DE5EyHBbaqg3ZBjsVx6QZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 04:24:06.318,127.0.0.1,1,0 
+2019-08-06 04:31:26.392,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBANnKfBmjdmZBFlwIfWTbXTZB8VyMYUEEm4wlM1rzpXIAXURiJghd4SOB8iAoORF6wPshJgx9ZCwdxVH9xppOPWNMlK9LRPVIyWeklDCZAFep98di2GJAZC1npKzjI8WmTDfWf6V6HJaayRIymHMgsGb0SI5iqvwyLeP06ZCvhJxKWJkCHcF8UyC2yCvLhpjQZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 04:31:26.790,127.0.0.1,1,0 
+2019-08-06 05:11:23.679,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"8.1.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"Android","device_uuid":"","username":"tym00n03"}] 
+2019-08-06 05:11:23.691,tym00n03 Could not login with given data.  
+2019-08-06 05:11:23.692,127.0.0.1,1,1 
+2019-08-06 05:15:14.452,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-08-06 05:15:14.486,127.0.0.1,1,0 
+2019-08-06 05:16:19.428,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"8.1.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"Android","device_uuid":"","username":"tym00n03"}] 
+2019-08-06 05:16:19.433,tym00n03 Could not login with given data.  
+2019-08-06 05:16:19.434,127.0.0.1,1,1 
+2019-08-06 05:16:23.716,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAMlVTjYtxZAZAPkYJonFoRPoY2VgJr5hpPZClvMVATueb8n8ja7IBUsLt4DTvOyaHGZBlZBbjRJGJ8iZB06me6gQP7WibxxJoey8yDZBg4hZA8Kxpx2n3QikpNzasZCqs2aYyrkaX9hP22ZCpZA8uxUqI4elAqodAZCvKKEUK8dP2oSqSscobKH8fCVbqDsfHkwGUKAOGO7AmUtIWNPw7jdQmhcZD","os_version":"8.1.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"Android","device_uuid":""}] 
+2019-08-06 05:16:24.137,127.0.0.1,1,0 
+2019-08-06 05:17:56.346,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"8.1.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"Android","device_uuid":"","username":"tym00n03"}] 
+2019-08-06 05:17:56.351,tym00n03 Could not login with given data.  
+2019-08-06 05:17:56.352,127.0.0.1,1,1 
+2019-08-06 05:18:00.066,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"8.1.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"Android","device_uuid":"","username":"tym00n03"}] 
+2019-08-06 05:18:00.071,tym00n03 Could not login with given data.  
+2019-08-06 05:18:00.072,127.0.0.1,1,1 
+2019-08-06 05:18:02.005,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAMlVTjYtxZAZAPkYJonFoRPoY2VgJr5hpPZClvMVATueb8n8ja7IBUsLt4DTvOyaHGZBlZBbjRJGJ8iZB06me6gQP7WibxxJoey8yDZBg4hZA8Kxpx2n3QikpNzasZCqs2aYyrkaX9hP22ZCpZA8uxUqI4elAqodAZCvKKEUK8dP2oSqSscobKH8fCVbqDsfHkwGUKAOGO7AmUtIWNPw7jdQmhcZD","os_version":"8.1.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"Android","device_uuid":""}] 
+2019-08-06 05:18:02.374,127.0.0.1,1,0 
+2019-08-06 05:30:27.639,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBADJf2CCFuzPUJvHqTKIvAXf0XVaGmksGIPiAdTCcj5ypNHBlfXUgPIurpuMMSZAuft8cu22lNhZCDBMbKxFC1OWN4y5Co7UwAOFL2g4blisdPHxCkm0Qus2co7DyzPOwLhqZArxNpc6k9Asbe9RNwGTh4sVCDFqlyWWEHMcrnnZARHbYF3RUCkdxYTtgcwZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 05:30:28.059,127.0.0.1,1,0 
+2019-08-06 06:47:32.435,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 06:47:32.461,127.0.0.1,1,0 
+2019-08-06 07:01:14.125,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAORS0xp25WMfDWOIAErkhJVWwgjEV3D74byhRiZBjQK1wRxrKkaNK3UlyQ4udSZB8NDaJfoJBV3BhJSRmxLKP8vg6QaLK6LBHHMNdL89UcGEscL68ZCt6lvjC69RjJ622n4KUAmFOnCDmmzV68FDKNqDI4bFYuucKdqGZAOZB8T0YAxlz2IvhtfLZCGUqg9AZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 07:01:14.546,127.0.0.1,1,0 
+2019-08-06 07:31:09.518,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAJfjeFzmA19uFo1UjdWfTQHlTKrKZAcWg9bZAOGCyNSZAWsUn0D8s8FYRfGvVZCwufmJHMzwkKP56hm7ePaiTZBN0Dv5xiHmnZCtZCzTgmnRtk2VaJxl99Rk7ZBigjwJZAQRsguKYroi8Fw72aQHLbcyJZACeiMPGYgm2mbQvRE0MEQBl7SeWNBxS1ir27mg3UCAZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 07:31:09.935,127.0.0.1,1,0 
+2019-08-06 07:51:25.688,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 07:51:25.715,127.0.0.1,1,0 
+2019-08-06 08:41:35.638,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=478468799, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 08:41:35.653,127.0.0.1,1,0 
+2019-08-06 08:42:57.017,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1733646671, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 08:42:57.025,Session 1733646671 trying to reconnect. kuakua123 
+2019-08-06 08:42:57.028,Tài khoản của bạn đang đăng nhập ở thiết bị khác. kuakua123 i 127.0.0.1 
+2019-08-06 08:42:57.031,127.0.0.1,1,0 
+2019-08-06 10:08:52.279,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBALmJ0yljE5GgIoYD7HzBFTQ90JtiuP6jS1IKqBoDwyzbGKq5ohKN9b8XDby5ryNufyD5lTsQerWGtNbBx9JZBKPUnLnLLHJcNV5okAQv4GI5F9nDcZC6yF7DbRtQJJujkDuRZAdkf6I0RKwuMzBhFakFHI2zcow8NRgx9ZBo2WJQrdsZCNhq3sdT2bjDi3QZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 10:08:52.686,127.0.0.1,1,0 
+2019-08-06 12:33:11.052,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"Cdxa004"}] 
+2019-08-06 12:33:11.078,127.0.0.1,1,0 
+2019-08-06 12:50:20.907,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"Cdxa004"}] 
+2019-08-06 12:50:20.926,127.0.0.1,1,0 
+2019-08-06 12:52:08.413,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBANMstZAZBcf58ErcpUrvsSfDFfS9kq3ZBwEEwtRLfyjpTVRdudjGoIpckgHJR6D9ZBj3Hyy4ZA9ptw9cuTa3Ap67bizsiQLvJmJv5zLZBfECZCnBywM7BRxYvcbFnLlVnhHywGX82PvLG9R1m5jDFpAxqUcWQkVSe2nPz6qJCRaWYOQtuWPoxz6ENHulZAn3DFZCia9jetmbZB","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 12:52:08.972,127.0.0.1,1,0 
+2019-08-06 12:52:34.075,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAINf6tZCVEcNhEm3YmcRsHD0zk9pRa6L27urWW7dB7qdBeLhkXsZCqn8LVltywbTxX2ogFft2X2ENZCHJhrpdclhGMvGhMouvuEODiY6tl9ZBc1Hyb5cw0xKYVTFmsLyu4QswBexOQiZANmD1eJ5mQvainUH4pQWVXR1gDj8imNnSrYfyqcarzFyJxCA8IuKuJzd8g5FT","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 12:52:34.438,127.0.0.1,1,0 
+2019-08-06 14:46:51.396,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 14:46:51.414,127.0.0.1,1,0 
+2019-08-06 14:58:04.623,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1408773522, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 14:58:04.642,127.0.0.1,1,0 
+2019-08-06 15:08:00.197,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=396035777, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 15:08:00.217,127.0.0.1,1,0 
+2019-08-06 15:08:01.789,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=521560589, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 15:08:01.797,Session 521560589 trying to reconnect. kuakua123 
+2019-08-06 15:08:01.801,Tài khoản của bạn đang đăng nhập ở thiết bị khác. kuakua123 i 127.0.0.1 
+2019-08-06 15:08:01.803,127.0.0.1,1,0 
+2019-08-06 15:08:14.060,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=521560589, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 15:08:14.066,Session 521560589 trying to reconnect. kuakua123 
+2019-08-06 15:08:14.069,Tài khoản của bạn đang đăng nhập ở thiết bị khác. kuakua123 i 127.0.0.1 
+2019-08-06 15:08:14.070,127.0.0.1,1,0 
+2019-08-06 15:08:24.238,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=521560589, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 15:08:24.250,Session 521560589 trying to reconnect. kuakua123 
+2019-08-06 15:08:24.254,Tài khoản của bạn đang đăng nhập ở thiết bị khác. kuakua123 i 127.0.0.1 
+2019-08-06 15:08:24.255,127.0.0.1,1,0 
+2019-08-06 15:08:36.360,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"kuakua123"}] 
+2019-08-06 15:08:36.371,Session 0 trying to reconnect. kuakua123 
+2019-08-06 15:08:36.373,Tài khoản của bạn đang đăng nhập ở thiết bị khác. kuakua123 i 127.0.0.1 
+2019-08-06 15:08:36.375,127.0.0.1,1,0 
+2019-08-06 18:29:59.102,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"Tiep2994774"}] 
+2019-08-06 18:29:59.128,127.0.0.1,1,0 
+2019-08-06 18:31:25.772,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"Tiep2994774"}] 
+2019-08-06 18:31:25.780,Session 0 trying to reconnect. Tiep2994774 
+2019-08-06 18:31:25.782,Tài khoản của bạn đang đăng nhập ở thiết bị khác. Tiep2994774 i 127.0.0.1 
+2019-08-06 18:31:25.784,127.0.0.1,1,0 
+2019-08-06 18:43:09.520,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAM1AOjwvzrkJ7z5heT0cMsY825DxeiJDfrXUDVa9SRRRt75AmvemJXcHlP144o4n9aWH0DdKMSFZCLXhBiLoelMPLSmdO0qoLaO9oOdcRStbBVJyG7ZCGLcTS4ga3aTKwFnKhG3BwiFInxkyTjYW1FiQao2AZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 18:43:10.141,127.0.0.1,1,0 
+2019-08-06 18:43:38.181,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":2,"fbToken":"EAAGtWZAtcoDUBAFGTy71ZBSMievoLPo8RzZCAUWOlUs91Iim9Jd5PHYZAZANH5ytvhvSPkZAy2Hxvvvx85oqZAK33A8tzwjZATAox1Diq7XcYkGpSxyiUGkDthJTRTZCOvnZAbO1NHavp0VmrxeQWB607LBsTNO3PdvvghcUqxXrqfL3B03aXnYmNlWVoCNJ5gMod0oAZBOETQhEAZDZD","os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":""}] 
+2019-08-06 18:43:38.550,127.0.0.1,1,0 
+2019-08-06 22:40:50.003,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"12233445566"}] 
+2019-08-06 22:40:50.025,127.0.0.1,1,0 

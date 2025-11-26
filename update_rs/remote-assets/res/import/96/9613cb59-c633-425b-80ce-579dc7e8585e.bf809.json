@@ -1,0 +1,135 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "Toast",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Toast",
+    "_children": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_active": false,
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 1
+        },
+        "_spriteFrame": {
+          "__uuid__": "a2MjXRFdtLlYQ5ouAFv/+R"
+        },
+        "_sizeMode": 0
+      },
+      {
+        "__type__": "cc.Layout",
+        "node": {
+          "__id__": 1
+        },
+        "_layoutSize": {
+          "__type__": "cc.Size",
+          "width": 189,
+          "height": 35
+        },
+        "_resize": 1,
+        "_N$paddingLeft": 20,
+        "_N$paddingRight": 20,
+        "_N$paddingTop": 5,
+        "_N$paddingBottom": 5
+      },
+      {
+        "__type__": "3587bpFAcJDUp6+0kD/K3ml",
+        "node": {
+          "__id__": 1
+        },
+        "contentTxt": {
+          "__id__": 3
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "fdEedKakhLjarLvYp6/LGU"
+    },
+    "_opacity": 200,
+    "_color": {
+      "__type__": "cc.Color"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 189,
+      "height": 35
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "y": -264
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "content",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "11pmeI0JFASYZgj0z8Y+5l"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 149,
+      "height": 25
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Label",
+    "node": {
+      "__id__": 2
+    },
+    "_useOriginalSize": false,
+    "_string": "This is Toast !!!",
+    "_N$string": "This is Toast !!!",
+    "_fontSize": 22,
+    "_lineHeight": 25,
+    "_N$file": {
+      "__uuid__": "36Q0pfBlZPa6XYCXAfJH1B"
+    },
+    "_isSystemFontUsed": false,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1
+  }
+]

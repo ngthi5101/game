@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btn4",
+    "texture": "1ca9894a0",
+    "rect": [
+      841,
+      602,
+      145,
+      53
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      145,
+      53
+    ],
+    "rotated": 1,
+    "capInsets": [
+      18,
+      0,
+      17,
+      0
+    ]
+  }
+}

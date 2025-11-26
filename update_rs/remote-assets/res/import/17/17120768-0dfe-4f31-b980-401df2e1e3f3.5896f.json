@@ -1,0 +1,176 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "xucxac",
+  "_duration": 1.35,
+  "sample": 20,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "67CkvZCG5CmqjC0ACzvSXJ"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "69Ueu1rPxF8IJi897NoQgV"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "447E4DIgtJZKCInonGYp5B"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "9d9M3n0wVETr5UXEiTydSl"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "59POqf0MRM1aEtbVs7Cltp"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "b0KDVqqwZDGrBx5J+zqVOU"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "75O1kANGRL57kdQwblpQwT"
+            }
+          },
+          {
+            "frame": 0.35,
+            "value": {
+              "__uuid__": "36otmRqMxBlIL+KuxCt1ho"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "51ySJoaVBPyLiCp+jPb14M"
+            }
+          },
+          {
+            "frame": 0.45,
+            "value": {
+              "__uuid__": "90wFzVxw9FfYQQ9IVDMSzR"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "c8PcaJ/QBCabKVfBHpa8Ay"
+            }
+          },
+          {
+            "frame": 0.55,
+            "value": {
+              "__uuid__": "a2QQ/5ljFC2qu5sBNUfChZ"
+            }
+          },
+          {
+            "frame": 0.6,
+            "value": {
+              "__uuid__": "bemhGDiohKaYU2WrIvkqZK"
+            }
+          },
+          {
+            "frame": 0.65,
+            "value": {
+              "__uuid__": "20jEykJAlOTYQuy7gOgjNg"
+            }
+          },
+          {
+            "frame": 0.7,
+            "value": {
+              "__uuid__": "efbkdWflZE7YxbegOUu4D2"
+            }
+          },
+          {
+            "frame": 0.75,
+            "value": {
+              "__uuid__": "ad//LoJRNG8oLcWaNgyCHl"
+            }
+          },
+          {
+            "frame": 0.8,
+            "value": {
+              "__uuid__": "5fTKQK3c1PDINbQYNrvqCt"
+            }
+          },
+          {
+            "frame": 0.85,
+            "value": {
+              "__uuid__": "03gJ9wd1dAs47OcHSNlnMt"
+            }
+          },
+          {
+            "frame": 0.9,
+            "value": {
+              "__uuid__": "ce+JbRFPlHCJLJXeE5VXHv"
+            }
+          },
+          {
+            "frame": 0.95,
+            "value": {
+              "__uuid__": "23Jl1D2+1Nyoa1eZWtXx4P"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "541MYRGRFAaaXfFkXzh5AA"
+            }
+          },
+          {
+            "frame": 1.05,
+            "value": {
+              "__uuid__": "bddcqdmtdLYIcAI7l4kQXN"
+            }
+          },
+          {
+            "frame": 1.1,
+            "value": {
+              "__uuid__": "bbVSaon/tEpaza2lJTES10"
+            }
+          },
+          {
+            "frame": 1.15,
+            "value": {
+              "__uuid__": "88Ock3cF9HFK6cxcw73fLI"
+            }
+          },
+          {
+            "frame": 1.2,
+            "value": {
+              "__uuid__": "1b9qnppV9FHr4jiJD+OkjF"
+            }
+          },
+          {
+            "frame": 1.25,
+            "value": {
+              "__uuid__": "fajlfJaOBCebIMq4eMNDZQ"
+            }
+          },
+          {
+            "frame": 1.3,
+            "value": {
+              "__uuid__": "3boHoRFepKzb/rPTdkvq7a"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

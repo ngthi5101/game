@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "xx baucua04",
+    "texture": "19d23552c",
+    "rect": [
+      277,
+      277,
+      268,
+      268
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      268,
+      268
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

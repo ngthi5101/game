@@ -1,0 +1,86 @@
+2019-07-27 12:41:53.998,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"anhhai999"}] 
+2019-07-27 12:41:54.010,anhhai999 Could not login with given data.  
+2019-07-27 12:41:54.013,127.0.0.1,1,1 
+2019-07-27 12:43:52.998,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"Tym00n03"}] 
+2019-07-27 12:43:53.005,Tym00n03 Could not login with given data.  
+2019-07-27 12:43:53.007,127.0.0.1,1,1 
+2019-07-27 12:44:24.368,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n03"}] 
+2019-07-27 12:44:24.389,tym00n03 Could not login with given data.  
+2019-07-27 12:44:24.391,127.0.0.1,1,1 
+2019-07-27 12:44:28.748,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n03"}] 
+2019-07-27 12:44:28.786,tym00n03 Could not login with given data.  
+2019-07-27 12:44:28.789,127.0.0.1,1,1 
+2019-07-27 12:45:07.548,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-07-27 12:45:07.560,tym00n02 Could not login with given data.  
+2019-07-27 12:45:07.562,127.0.0.1,1,1 
+2019-07-27 12:45:10.298,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-07-27 12:45:10.305,tym00n02 Could not login with given data.  
+2019-07-27 12:45:10.307,127.0.0.1,1,1 
+2019-07-27 12:45:17.986,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n03"}] 
+2019-07-27 12:45:18.010,tym00n03 Could not login with given data.  
+2019-07-27 12:45:18.012,127.0.0.1,1,1 
+2019-07-27 12:45:22.668,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-07-27 12:45:22.760,127.0.0.1,1,1 
+2019-07-27 12:45:26.198,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-07-27 12:45:26.226,Session 0 trying to reconnect. tym00n02 
+2019-07-27 12:45:26.230,127.0.0.1,1,0 
+2019-07-27 14:03:34.231,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:34.237,dangquang11 Could not login with given data.  
+2019-07-27 14:03:34.239,127.0.0.1,1,1 
+2019-07-27 14:03:38.946,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:38.950,dangquang11 Could not login with given data.  
+2019-07-27 14:03:38.952,127.0.0.1,1,1 
+2019-07-27 14:03:39.950,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:39.955,dangquang11 Could not login with given data.  
+2019-07-27 14:03:39.957,127.0.0.1,1,1 
+2019-07-27 14:03:44.276,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:44.281,dangquang11 Could not login with given data.  
+2019-07-27 14:03:44.282,127.0.0.1,1,1 
+2019-07-27 14:03:44.847,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:44.852,dangquang11 Could not login with given data.  
+2019-07-27 14:03:44.854,127.0.0.1,1,1 
+2019-07-27 14:03:45.025,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:45.030,dangquang11 Could not login with given data.  
+2019-07-27 14:03:45.031,127.0.0.1,1,1 
+2019-07-27 14:03:51.173,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:51.183,dangquang11 Could not login with given data.  
+2019-07-27 14:03:51.184,127.0.0.1,1,1 
+2019-07-27 14:03:52.067,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:52.073,dangquang11 Could not login with given data.  
+2019-07-27 14:03:52.074,127.0.0.1,1,1 
+2019-07-27 14:03:53.051,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:53.064,dangquang11 Could not login with given data.  
+2019-07-27 14:03:53.065,127.0.0.1,1,1 
+2019-07-27 14:03:54.390,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:54.394,dangquang11 Could not login with given data.  
+2019-07-27 14:03:54.396,127.0.0.1,1,1 
+2019-07-27 14:03:55.035,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-07-27 14:03:55.048,dangquang11 Could not login with given data.  
+2019-07-27 14:03:55.049,127.0.0.1,1,1 
+2019-07-27 14:03:58.203,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:03:58.211,dangquang1111 Could not login with given data.  
+2019-07-27 14:03:58.212,127.0.0.1,1,1 
+2019-07-27 14:03:59.434,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:03:59.445,dangquang1111 Could not login with given data.  
+2019-07-27 14:03:59.446,127.0.0.1,1,1 
+2019-07-27 14:03:59.925,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:03:59.932,dangquang1111 Could not login with given data.  
+2019-07-27 14:03:59.933,127.0.0.1,1,1 
+2019-07-27 14:04:00.106,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:04:00.111,dangquang1111 Could not login with given data.  
+2019-07-27 14:04:00.112,127.0.0.1,1,1 
+2019-07-27 14:04:00.296,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:04:00.303,dangquang1111 Could not login with given data.  
+2019-07-27 14:04:00.305,127.0.0.1,1,1 
+2019-07-27 14:04:01.697,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:04:01.707,dangquang1111 Could not login with given data.  
+2019-07-27 14:04:01.709,127.0.0.1,1,1 
+2019-07-27 14:04:06.961,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:04:06.965,dangquang1111 Could not login with given data.  
+2019-07-27 14:04:06.967,127.0.0.1,1,1 
+2019-07-27 14:04:07.877,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:04:07.884,dangquang1111 Could not login with given data.  
+2019-07-27 14:04:07.887,127.0.0.1,1,1 
+2019-07-27 14:04:08.075,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-07-27 14:04:08.082,dangquang1111 Could not login with given data.  
+2019-07-27 14:04:08.084,127.0.0.1,1,1 

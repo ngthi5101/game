@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bt2a",
+    "texture": "1ca9894a0",
+    "rect": [
+      580,
+      602,
+      196,
+      66
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      196,
+      66
+    ],
+    "capInsets": [
+      35,
+      0,
+      30,
+      0
+    ]
+  }
+}

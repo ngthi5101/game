@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=yes" />
+<link rel="shortcut icon" href="/resources/dashboard_files/logo.jpg" th:src="@{/resources/dashboard_files/logo.jpg}" />
+<!-- Core CSS - Include with every page -->
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+<link rel="stylesheet" type="text/css" media="all" href="bootstrap-daterangepicker/daterangepicker-bs3.css"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="css/plugins/timeline/timeline.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+<link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}" />
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/sb-admin-2.css}" />
+<link href="css/metisMenu.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/metisMenu.min.css}" />
+<title>CSKH</title>
+</head>
+<body>
+	<div id="wrapper">
+		<nav data-th-fragment="top-nav" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html" th:href="@{/cskh/index.html}"><img alt="Brand" th:src="@{/resources/dashboard_files/logo.png}" /> <span
+					class="slogan"> CSKH</span> </a>
+			</div>
+			<!-- /.navbar-header -->
+			<ul class="nav navbar-top-links navbar-right">
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i><span
+						th:text=" ${session.principal}"></span><i class="fa fa-caret-down"></i></a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#" th:href="@{/users/profile.html}"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a></li>
+						<li><a href="#" th:href="@{/user/change_password.html}"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a></li>
+						<li class="divider"></li>
+						<li><a href="login.html" th:href="@{/j_spring_security_logout}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+		</nav>
+		<!-- /.navbar-static-top -->
+		<nav data-th-fragment="vert-nav-admin" class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-nav navbar-collapse">
+				<ul class="nav" id="side-menu">
+					<li><a class="active" href="index.html" th:href="@{/cskh/index.html}"><i class="fa fa-home"></i> Trang chủ</a></li>					
+					<li><a href="users.html" th:href="@{/users/list.html}"><i class="fa fa-user fa-fw"></i> Người chơi <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="users.html" th:href="@{/users/search_users.html}"><i class="fa fa-search"></i> Tìm kiếm</a></li>
+							<li><a href="users.html" th:href="@{/users/list.html?type=1}"><i class="fa fa-dollar"></i> Top đại gia koin</a></li>
+							<li><a href="users.html" th:href="@{/users/list.html?type=3}"><i class="fa fa-dollar"></i> Top đại gia gold</a></li>
+							<li><a href="users.html" th:href="@{/users/list.html?type=2}"><i class="glyphicon glyphicon-sort-by-order"></i> Nạp tiền nhiều</a></li>
+							<li><a href="detection/index.html" th:href="@{/detection/index.html}"><i class="fa fa-user-secret"></i> Nghi vấn hack</a></li>
+							<li><a href="#" th:href="@{/users/list_unsign.html}"><i class="fa fa-user-secret"></i> Không đăng nhập</a></li>
+							
+						</ul></li>
+					<li><a href="promotion.html"><i class="fa fa-money fa-fw"></i> Khuyến mại <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="promotions/promotion.html" th:href="@{/promotions/promotion.html}"><i class="fa fa-pencil-square-o"></i> KM Đăng ký, đăng nhập</a></li>
+							<!--li>
+                            <a href="promotions/promotion_topup.html" th:href="@{/promotions/promotion_topup.html}"><i class="fa fa-credit-card"></i> Khuyến mại nạp chip</a>
+                        </li-->
+							<li><a href="promotions/promotion_topup.html" th:href="@{/promotions/promotion_sms.html}"><i class="fa fa-envelope-o"></i> Khuyến mại SMS</a></li>
+							<li><a href="promotions/promotion_topup.html" th:href="@{/promotions/promotion_card.html}"><i class="fa fa-credit-card"></i> Khuyến mại Card</a></li>
+							<li><a href="promotions/promotion_iap.html" th:href="@{/promotions/promotion_iap.html}"><i class="fa fa-credit-card"></i> Khuyến mại IAP</a></li>
+							<li><a href="/promotions/daily.html" th:href="@{/promotions/daily.html}"><i class="fa fa-clock-o fa-fw"></i> Khuyến mại ngày</a></li>
+							<li><a href="users/claim.html" th:href="@{/users/claim.html}"><i class="fa fa-bell fa-fw "></i> Claim messages</a></li>
+						</ul></li>					
+					
+					<li><a href="#"><i class="fa fa-gift fa-fw"></i> Đổi thưởng <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="cashflow/server_koin.html" th:href="@{/cashout/request.html}"><i class="fa fa-stack-exchange"></i> Yêu cầu</a></li>
+							<li><a href="cashflow/detail.html" th:href="@{/cashout/history.html}"><i class="fa fa-history fa-fw"></i> Lịch sử</a></li>
+							<li><a href="cashflow/detail.html" th:href="@{/cashout/report.html}"><i class="fa fa-bar-chart fa-fw"></i> Báo cáo</a></li>
+						</ul>
+					</li>
+					
+					<li>
+						<a href="#"><i class="fa fa-cogs fa-fw"></i> Thiết lập <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/slot.html" th:href="@{/config/slot.html}"><i class="fa fa-cog fa-fw"></i> Đập hũ</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/spin.html" th:href="@{/config/spin.html}"><i class="fa fa-cog fa-fw"></i> Spin</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/transfer.html" th:href="@{/config/transfer.html}"><i class="fa fa-cog fa-fw"></i> Chuyển tiền</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/exchange.html" th:href="@{/config/exchange.html}"><i class="fa fa-cog fa-fw"></i> Tỷ giá nạp tiền</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/exchange_rates.html" th:href="@{/config/gold_rate.html}"><i class="fa fa-exchange"></i> Tỉ giá đổi</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/cashout_rate.html" th:href="@{/config/cashout_rate.html}"><i class="fa fa-cog fa-fw"></i> Đổi thưởng</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/cashout_items.html" th:href="@{/config/cashout_items.html}"><i class="fa fa-external-link"></i> Vật phẩm</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="config/showVersionConfig.html" th:href="@{/config/level_bonus.html/}"><i class="fa fa-cog fa-fw"></i>Thăng hạng</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="config/showVersionConfig.html" th:href="@{/config/showVersionConfig.html/}"><i class="fa fa-cog fa-fw"></i>Danh mục</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="messages/messages.html" th:href="@{/messages/messages.html}"><i class="fa fa-bullhorn fa-fw"></i> Bảng tin</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/daily_tasks.html" th:href="@{/config/daily_tasks.html}"><i class="fa fa-calendar fa-fw"></i> Nhiệm vụ</a></li>
+						</ul>
+						<ul class="nav nav-second-level">
+							<li><a href="/config/achiments.html" th:href="@{/config/achiments.html}"><i class="fa fa-list-alt fa-fw"></i> Thành tích</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#"><i class="fa fa-flag fa-fw"></i> Trận đánh <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+							<li><a href="match/detail.html" th:href="@{/match/detail.html}"><i class="fa fa-search"></i> Tìm trận đánh</a></li>
+							<li><a href="reports/match_suspect.html" th:href="@{/reports/match_suspect.html}"><i class="fa fa-flag-checkered fa-fw"></i> Ván đánh bất thường</a></li>
+						</ul>
+					</li>
+					<li><a href="users/send_feedback.html" th:href="@{/users/feedback.html}"><i class="fa fa-comment fa-fw"></i> Phản ánh</a></li>
+					<li><a href="users/admin_inbox.html" th:href="@{/users/admin_inbox.html}"><i class="fa fa-envelope-o fa-fw"></i> admin inbox</a></li>
+				</ul>
+				<!-- /#side-menu -->
+			</div>
+			<!-- /.sidebar-collapse -->
+		</nav>
+		<!-- /.navbar-static-side -->
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Blank</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#wrapper -->
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<nav data-th-fragment="top-nav" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="index.html" th:href="@{/partners/index.html}"><img alt="Brand" th:src="@{/resources/dashboard_files/logo.png}" /> <span
+			class="slogan"> Dashboard</span> </a>
+	</div>
+	<!-- /.navbar-header -->
+	<ul class="nav navbar-top-links navbar-right">
+		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i><span
+				th:text=" ${session.principal}"></span><i class="fa fa-caret-down"></i></a>
+			<ul class="dropdown-menu dropdown-user">
+				<li><a href="#" th:href="@{/partners/profile.html}"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a></li>
+				<li><a href="#" th:href="@{/partners/change_password.html}"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a></li>
+				<li class="divider"></li>
+				<li><a href="login.html" th:href="@{/j_spring_security_logout}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
+			</ul> <!-- /.dropdown-user --></li>
+		<!-- /.dropdown -->
+	</ul>
+	<!-- /.navbar-top-links -->
+</nav>
+<!-- /.navbar-static-top -->
+<nav data-th-fragment="vert-nav-admin" class="navbar-default navbar-static-side" role="navigation">
+	<div class="sidebar-nav navbar-collapse">
+		<ul class="nav" id="side-menu">
+			<li><a class="active" href="index.html" th:href="@{/partners/index.html}"><i class="fa fa-home"></i> Trang chủ</a></li>
+			<li><a href="index.html" th:href="@{#}"><i class="fa fa-dashboard fa-fw"></i> Thống kê <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="partners/users.html" th:href="@{/partners/users.html}"><i class="fa fa-users fa-fw"></i> Thông kê users</a></li>
+					<li><a href="partners/devices.html" th:href="@{/partners/devices.html}"><i class="fa fa-users fa-fw"></i>Thông kê cài đặt</a></li>
+					<li><a href="partners/revenues.html" th:href="@{/partners/revenues.html}"><i class="fa fa-money fa-fw"></i> Doanh thu</a></li>
+					<li><a href="partners/user_detail.html" th:href="@{/partners/user_detail.html}"><i class="fa fa-users fa-fw"></i> danh sách users</a></li>
+				</ul></li>
+		</ul>
+		<!-- /#side-menu -->
+	</div>
+	<!-- /.sidebar-collapse -->
+</nav>
+<!-- /.navbar-static-side -->

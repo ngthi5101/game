@@ -1,0 +1,147 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "firework",
+  "_duration": 0.36666666666666664,
+  "speed": 0.4,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "4607EYh5hMrpdbWB+o4VGS"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "4607EYh5hMrpdbWB+o4VGS"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "6dtTARgfJIpbpAeD0mUAtX"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "5bwlc1r1lLcZiwbCuxeiE0"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "38hBTR9chD4ZewV4A4ZrWt"
+            }
+          },
+          {
+            "frame": 0.08333333333333333,
+            "value": {
+              "__uuid__": "b0UO4ievtDuJ+xdnCjnlv+"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "d3jtny1vFJfIfglPAwwFzh"
+            }
+          },
+          {
+            "frame": 0.11666666666666667,
+            "value": {
+              "__uuid__": "6eClqTnU5EzY091X/llynf"
+            }
+          },
+          {
+            "frame": 0.13333333333333333,
+            "value": {
+              "__uuid__": "47rzmc1OFJfL7nwizz+XSl"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "a6P6Akv5VDV7zxfWtarvlD"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "bcDqbdlfNJkZ8peV+F+35q"
+            }
+          },
+          {
+            "frame": 0.18333333333333332,
+            "value": {
+              "__uuid__": "c8SSJuDaNJYYiSbu2gRFIf"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "53Ya2GXGZC86Y2mH8cxSxi"
+            }
+          },
+          {
+            "frame": 0.21666666666666667,
+            "value": {
+              "__uuid__": "d5EtFmuelNGbjYeGAqje29"
+            }
+          },
+          {
+            "frame": 0.23333333333333334,
+            "value": {
+              "__uuid__": "08xSUDk+FPrpyXgsu4zA1X"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "53o6nSLuBNKZ1Mx8x2JtN7"
+            }
+          },
+          {
+            "frame": 0.26666666666666666,
+            "value": {
+              "__uuid__": "83qKtWSoJPLY9adQXuzuHM"
+            }
+          },
+          {
+            "frame": 0.2833333333333333,
+            "value": {
+              "__uuid__": "f2wNc8cKNCOJMqFYtSu6iM"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "73EUmx6FlM0aQzRnr79npo"
+            }
+          },
+          {
+            "frame": 0.31666666666666665,
+            "value": {
+              "__uuid__": "8f2ZZJsctHY42xz8Ps79xQ"
+            }
+          },
+          {
+            "frame": 0.3333333333333333,
+            "value": {
+              "__uuid__": "8eYkhP09dMqbLicbpB3lPY"
+            }
+          },
+          {
+            "frame": 0.35,
+            "value": {
+              "__uuid__": "c74EGO2zZCJqvYcsuGacaK"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

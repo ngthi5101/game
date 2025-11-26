@@ -1,0 +1,1 @@
+more `ls -tr logs/rtrace*` | grep  --binary-files=text "$1" > "$1.log"

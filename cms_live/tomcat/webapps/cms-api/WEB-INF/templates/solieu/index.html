@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=yes" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>
+        <title data-th-text="#{admin.page.title}">Game - Management</title>
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>       
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+        <link href="/resources/sb-admin-v2/css/plusins/metisMenu/metisMenu.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/metisMenu.min.css}"/>
+    	
+</head>
+
+<body>
+    <div id="wrapper">
+    	<div data-th-replace="solieu/sb-solieu :: top-nav"></div>
+    	<div data-th-replace="solieu/sb-solieu :: vert-nav-admin"></div>
+        <div id="page-wrapper">
+        	<div class="container-fluid">
+     		<div class="row">
+                 <div class="col-lg-12">
+                     <h3 class="page-header">CMS đổi thưởng</h3>
+                 </div>
+                 <!-- /.col-lg-12 -->
+             </div>
+			<br/>
+            <!-- /.row -->
+             <!-- /new row -->
+               <div class="row">  
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-usd fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-10 text-right">
+                                    <div class="huge"><em id="mRevenue">0</em></div>
+                                    <div>Doanh thu tháng</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a th:href="@{/reports/revenues.html}">
+                                <div class="panel-footer">
+                                    <span class="pull-left"> View detail</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-users fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-10 text-right">
+                                    	<div class="huge"><em id="totelUser">?</em></div>
+                                      	<div>Người chơi</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                <div class="panel-footer">
+                                <a th:href="@{/reports/register_history.html}">
+                                    <span class="pull-left"> View detail</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </a>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="table-responsive" id="tblWait"></div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-mobile fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-10 text-right">
+                                    	<div class="huge"><em id="totelDevice">?</em></div>
+                                      	<div>Thiết bị</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                <div class="panel-footer">
+                                <a th:href="@{/reports/device_history.html}">
+                                    <span class="pull-left"> View detail</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </a>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="table-responsive" id="tblWait"></div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <i class="fa fa-flag fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-10 text-right">
+                                    	<div class="huge"><em id="totelMath">?</em></div>
+                                      	<div>Trận đánh</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                <div class="panel-footer">
+                                <a th:href="@{/reports/match_history.html}">
+                                    <span class="pull-left"> View detail</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    </a>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </a>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="table-responsive" id="tblWait"></div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>                     
+               </div> 
+             <!-- end row -->
+            <div class="row">
+            	<div class="col-lg-12">
+                <!-- panel ccu -->
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> CCU
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <!-- <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button> -->
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="morris-area-chart"></div>
+                        </div>                       
+                       	<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                               <div class="panel-footer">
+                               	<a th:href="@{/statistics/ccu.html}">
+                                   <span class="pull-left"> View detail</span>
+                                   <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                   </a>
+                                   <div class="clearfix"></div>
+                               </div>
+                           </a>                       
+                        <!-- /.panel-body -->
+                    </div>
+                    </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+            	<div class="col-lg-12">
+            	<div class="panel panel-green">
+                        <div class="panel-heading">
+                            <i class="fa fa-info fa-fw"></i> Một vài con số
+                            <div class="pull-right">
+                                 <a href="?update=true" class="btn btn-default btn-xs"><i class="fa fa-refresh"></i></a>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-dollar fa-fw"></i> Doanh thu hôm nay
+                                    <span class="pull-right text-muted small"><em id="todayRevenue">?</em>
+                                    </span>
+                                </a>                                
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-credit-card fa-fw"></i> Thẻ cào hôm nay
+                                    <span class="pull-right text-muted small"><em id="todayCardRevenue">?</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-envelope-o fa-fw"></i> SMS hôm nay
+                                    <span class="pull-right text-muted small"><em id="todaySMSRevenue">?</em>
+                                    </span>
+                                </a>
+                                
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-dollar fa-fw"></i> DT giờ này hôm qua
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(dashboard.cardTotalMoney+dashboard.smsTotalMoney, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>                                
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-credit-card fa-fw"></i> Thẻ cào giờ này hôm qua
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(dashboard.cardTotalMoney, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-envelope-o fa-fw"></i> SMS giờ này hôm qua
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(dashboard.smsTotalMoney, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+                                
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-user-plus fa-fw"></i> Tổng số TK đăng ký
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(user_count, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+                                <!-- <a href="#" class="list-group-item">
+                                    <i class="fa fa-mobile fa-fw"></i> Tổng số thiết bị đăng ký
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(device_count, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a> -->
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-pencil-square-o fa-fw"></i> Số TK đăng ký hôm qua
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(yesterday_register_count, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-pencil-square-o fa-fw"></i> Số TK đăng ký hôm nay
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(today_register_count, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="glyphicon glyphicon-cloud-download fa-fw"></i> Số cài đặt hôm nay
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(today_register_device_count, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+                                
+                                <a href="#" class="list-group-item">
+                                    <i class="glyphicon glyphicon-log-in fa-fw"></i> Đăng nhập hôm nay
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(login_count, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-trophy fa-fw"></i> Lượt đánh hôm nay
+                                    <span class="pull-right text-muted small"><em th:text="${#numbers.formatDecimal(match_count, 0, 'COMMA', 0, 'POINT')}">?</em>
+                                    </span>
+                                </a>
+<!--                                 <a href="#" class="list-group-item">
+                                    <i class="fa fa-shopping-cart fa-fw"></i> Tổng số tin nhắn nạp
+                                    <span class="pull-right text-muted small"><em>?</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> Tổng số thẻ cào nạp
+                                    <span class="pull-right text-muted small"><em>?</em>
+                                    </span>
+                                </a> -->
+                            </div>
+                            <!-- /.list-group -->
+                           
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    </div>
+                    <!-- /.panel -->
+            </div>
+            <!-- row history -->
+           
+            <!-- /.row -->
+            </div>
+           <!-- /.container -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+    <script src="js/jquery.jsonp-2.4.0.min.js" th:src="@{/resources/sb-admin-v2/js/jquery.jsonp-2.4.0.min.js}"></script>
+    <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+    <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <!-- <script src="js/demo/dashboard-demo.js" th:src="@{/resources/sb-admin-v2/js/demo/dashboard-demo.js}"></script> -->
+	<script>
+		function numberWithCommas(x) {
+		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		function doSearchUser() {
+			window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+		    return false;
+		};
+		var nReloads = 0;
+		var data = [];
+		var graph = Morris.Line({
+			element: 'morris-area-chart',
+			data: data,
+			xkey: 'dtTimeStamp',
+			ykeys: ['onlineUser', 'bot'],
+			labels: ['onlineUser', 'bot'],
+			dateFormat: function (x) { dte = new Date(); return (dte.getHours() +':' + dte.getMinutes());},
+		    parseTime: false,
+		    ymin: 0,
+		    ymax: 'auto',
+		    hideHover: true
+		});
+		
+		function update() {
+			$("curr_time").val(new Date());
+			$.ajax({
+			    url: "http://api.xxxx.net/api/sessions.json",
+			 
+			    // the name of the callback parameter, as specified by the YQL service
+			    jsonp: "callback",
+			 
+			    // tell jQuery we're expecting JSONP
+			    dataType: "jsonp",
+			 
+			    // tell YQL what we want and that we want JSON
+			    data: {
+			    },
+			    // work with the response
+			    success: function( response ) {
+			    	// server response
+			        /* console.log( response ); */ 
+			        graph.setData(response);
+			    }
+			});
+			
+			$.ajax({
+			    url: "reports/json/revenues.html",
+			    jsonp: "callback",
+			    dataType: "jsonp",
+			    data: {
+			    },
+			    success: function( response ) {
+			    	/* console.log( response );  */
+			        if (response.status == 0) {
+				        json = $.parseJSON( response.data );
+				        $('#todayCardRevenue').html(numberWithCommas(json.card));
+				        $('#todaySMSRevenue').html(numberWithCommas(json.sms));
+				        $('#mRevenue').html(numberWithCommas(json.mrevenue));
+				        $('#totelMath').html(numberWithCommas(json.match));
+				        $('#totelUser').html(numberWithCommas(json.user));
+				        $('#totelDevice').html(numberWithCommas(json.device));
+                        var todayRevenue = 0 + Number(json.card);
+                        todayRevenue = 0 + todayRevenue + Number(json.sms);
+                        $('#todayRevenue').html(numberWithCommas(todayRevenue));
+					}
+			    }
+			});
+		}
+		update();
+		setInterval(update, 50000);
+    </script>
+</body>
+
+</html>

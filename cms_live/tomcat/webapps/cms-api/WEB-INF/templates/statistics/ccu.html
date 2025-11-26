@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" ng-app="myDashboardApp">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+    <title data-th-text="#{admin.page.title}"> CCU</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+    <link href="../font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="../css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+    <!-- angular --> 
+    <link rel="stylesheet" href="../resources/angular/nv.d3.css" th:href="@{/resources/angular/nv.d3.css}"/>
+    <link rel="stylesheet" href="../resources/angular/ccu.css" th:href="@{/resources/angular/ccu.css}"/>
+     
+</head>
+
+<body>
+
+    <div id="wrapper">
+          	
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 4">
+			<div data-th-replace="solieu/sb-solieu :: top-nav"></div>
+			<div data-th-replace="solieu/sb-solieu :: vert-nav-admin"></div>
+		</div>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">CCU - Concurrent Users</h2>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+			<div class="row">				
+				<div ng-controller="myDashboardCtrl">
+					<!-- summary ccu -->
+					<div class="panel panel-green">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">CCU Summary</h3>
+					  </div>
+					  <div class="panel-body">
+						   <ul class="list-group">
+							  <li class="list-group-item">
+							    <span class="badge">{{current_all_user}}</span>
+							    All User
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{current_icash_user}}</span>
+							    iCash User
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{current_xu_user}}</span>
+							    Xu User
+							  </li>	
+							  <li class="list-group-item">
+							    <span class="badge">{{current_all_bot}}</span>
+							    All Bot
+							  </li>	
+							  <li class="list-group-item">
+							    <span class="badge">{{current_icash_bot}}</span>
+							    iCash bot
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{current_xu_bot}}</span>
+							    xu Bot
+							  </li>					
+							</ul>
+					  </div>
+					</div>		
+					<!-- all ccu -->
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">CCU</h3>
+					  </div>
+					  <div class="panel-body">
+					   <nvd3 options="options" data="data"></nvd3>
+					  </div>
+					</div>
+					<!-- icash ccu -->
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">CCU iCash</h3>
+					  </div>
+					  <div class="panel-body">
+					   <nvd3 options="options" data="idata"></nvd3>
+					  </div>
+					</div>
+					<!-- xu ccu -->
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">CCU xu</h3>
+					  </div>
+					  <div class="panel-body">
+					   <nvd3 options="options" data="xdata"></nvd3>
+					  </div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="../js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+    <script src="../js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="../js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>   
+    <script src="../resources/angular/moment-with-locales.js" th:href="@{/resources/angular/moment-with-locales.js}"></script>
+
+    <script src="../resources/angular/d3.js" th:href="@{/resources/angular/d3.js}"></script>
+    <script src="../resources/angular/nv.d3.js" th:href="@{/resources/angular/nv.d3.js}"></script> <!-- or use another assembly -->
+    <script src="../resources/angular/angular-nvd3.js" th:href="@{/resources/angular/angular-nvd3.js}"></script>
+
+    <script src="../resources/angular/parse-angular.js" th:href="@{/resources/angular/parse-angular.js}"></script>
+    <script src="../resources/angular/ccu.js" th:href="@{/resources/angular/ccu.js}"></script>
+    <script src="../resources/angular/holder.js"></script>
+    <script>   
+    </script>
+</body>
+
+</html>

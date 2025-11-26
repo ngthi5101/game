@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}" />
+
+<title data-th-text="#{admin.page.title}">Yoker - Cấu hình</title>
+
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="css/plugins/timeline/timeline.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Tỷ lệ icon trên tường cột</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab" href="#tab100">Cược 100</a></li>
+								<li ><a data-toggle="tab" href="#tab1k">Cược 1K</a></li>
+								<li ><a data-toggle="tab" href="#tab10k">Cược 10K</a></li>
+							</ul>
+						</div>
+						<div class="panel-body">
+							<div class="tab-content">
+								<div id="tab100" class="tab-pane fade in active">
+									<div class="row">
+										<div class="col-lg-8 col-md-offset-2">
+											<form role="form" method="post" th:action="@{/config/slot.html}" th:object="${config}">
+												<div class="form-group">
+													<label>Thứ tự icon</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<p class="help-block">icon1, icon2, icon3, icon4, icon5, icon6, icon7</p>
+														</div>
+													</div>
+												</div>
+
+
+												<div class="form-group">
+													<label>Cột 1</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col1}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 2</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col2}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 3</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col3}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 4</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col4}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 5</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col5}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>JSON</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<textarea class="form-control" rows="5" disabled="disabled" th:text="${config_json}"></textarea>
+														</div>
+													</div>
+												</div>
+												<button th:if="${userType} != 3" type="submit" name="100" class="btn btn-success col-md-offset-4">Lưu tham số</button>
+											</form>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+								<div id="tab1k" class="tab-pane fade">
+									<div class="row">
+										<div class="col-lg-8 col-md-offset-2">
+											<form role="form" method="post" th:action="@{/config/slot.html}" th:object="${config1k}">
+												<div class="form-group">
+													<label>Thứ tự icon</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<p class="help-block">icon1, icon2, icon3, icon4, icon5, icon6, icon7</p>
+														</div>
+													</div>
+												</div>
+
+
+												<div class="form-group">
+													<label>Cột 1</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col1}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 2</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col2}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 3</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col3}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 4</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col4}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 5</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col5}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>JSON</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<textarea class="form-control" rows="5" disabled="disabled" th:text="${config_json}"></textarea>
+														</div>
+													</div>
+												</div>
+												<button th:if="${userType} != 3" type="submit" name="1k" class="btn btn-success col-md-offset-4">Lưu tham số</button>
+											</form>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+								<div id="tab10k" class="tab-pane fade">
+									<div class="row">
+										<div class="col-lg-8 col-md-offset-2">
+											<form role="form" method="post" th:action="@{/config/slot.html}" th:object="${config10k}">
+												<div class="form-group">
+													<label>Thứ tự icon</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<p class="help-block">icon1, icon2, icon3, icon4, icon5, icon6, icon7</p>
+														</div>
+													</div>
+												</div>
+
+
+												<div class="form-group">
+													<label>Cột 1</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col1}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 2</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col2}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 3</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col3}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 4</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col4}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cột 5</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{col5}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>JSON</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<textarea class="form-control" rows="5" disabled="disabled" th:text="${config_json}"></textarea>
+														</div>
+													</div>
+												</div>
+												<button th:if="${userType} != 3" type="submit" name="10k" class="btn btn-success col-md-offset-4">Lưu tham số</button>
+											</form>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+							</div>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+	<!-- Page-Level Demo Scripts - Forms - Use for reference -->
+	<script>
+		$(document).ready(function() {
+		});
+		function doSearchUser() {
+			window.location.href = 'users.html?fullname='
+					+ $(".custom-search-form > input").val();
+			return false;
+		};
+	</script>
+</body>
+
+</html>

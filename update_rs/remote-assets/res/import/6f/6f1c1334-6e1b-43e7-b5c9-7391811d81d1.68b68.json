@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "icon_minigame2",
+    "texture": "12d2a65a8",
+    "rect": [
+      3,
+      3,
+      348,
+      348
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      348,
+      348
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

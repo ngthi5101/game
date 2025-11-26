@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+        <title data-th-text="#{admin.page.title}">Yoker - New Message</title>
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+    </head>
+    <body>
+
+        <div id="wrapper">
+          	<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+    		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Tạo và cập nhật tin nhắn</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                    <form role="form" method="post" action="new_or_update.html" th:action="@{/messages/new_or_update.html}" th:object="${notify_msg}">
+                        <div class="panel panel-info">                         
+                            <div class="panel-heading">
+                                <ul class="nav nav-pills">
+									<li class="active"><p> Thêm mới bản tin</p></li>
+									<li class="pull-right"><a class="btn btn-success btn-lg" title="Trở về danh sách" th:href="@{/messages/messages.html}"><i class="fa fa-list"></i></a></li>
+									<li class="pull-right"><a type="button" class="btn btn-danger btn-lg" href="delete.html" th:href="@{/messages/{id}/delete.html(id=${notify_msg.id})}" onclick="return ConfirmDelete();">Xóa</a></li>                                 
+									<li class="pull-right"><button type="submit" class="btn btn-info btn-lg" title="Lưu sách"><i class="fa fa-check"></i></button></li>
+								</ul>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                       
+                                            <div class="form-group" hidden="true">
+                                                <label>Id</label>
+                                                <input class="form-control" th:value="${notify_msg.id}" name="Id" hidden="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tiêu đề</label>
+                                                <input class="form-control" th:value="${notify_msg.title}" name="title"/>
+                                                <p class="help-block">Tên đăng nhập</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nội dung</label>
+                                                <textarea class="form-control" th:field="${notify_msg.content}" name="content"></textarea>
+                                            </div>
+                                            <div class="form-group">                                           
+                                                <label>Kiểu Hiển thị</label>                                             
+                                                <select name="type" class="form-control input-sm" th:field="*{type}">
+                                                    <option value="3">Headline</option>
+                                                    <option value="2" >Luật game</option>
+                                                    <option value="1">Tin Admin</option>
+                                                    <option value="0">Mặc định</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Hiển thị</label>
+                                                <!-- <input class="form-control" th:value="${notify_msg.contentDisplayType}" name="contentDisplayType"/> --> 
+                                                <select name="contentDisplayType" class="form-control input-sm" th:field="*{contentDisplayType}" >
+                                                    <option value="0">Text</option>
+                                                    <option value="1">Web-Link</option>												
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Trạng thái</label>
+                                                <!-- <input class="form-control" th:value="${notify_msg.contentDisplayType}" name="contentDisplayType"/> --> 
+                                                <select name="status" class="form-control input-sm"  th:field="*{status}">
+                                                    <option value="0">On</option>	
+                                                    <option value="1">Off</option>
+
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Loại tin nhắn</label>
+                                                <!-- <input class="form-control" th:value="${notify_msg.contentDisplayType}" name="contentDisplayType"/> --> 
+                                                <select name="typeMessage" class="form-control input-sm" th:field="*{typeMessage}">
+                                                    <option value="0">New</option>	
+                                                    <option value="1">Old</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
+                                </div>
+                                <!-- /.row (nested) -->
+                            </div>
+                            <!-- /.panel-body -->
+                            
+                        </div>
+                        <!-- /.panel -->
+                        </form>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+        <!-- Page-Level Demo Scripts - Forms - Use for reference -->
+        <script>
+            $(document).ready(function() {
+            });
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };    
+            function ConfirmDelete()
+            {
+                var x = confirm("Bạn muốn xóa ?");
+                if (x)
+                    return true;
+                else
+                    return false;
+            }
+        </script>
+    </body>
+
+</html>

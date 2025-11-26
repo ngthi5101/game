@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <meta charset="utf-8"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Bảng tin</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+		<!-- DataTables CSS -->
+         <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}"/>
+        <link href="css/plugins/responsive.dataTables.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/responsive.dataTables.min.css}"/>
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Các bảng tin</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info" >
+                            <div class="panel-heading">
+                            <ul class="nav nav-pills">
+								<li class="active"><p> Bảng tin thông báo</p></li>																                        
+								<li class="pull-right" th:if="${userType} != 3"><a type="button" class="btn btn-success btn-xs" href="new.html"><i class="fa fa-plus-circle"> New</i></a></li>														
+							</ul>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body" th:if="${notify_msgs} != null">
+                                <div class="table-responsive">
+                                    <table class="display responsive" width="100%" id="tableData">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th class="all">Tiêu đề</th>
+                                                <th class="desktop">Nội dụng</th>
+                                                <th class="desktop">Ngày tạo</th>
+                                                <th class="min-phone-l">kiểu hiển thị</th>
+                                                <th class="desktop">Kiểu Nội dung</th>
+                                                <th class="min-phone-l">Trạng thái</th>
+                                                <th class="all">Loại tin nhắn</th>
+                                                <th class="all" th:if="${userType} != 3"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneMsg, iterStat : ${notify_msgs}">
+                                                <td>
+                                                    <a href="#" th:href="@{/messages/{id}/update.html(id=${oneMsg.id})}" th:text="${iterStat.count}">1</a>
+                                                </td>
+                                                <td th:text="${oneMsg.title}">Hotline</td>
+                                                <td th:text="${#strings.abbreviate(oneMsg.content, 100)}"> htt://google.com </td>
+                                                <td th:text="${oneMsg.createdDate}">  </td>
+                                                <td>
+                                                    <div th:switch="''+${oneMsg.type}">
+                                                        <p th:case ="3">Headline</p>
+                                                        <p th:case ="2">Luật game</p>
+                                                        <p th:case ="1">Tin Admin</p>
+                                                        <p th:case ="*">Mặc định</p>                                                    
+                                                    </div>
+                                                </td>                                            
+                                                <td>
+                                                    <div th:switch="''+${oneMsg.contentDisplayType}">
+                                                        <p th:case="1">Web link</p>
+                                                        <p th:case="0">Text</p>													
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div th:switch="''+${oneMsg.status}">
+                                                        <p th:case="0">On</p>
+                                                        <p th:case="1">Off</p>													
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div th:switch="'' + ${oneMsg.typeMessage}">
+                                                        <p th:case="0">New</p>
+                                                        <p th:case="1">Old</p>
+                                                    </div>
+                                                </td>
+                                                <td th:if="${userType} != 3">
+                                                    <a type="button" class="btn btn-success btn-xs" href="#" th:href="@{/messages/{id}/update.html(id=${oneMsg.id})}">Sửa</a>
+                                                    <a type="button" class="btn btn-danger btn-xs" href="delete.html" th:href="@{/messages/{id}/delete.html(id=${oneMsg.id})}" onclick="return ConfirmDelete();">Xóa</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->                               
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+         <script src="js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.responsive.min.js}"></script>
+
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+        $(document).ready(function() {
+            $('#tableData').dataTable();
+        });
+            function doViewRevenueReport() {
+            };
+		
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };
+            function ConfirmDelete()
+            {
+                var x = confirm("Bạn muốn xóa ?");
+                if (x)
+                    return true;
+                else
+                    return false;
+            }
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/favicon-96x96.png"
+	th:href="@{/resources/dashboard_files/favicon.png}" />
+<title data-th-text="#{admin.page.title}">Title</title>
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/favicon-96x96.png"
+	th:href="@{/resources/dashboard_files/favicon.png}" />
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="bootstrap-daterangepicker/daterangepicker-bs3.css"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+<!-- validate css-->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/resources/jquery-validation-1.13.1/css/style.css}" />
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+    	<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Trả lời</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<form id="UserForm" class="form-horizontal"
+						action="/config/new_message.html"
+						th:action="@{/users/reply_message.html}" method="POST"
+						th:object="${userMessage}">
+						<fieldset>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="alert alert-warning" th:if="${err} != null">
+										<span th:text="${err}">Lỗi</span>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<ul class="nav nav-pills">
+										<li><p>Nội dung</p></li>
+										<li class="pull-right"><a class="btn btn-danger btn-lg"
+											th:href="@{/users/admin_inbox.html}" title="Bỏ qua"> <i
+												class="fa fa-list"> </i>
+										</a></li>
+										<li class="pull-right"><button
+												class="btn btn-info btn-lg" type="submit" title="Lưu">
+												<i class="fa fa-check"> </i>
+											</button></li>
+									</ul>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-8 col-md-offset-1">
+											<div class="form-group">
+												<label class="col-lg-4 control-label">User names: </label>
+												<div class="col-lg-8">
+													<input class="form-control" name="username" id="username"
+														th:value="*{sender.username}" type="text"
+														disabled="disabled" />
+												<input id="id" name="id" type="text" th:value="${id}" hidden="true" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-4 control-label">Tiêu đề: </label>
+												<div class="col-lg-8">
+													<input class="form-control" name="title" id="title"
+														th:field="*{title}" placeholder="title....." type="text" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-4 control-label">Nội dung: </label>
+												<div class="col-lg-8">
+													<textarea class="form-control" id="content" name="content"
+														th:field="*{content}" rows="3"
+														placeholder="Nội dung ....."></textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-4 control-label">Giá trị: </label>
+												<div class="col-lg-8">
+													<select name="type" class="form-control input-sm"
+														th:field="*{type}">
+														<option value="0">Text</option>
+														<option value="1">Claim</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-4 control-label">Giá trị: </label>
+												<div class="col-lg-8">
+													<input class="form-control" id="value" name="value"
+														th:field="*{value}" placeholder="Giá trị....."></input>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end panel-body -->
+							</div>
+							<!-- end panel-->
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<!-- form validate -->
+	<script
+		src="/resources/jquery-validation-1.13.1/jquery.validate.min.js"
+		th:src="@{/resources/jquery-validation-1.13.1/jquery.validate.min.js}"></script>
+	<script
+		src="/resources/jquery-validation-1.13.1/additional-methods.min.js"
+		th:src="@{/resources/jquery-validation-1.13.1/additional-methods.min.js}"></script>
+	<script src="/resources/jquery-validation-1.13.1/jquery-ui.min.js"
+		th:src="@{/resources/jquery-validation-1.13.1/jquery-ui.min.js}"></script>
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+	<script>
+		$(document).ready(function() {
+			// validate signup form on keyup and submit
+			$("#UserForm").validate({
+				rules : {
+					title : {
+						required : true,
+					},
+					content : {
+						required : true,
+					},
+					usernames : {
+						required : true,
+					}
+				},
+				messages : {
+					title : {
+						required : "Please enter a title",
+
+					},
+					content : {
+						required : "Please enter a content",
+					},
+					usernames : {
+						required : "Please enter usernames",
+					}
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+echo 'log/general/console_0.log' `more log/general/console_0.log | grep Auto | wc -l`
+echo 'log/general/console_1.log' `more log/general/console_1.log | grep Auto | wc -l`
+echo 'log/general/console_2.log' `more log/general/console_2.log | grep Auto | wc -l`
+echo 'log/general/console_3.log' `more log/general/console_3.log | grep Auto | wc -l`
+echo 'log/general/console_4.log' `more log/general/console_4.log | grep Auto | wc -l`
+echo 'log/general/console_5.log' `more log/general/console_5.log | grep Auto | wc -l`
+echo 'log/general/console_6.log' `more log/general/console_6.log | grep Auto | wc -l`
+echo 'log/general/console_7.log' `more log/general/console_7.log | grep Auto | wc -l`
+echo 'log/general/console_8.log' `more log/general/console_8.log | grep Auto | wc -l`
+echo 'log/general/console_9.log' `more log/general/console_9.log | grep Auto | wc -l`
+echo 'log/general/console_10.log' `more log/general/console_10.log | grep Auto | wc -l`
+echo 'log/general/console_11.log' `more log/general/console_11.log | grep Auto | wc -l`

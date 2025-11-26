@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:annotation-config />
+	<context:property-placeholder
+	location="classpath:target-mysql.properties,classpath:epay-cardch-charging.properties,classpath:epay-cardch-topup.properties,classpath:sms-cp.properties,classpath:jmx.properties,classpath:netty.properties" />
+	<import resource="applicationContext-hazelcast.xml" />
+	<!-- In this file we configure Hibernate Entity Manager and transactional behavior -->
+	<import resource="applicationContext-persistence.xml" />
+
+	<!--**** Application components ****-->
+	<!-- Auto scan the components -->
+	<context:component-scan  base-package="vn.yotel.yoker">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<bean class="vn.yotel.yoker.util.SessionIdGenerator" name="idGenerator"></bean>
+	<!-- game server -->
+	<bean name="sampleServer" class="vn.yotel.yoker.server.sample.SampleServer" destroy-method="stopServer">
+		<constructor-arg type="int" value="${tcp.port}"></constructor-arg>
+		<constructor-arg type="int" value="${so.sndbuf}"></constructor-arg>
+		<constructor-arg type="int" value="${so.rcvbuf}"></constructor-arg>
+		<constructor-arg type="int" value="${so.timedout}"></constructor-arg>
+		<constructor-arg type="int" value="${so.backlog}"></constructor-arg>
+	</bean>
+	<!-- webbsocket server -->
+	<bean name="webSocketServer" class="vn.yotel.yoker.web.socket.WebSocketServer" destroy-method="stopServer">
+		<constructor-arg type="int" value="${ws.port}"></constructor-arg>
+		<constructor-arg type="int" value="${ws.sndbuf}"></constructor-arg>
+		<constructor-arg type="int" value="${ws.rcvbuf}"></constructor-arg>
+		<constructor-arg type="int" value="${ws.timedout}"></constructor-arg>
+		<constructor-arg type="int" value="${ws.backlog}"></constructor-arg>
+		<constructor-arg type="boolean" value="${ws.ssl}"></constructor-arg>
+	</bean>
+	
+	<import resource="applicationContext-quartz.xml" />
+	<import resource="applicationContext-payment.xml" />
+	<!-- The Spring application context -->
+	<bean id="appContext" class="vn.yotel.yoker.context.AppContext" />
+	<!-- thread process -->
+	<bean id ="objNotifier" class="java.lang.Object" scope="singleton"/>	
+	<bean id="chipChangeThread" class="vn.yotel.yoker.job.NotifyChipChangeThread" init-method="startJob" destroy-method="stopJob" />
+	<bean id="messageToUserThread" class="vn.yotel.yoker.job.NotifyMessageToUserThread" init-method="startJob" destroy-method="stopJob" />
+	<bean id="userZoneExpThread" class="vn.yotel.yoker.job.UserZoneExpThread" init-method="startJob" destroy-method="stopJob" />
+	<bean id="userGlobalExpThread" class="vn.yotel.yoker.job.UserGlobalExpThread" init-method="startJob" destroy-method="stopJob" />
+	<bean id="userDailyTaskThread" class="vn.yotel.yoker.job.UserDailyTaskThread" init-method="startJob" destroy-method="stopJob" />
+	<bean id="userAchivementThread" class="vn.yotel.yoker.job.UserAchivementThread" init-method="startJob" destroy-method="stopJob" />
+	<bean id="goldHistoryThread" class="vn.yotel.yoker.job.UpdateGoldHistoryThread" init-method="startJob" destroy-method="stopJob" />
+	<bean id="koinHistoryThread" class="vn.yotel.yoker.job.UpdateKoinHistoryThread" init-method="startJob" destroy-method="stopJob" />
+	<!-- bean id="userLoginThread" class="vn.yotel.yoker.job.UserLoginThread" init-method="startJob" destroy-method="stopJob" /-->
+	<!-- bean id="iGameThread" class="vn.yotel.yoker.job.IGameThread" init-method="startJob" destroy-method="stopJob" /-->
+	<!-- queue -->
+	<!-- bean id="loginQueue" class="vn.yotel.yoker.util.Queue"/-->
+	<bean id="achivementQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="dailyTaskQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="zoneExpQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="globalExpQueue" class="vn.yotel.yoker.util.Queue"/>
+	<!-- bean id="iGameQueue" class="vn.yotel.yoker.util.Queue"/-->
+	
+	<bean id="goldHistoryQueue" class="java.util.concurrent.ConcurrentLinkedQueue" scope="singleton" />
+	<bean id="goldHistoryQueueNotifier" class="java.lang.Object" scope="singleton" />
+	<bean id="koinHistoryQueue" class="java.util.concurrent.ConcurrentLinkedQueue" scope="singleton" />
+	<bean id="koinHistoryQueueNotifier" class="java.lang.Object" scope="singleton" />
+	<!-- JMX & Utility -->
+	<!-- <import resource="applicationContext-utility.xml" /> -->
+	<import resource="applicationContext-webserver.xml" />
+	<!-- sms client -->
+	<bean name="smsClient" class="vn.yotel.yoker.sms.SMSClient">
+		<constructor-arg type="String" value="${sms.url}"></constructor-arg>
+		<constructor-arg type="String" value="${sms.username}"></constructor-arg>
+		<constructor-arg type="String" value="${sms.password}"></constructor-arg>
+		<constructor-arg type="String" value="${sms.service}"></constructor-arg>
+		<constructor-arg type="String" value="${sms.keyword}"></constructor-arg>
+	</bean>
+	<!-- Bootstrap for game -->
+	<bean name="gameBootstrap" class="vn.yotel.yoker.bo.impl.GameBootstrapBoImpl" init-method="initializeGame">
+	</bean>
+</beans>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Thống kê tiền người chơi theo ngày giờ</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+        <link rel="stylesheet" type="text/css" media="all" href="bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}"/>
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 4">
+			<div data-th-replace="solieu/sb-solieu :: top-nav"></div>
+			<div data-th-replace="solieu/sb-solieu :: vert-nav-admin"></div>
+		</div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Thống kê tiền người chơi <span th:if="${rpt_title}"><span th:text="${rpt_title}"></span></span> theo ngày giờ</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="panel-body">
+                        <form role="form" method="post" th:action="@{/reports/}+${form_action}">
+                            <div class="row">
+                                <input hidden="true" value="0" name="type" />
+                                <div class="col-lg-3">
+                                    <label>Từ ngày - đến ngày</label>
+                                    <div class="input-prepend input-group">
+                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+<!--                                        <input type="date" name = "from_date" id = "from_date" hidden="false" th:value="${from_date}" disabled="true"/>
+                                        <input type="text" name = "to_date" id = "to_date" hidden="false"  th:value="${to_date}"/> 
+                                        <input type="text" style="width: 100%" name="date_range" id="reservationtime" class="form-control span4"
+                                               value="08/01/2013 - 08/01/2013" th:value="${from_date} + ' - ' + ${to_date}" readonly="readonly" />-->
+                                        <input type="date" class="form-control" id="from_date" name="from_date" placeholder="day"  th:value="${from_date}"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    &nbsp;
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <button type="submit" class="btn btn-info">Xem </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+                        </form>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <div hidden="true" id = "platformId" th:text="${platformId}">
+                </div>
+                <div hidden="true" id = "cpNameId" th:text="${cpNameId}">
+                </div>
+                <div hidden="true" id = "subCpNameId" th:text="${subCpNameId}">
+                </div>
+                <div id="dataDay" class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info" th:if="${Arr24hGoldIn} != null">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id = "tblUsers">
+                                        <thead>
+                                            <tr>
+                                                <th>Hour</th>
+                                                <th>Số tiền các người chơi thua (A)</th>
+                                                <th>Số tiền các người chơi ăn được (B)</th>
+                                                <th>Hệ thống lãi (A - B)</th>
+                                                <th>Tiền hệ thống ăn từ 0h</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="i: ${#numbers.sequence(0, 23)}" class="data_row">
+                                            	<td th:text="${i}"></td>
+                                                <td th:text="${Arr24hGoldIn[i]}" class="data_gold_in"></td>
+                                                <td th:text="${Arr24hGoldOut[i]}" class="data_gold_out"></td>
+                                                <td class="data_gold_in_hour"></td>
+                                                <td class="data_gold_total_util_now"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id = "tblUsers">
+                                        <thead>
+                                            <tr>
+                                                <th>MatchID</th>
+                                                <th>User ID</th>
+                                                <th>Bet</th>
+                                                <th>Add Money</th>
+                                                <th>Sub Money</th>
+                                                <th>Total</th>
+                                                <th>Dealtime</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneExchange, iterStat : ${ListRoomUserHistory}">
+                                            	<td th:text="${oneExchange.matchId}"></td>
+                                                <td th:text="${oneExchange.userId}">2014-09-01</td>
+                                                <td th:text="${oneExchange.bet}"> 0 </td>
+                                                <td th:text="${oneExchange.addMoney}"> 0 </td>
+                                                <td th:text="${oneExchange.subMoney}"> 0 </td>
+                                                <td th:text="${oneExchange.total}"> 0 </td>
+                                                <td th:text="${oneExchange.dealTime}"> 0 </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+        <script src="js/sb-admin.js" th:src="@{/resources/bootstrap-daterangepicker/bootstrap-datepicker.min.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="../js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+        <script src="../js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js}"></script>
+
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+        <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+        <script type="text/javascript" src="bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+        <script type="text/javascript" src="bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+        <!-- export data -->
+        <script src="js/plugins/dataTables/excellentexport.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/excellentexport.min.js}"></script>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var data = [];
+            var dataDashboard = [];
+            var currUrl = /*[[@{/}]]*/ "";
+            /*]]>*/
+        </script>
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+           
+            function doViewRevenueReport() {
+            };
+		
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };  
+              
+            $(document).ready(function() {  
+                $('#tblCardTopup').dataTable( {
+                    "lengthMenu": [[20, 30, 50,100], [20, 30, 50, 100]]
+                } );
+                var  platformId = $("#platformId").html();
+                $("#platform").val(platformId);
+                
+                var  cpNameId = $("#cpNameId").html();
+                $("#cpName").val(cpNameId);
+                var  subCpNameId = $("#subCpNameId").html();
+                $("#subCpName").val(subCpNameId);
+				
+				// Tính toán dữ liệu
+				var total_from_0h = 0;
+				$('.data_row').each((i,o)=>{
+					var row = $(o);
+					// Nếu giá trị tiền cột data_gold_in, data_gold_out = -1 thfi để rỗng
+					var data_gold_in = row.find('.data_gold_in');
+					var data_gold_out = row.find('.data_gold_out');
+					if(data_gold_in.text() === '-1' || data_gold_in.text() === '-1'){
+						if(data_gold_in.text() === '-1')
+							data_gold_in.text(' ');
+						if(data_gold_out.text() === '-1')
+							data_gold_out.text(' ');
+						return;
+					}
+					// Tính giá trị cột "Kết quả A - B"
+					var row_gold_in = parseInt( data_gold_in.text() );
+					var row_gold_out = parseInt( data_gold_out.text() );
+					var result = row_gold_in - row_gold_out;
+					if(result !== null){
+						row.find('.data_gold_in_hour').text(numberWithCommas(result));
+						total_from_0h += result;
+						row.find('.data_gold_total_util_now').text(numberWithCommas(total_from_0h));
+					}
+					// Format number cho số ở 2 cột giá trị in/out
+					data_gold_in.text( 
+										numberWithCommas( 
+														parseInt( data_gold_in.text() ) 
+														) 
+									);
+					data_gold_out.text( 
+										numberWithCommas( 
+														parseInt( data_gold_out.text() ) 
+														) 
+									);
+				});
+            });  
+              
+            $('#reservationtime').daterangepicker({
+                timePicker: false, 
+                format: 'YYYY/MM/DD'
+            }, function(start, end, label) {
+                console.log('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                $('#from_date').val(start.format('YYYY-MM-DD'));
+                $('#to_date').val(end.format('YYYY-MM-DD'));
+            });
+            $("#from_date").datepicker( {
+	    	    format: "yyyy-mm-dd",
+	    	    autoclose: true,
+	    	    todayHighlight:true
+	    	});
+            $(document).ready(()=>{
+                $('.need_format_code').each((i,o)=>{
+                    $(this).text( numberWithCommas( parseInt($(this).text())) );
+                });
+            });
+            const numberWithCommas = (x) => {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+        </script>
+
+    </body>
+
+</html>

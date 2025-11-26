@@ -1,0 +1,74 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "xHu",
+  "_duration": 2,
+  "wrapMode": "2",
+  "curveData": {
+    "paths": {
+      "x": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 2,
+              "value": -360
+            }
+          ]
+        }
+      },
+      "x2": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              },
+              "curve": "cubicOut"
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.2,
+                "y": 1.2
+              },
+              "curve": "cubicIn"
+            },
+            {
+              "frame": 1,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0.8,
+                "y": 0.8
+              },
+              "curve": "cubicOut"
+            },
+            {
+              "frame": 1.6666666666666667,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.2,
+                "y": 1.2
+              },
+              "curve": "cubicIn"
+            },
+            {
+              "frame": 2,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

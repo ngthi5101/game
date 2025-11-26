@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=yes" />
+		<link rel="shortcut icon" href="/resources/dashboard_files/logo.jpg" th:src="@{/resources/dashboard_files/logo.jpg}" />
+		<!-- Core CSS - Include with every page -->
+		<!-- Core CSS - Include with every page -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+		<link rel="stylesheet" type="text/css" media="all" href="bootstrap-daterangepicker/daterangepicker-bs3.css"
+			  th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+
+		<!-- Page-Level Plugin CSS - Dashboard -->
+		<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+		<link href="css/plugins/timeline/timeline.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+		<link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}" />
+		<!-- SB Admin CSS - Include with every page -->
+		<link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/sb-admin-2.css}" />
+		<link href="css/metisMenu.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/metisMenu.min.css}" />
+		<title>Dashboard</title>
+    </head>
+    <body>
+		<div id="wrapper">
+			<nav data-th-fragment="top-nav" class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<!--<a class="navbar-brand" href="index.html" th:href="@{/index.html}"><img alt="Brand" th:src="@{/resources/dashboard_files/logo.png}" /> <span
+						class="slogan"> Dashboard</span> </a>-->
+				</div>
+				<!-- /.navbar-header -->
+				<ul class="nav navbar-top-links navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding:0"> 
+<!--							<i class="fa fa-user fa-fw"></i>-->
+<img th:src="@{/resources/dashboard_files/1.png}" alt="" style="width: 50px;"/>
+							<span
+								th:text=" ${session.principal}"></span><i class="fa fa-caret-down"></i></a>
+						<ul class="dropdown-menu dropdown-user">
+							<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="#" th:href="@{/users/profile.html}"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a></li>
+							<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="#" th:href="@{/user/change_password.html}"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a></li>
+							<li class="divider"></li>
+							<li><a href="login.html" th:href="@{/j_spring_security_logout}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a></li>
+						</ul> <!-- /.dropdown-user --></li>
+					<!-- /.dropdown -->
+				</ul>
+				<!-- /.navbar-top-links -->
+			</nav>
+			<!-- /.navbar-static-top -->
+			<nav data-th-fragment="vert-nav-admin" class="navbar-default navbar-static-side" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li>
+							<a href="#" onclick="return false;" style="cursor: context-menu;color: #000;">ID: <span th:text="${session.game_id}"></span></a>
+							<a href="#" onclick="return false;" style="cursor: context-menu;color: #000;">Tên: <span th:text="${session.game_name}"></span></a>
+							<a href="#" onclick="return false;" style="cursor: context-menu;color: #000;">WIN: <span th:text="${session.game_gold}"></span></a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG', 'ROLE_C1', 'ROLE_C2')">
+							<a href="reports/exchange_history_detail.html" th:href="@{/reports/exchange_history_detail.html}"><i class="fa fa-money fa-fw"></i> 
+								Lịch sử giao dịch</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG', 'ROLE_C1', 'ROLE_C2')">
+							<a href="users/add_gold_to_user.html" th:href="@{/users/add_gold_to_user.html}"><i class="fa fa-money fa-fw"></i> Chuyển tiền</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_C1')"><a href="#" th:href="@{/users/list_agency.html}"><i class="fa fa-user"></i> Danh sách C2</a></li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+							<a href="#" ><i class="fa fa-dollar"></i> Top Đại gia <span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+									<a href="#" th:href="@{/users/top_dai_gia.html?user_type=agency_level_1}"><i class="fa fa-dollar"></i>Top Cấp 1</a>
+								</li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+									<a href="#" th:href="@{/users/top_dai_gia.html?user_type=agency_level_2}"><i class="fa fa-dollar"></i>Top Cấp 2</a>
+								</li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+									<a href="#" th:href="@{/users/top_dai_gia.html?user_type=haywin}"><i class="fa fa-dollar"></i>Top Khách</a>
+								</li>
+							</ul>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+							<a href="#" ><i class="fa fa-dollar"></i> Top Doanh Thu <span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG', 'ROLE_C1')">
+									<a href="#" th:href="@{/users/top_doanh_thu.html?user_type=agency_level_1}"><i class="fa fa-dollar"></i>Top Cấp 1</a>
+								</li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG', 'ROLE_C1')">
+									<a href="#" th:href="@{/users/top_doanh_thu.html?user_type=agency_level_2}"><i class="fa fa-dollar"></i>Top Cấp 2</a>
+								</li>
+								<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG', 'ROLE_C1')">
+									<a href="#" th:href="@{/users/top_doanh_thu.html?user_type=all}"><i class="fa fa-dollar"></i>Tổng C1 + C2</a>
+								</li>
+							</ul>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_C1')">
+							<a href="#" th:href="@{/users/top_doanh_thu.html?user_type=all}"><i class="fa fa-dollar"></i>Tổng doanh thu</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+							<a href="users.html" th:href="@{/users/search_users.html}"><i class="fa fa-user fa-fw"></i> Quản lý user <span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="users.html" th:href="@{/users/search_users.html}"><i class="fa fa-search"></i> Tìm kiếm</a></li>
+								<li><a href="#" th:href="@{/users/online_users.html}"><i class="fa fa-user"></i> Online users</a></li>
+								<li><a href="#" th:href="@{/users/change_id.html}"><i class="fa fa-user"></i> Đổi ID</a></li>
+								<li><a href="reports/exchange_history_detail.html" th:href="@{/reports/agency_koin.html}"><i class="fa fa-money fa-fw"></i> Tiền phế</a></li>
+								<li><a href="#" th:href="@{/users/user_tx_online.html}"><i class="fa fa-user"></i> Người chơi Tài Xỉu</a></li>
+							</ul>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+							<a href="#"><i class="fa fa-dashboard fa-fw"></i> Báo cáo <span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="reports/gold_flow.html" th:href="@{/reports/spin_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Quay Hũ</a></li>
+								<li><a href="reports/gold_flow.html" th:href="@{/reports/tx_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Tài Xỉu</a></li>
+								<li><a href="reports/gold_flow.html" th:href="@{/reports/bc_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Bầu Cua</a></li>
+<!--								<li><a href="reports/gold_flow.html" th:href="@{/reports/xd_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Xóc Đĩa</a></li>-->
+							</ul>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+							<a href="#" th:href="@{/users/set_agency.html}"><i class="fa fa-cog fa-fw"></i> Set C1</a>
+							<a href="#" th:href="@{/users/remove_agency.html}"><i class="fa fa-cog fa-fw"></i> Hủy đại lí</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_C1')">
+							<a href="#" th:href="@{/users/set_agency.html}"><i class="fa fa-cog fa-fw"></i> Set C2</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG', 'ROLE_C1')">
+							<a href="/config/giftcodes.html" th:href="@{/config/giftcodes.html}"><i class="fa fa-cog fa-fw"></i> Giftcode</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN')">
+							<a href="/config/nap_cards.html" th:href="@{/config/nap_cards.html}"><i class="fa fa-cog fa-fw"></i> Nạp Card</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_C1')">
+							<a href="reports/exchange_history_detail.html" th:href="@{/reports/agency_koin.html}"><i class="fa fa-money fa-fw"></i> Tiền phế</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_C1')">
+							<a href="#" th:href="@{/users/agency_lock_account.html}"><i class="fa fa-cog fa-fw"></i> Khóa tài khoản</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN')">
+							<a href="#"><i class="fa fa-cogs fa-fw"></i> Thiết lập <span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+								<li><a href="/config/taken_jackpot.html" th:href="@{/config/taken_jackpot.html}"><i class="fa fa-cog fa-fw"></i> Đập hũ</a></li>
+							</ul>
+							<ul class="nav nav-second-level" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+								<li><a href="#" th:href="@{/config/change_taixiu_result.html}"><i class="fa fa-cog fa-fw"></i> Kết quả Tài Xỉu</a></li>
+							</ul>
+							<ul class="nav nav-second-level" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+								<li><a href="#" th:href="@{/config/change_baucua_result.html}"><i class="fa fa-cog fa-fw"></i> Kết quả Bầu Cua</a></li>
+							</ul>
+							<ul class="nav nav-second-level" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+								<li><a href="#" th:href="@{/config/change_xocdia_result.html}"><i class="fa fa-cog fa-fw"></i> Kết quả Xóc Đĩa</a></li>
+							</ul>
+							<ul class="nav nav-second-level" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+								<li><a href="/config/get_game_restrict_status.html" th:href="@{/config/get_game_restrict_status.html}"><i class="fa fa-cog fa-fw"></i> Giới hạn user</a></li>
+							</ul>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN')">
+							<a href="#"><i class="fa fa-flag fa-fw"></i> Gửi tin nhắn qua SMS <span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="config/tong-dai-sms.html" th:href="@{/config/tong-dai-sms.html}"><i class="fa fa-search"></i> Tổng đài SMS</a></li>
+							</ul>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_ADMIN')">
+							<a href="#"><i class="fa fa-flag fa-fw"></i> Danh sách đại lí<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="config/dealer_config.html" th:href="@{/config/dealer_config.html}"><i class="fa fa-search"></i> Cài đặt</a></li>
+							</ul>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_MANAGE_THREADS')">
+							<a class="active" href="index.html" th:href="@{/index.html}"><i class="fa fa-home"></i> Trang chủ</a>
+						</li>
+						<li sec:authorize="hasAnyRole('ROLE_MANAGE_THREADS')"><a href="index.html" th:href="@{/index.html}"><i class="fa fa-pie-chart fa-fw"></i> Thống kê <span class="fa arrow"></span></a>
+							<div>
+								<ul class="nav nav-second-level">
+									<li><a href="index.html" th:href="@{/statistics/user_active.html}"><i class="fa fa-area-chart"></i> Active Users</a></li>
+									<li><a href="index.html" th:href="@{/statistics/arpu.html}"><i class="fa  fa-area-chart"></i> ARPU</a></li>
+									<li><a href="index.html" th:href="@{/statistics/dpu.html}"><i class="fa  fa-area-chart"></i> DPU</a></li>
+									<li><a href="index.html" th:href="@{/statistics/ccu.html}"><i class="fa fa-bar-chart"></i> CCU</a></li>
+									<li><a href="index.html" th:href="@{/statistics/dpur.html}"><i class="fa fa-bar-chart"></i> DPU Rate</a></li>
+									<li><a href="reports/exchange_history_detail.html" th:href="@{/reports/agency_koin.html}"><i class="fa fa-money fa-fw"></i> Tiền phế đại lí</a></li>
+									<li><a href="users.html" th:href="@{/users/list.html?type=1}"><i class="fa fa-dollar"></i> Top đại gia koin</a></li>
+									<li><a href="users.html" th:href="@{/users/list.html?type=2}"><i class="glyphicon glyphicon-sort-by-order"></i> Nạp tiền nhiều</a></li>
+									<li><a href="detection/index.html" th:href="@{/detection/index.html}"><i class="fa fa-user-secret"></i> Nghi vấn hack</a></li>
+									<li><a href="#" th:href="@{/users/list_unsign.html}"><i class="fa fa-user-secret"></i> Không đăng nhập</a></li>
+									<li><a href="#" th:href="@{/users/list_users_lock.html}"><i class="fa fa-user-secret"></i> Ds tài khoản bị khóa</a></li>
+									<li><a href="#" th:href="@{/detection/top_user.html}"><i class="fa fa-dollar"></i> Top thắng nhiều</a></li>
+									<li><a href="reports/users_grow.html" th:href="@{/reports/users_grow.html}"><i class="fa fa-money fa-fw"></i> Phát triển người dùng</a></li>
+									<li><a href="reports/exchange_history_grow.html" th:href="@{/reports/exchange_history_grow.html}"><i class="fa fa-money fa-fw"></i> Giao dịch theo ngày</a></li>
+									<li><a href="reports/phe_grow.html" th:href="@{/reports/phe_grow.html}"><i class="fa fa-money fa-fw"></i> Số phế thu theo ngày</a></li>
+									<li><a href="reports/gold_flow.html" th:href="@{/reports/gold_flow.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền</a></li>
+
+
+									<li><a href="#"><i class="fa fa-university fa-fw"></i> Tiền koin <span class="fa arrow"></span></a>
+										<ul class="nav nav-second-level">
+											<li><a href="cashflow/server_koin.html" th:href="@{/cashflow/server_koin.html}"><i class="fa fa-money fa-fw"></i> Tiền trong game</a></li>
+											<li><a href="cashflow/detail.html" th:href="@{/cashflow/detail.html}"><i class="fa fa-bar-chart fa-fw"></i> Dòng tiền</a></li>
+											<li><a href="cashflow/detail.html" th:href="@{/cashflow/games.html}"><i class="fa fa-gamepad fa-fw"></i> Theo game</a></li>
+										</ul></li>
+									<li><a href="#"><i class="fa fa-university fa-fw"></i> Tiền gold <span class="fa arrow"></span></a>
+										<ul class="nav nav-second-level">
+											<li><a href="cashflow/server_gold.html" th:href="@{/cashflow/server_gold.html}"><i class="fa fa-money fa-fw"></i> Tiền trong game</a></li>
+											<li><a href="cashflow/detail.html" th:href="@{/cashflow/detail_gold.html}"><i class="fa fa-bar-chart fa-fw"></i> Dòng tiền</a></li>
+											<li><a href="cashflow/detail.html" th:href="@{/cashflow/games_gold.html}"><i class="fa fa-gamepad fa-fw"></i> Theo game</a></li>
+										</ul></li>
+									<li><a href="promotion.html"><i class="fa fa-money fa-fw"></i> Khuyến mại <span class="fa arrow"></span></a>
+										<ul class="nav nav-second-level">
+											<li><a href="promotions/promotion.html" th:href="@{/promotions/promotion.html}"><i class="fa fa-pencil-square-o"></i> KM Đăng ký, đăng nhập</a></li>
+											<li>
+												<a href="promotions/promotion_topup.html" th:href="@{/promotions/promotion_topup.html}"><i class="fa fa-credit-card"></i> Khuyến mại nạp chip</a>
+											</li>
+											<li><a href="promotions/promotion_topup.html" th:href="@{/promotions/promotion_sms.html}"><i class="fa fa-envelope-o"></i> Khuyến mại SMS</a></li>
+											<li><a href="promotions/promotion_topup.html" th:href="@{/promotions/promotion_card.html}"><i class="fa fa-credit-card"></i> Khuyến mại Card</a></li>
+											<li><a href="promotions/promotion_iap.html" th:href="@{/promotions/promotion_iap.html}"><i class="fa fa-credit-card"></i> Khuyến mại IAP</a></li>
+											<li><a href="/promotions/daily.html" th:href="@{/promotions/daily.html}"><i class="fa fa-clock-o fa-fw"></i> Khuyến mại ngày</a></li>
+											<li><a href="users/claim.html" th:href="@{/users/claim.html}"><i class="fa fa-bell fa-fw "></i> Claim messages</a></li>
+										</ul></li>
+									<li><a href="revenues.html"><i class="fa fa-dashboard fa-fw"></i> Báo cáo <span class="fa arrow"></span></a>
+										<ul class="nav nav-second-level">
+											<li><a href="reports/gold_flow.html" th:href="@{/reports/spin_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Quay Hũ</a></li>
+											<li><a href="reports/gold_flow.html" th:href="@{/reports/tx_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Tài Xỉu</a></li>
+											<li><a href="reports/gold_flow.html" th:href="@{/reports/bc_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Bầu Cua</a></li>
+											<li><a href="reports/gold_flow.html" th:href="@{/reports/xd_gold_daily.html}"><i class="fa fa-money fa-fw"></i> Dòng tiền Xóc Đĩa</a></li>
+											<!--<li><a href="reports/revenues.html" th:href="@{/reports/revenues.html}"><i class="fa fa-money fa-fw"></i> Báo cáo doanh thu</a></li> -->
+											<!--<li><a href="reports/revenues_partners.html" th:href="@{/reports/revenues_partners.html}"><i class="fa fa-money fa-fw"></i> DT theo đối tác</a></li>-->
+											<!--<li><a href="reports/users_partners.html" th:href="@{/reports/users_partners.html}"><i class="fa fa-user fa-fw"></i> Users theo đối tác</a></li>-->
+											<!--<li><a href="reports/user_device_partners.html" th:href="@{/reports/user_device_partners.html}"><i class="fa fa-money fa-fw"></i> So sánh thiết bị</a></li>-->
+											<!--<li><a href="reports/card_topup.html" th:href="@{/reports/card_topup.html}"><i class="fa fa-money fa-fw"></i> Lịch sử nạp thẻ</a></li>-->
+											<!--<li><a href="reports/sms_history.html" th:href="@{/reports/sms_history.html}"><i class="fa fa-money fa-fw"></i> Lịch sử nạp SMS</a></li>-->
+											<!--<li><a href="reports/register_history.html" th:href="@{/reports/register_history.html}"><i class="fa fa-money fa-fw"></i> Lịch sử đăng ký TK</a></li>-->
+											<!--<li><a href="reports/device_history.html" th:href="@{/reports/device_history.html}"><i class="fa fa-money fa-fw"></i> Lịch sử đăng ký TB</a></li>-->
+											<!--<li><a href="reports/login_history.html" th:href="@{/reports/login_history.html}"><i class="fa fa-money fa-fw"></i> Lịch sử đăng nhập</a></li>-->
+											<!--<li><a href="reports/match_history.html" th:href="@{/reports/match_history.html}"><i class="fa fa-money fa-fw"></i> Lịch sử trận đánh</a></li>-->
+											<!--<li><a href="reports/report_hour.html" th:href="@{/reports/report_hour.html}"><i class="fa fa-money fa-fw"></i> Báo cáo theo giờ</a></li>-->
+
+										</ul></li>
+									<!--					<li>
+									<a href="#"><i class="fa fa-flag fa-fw"></i> Trận đánh <span class="fa arrow"></span></a>
+									<ul class="nav nav-second-level">
+										<li><a href="match/detail.html" th:href="@{/match/detail.html}"><i class="fa fa-search"></i> Tìm trận đánh</a></li>
+										<li><a href="#" th:href="@{/reports/match_suspect.html}"><i class="fa fa-flag-checkered fa-fw"></i> Bất thường-chip</a></li>
+										<li><a href="#" th:href="@{/reports/gold_match_suspect.html}"><i class="fa fa-flag-checkered fa-fw"></i> Bất thường-gold</a></li>
+									</ul>
+								</li>-->
+									<!--<li><a href="users/send_feedback.html" th:href="@{/users/feedback.html}"><i class="fa fa-comment fa-fw"></i> Phản ánh</a></li>-->
+									<!--<li><a href="users/admin_inbox.html" th:href="@{/users/admin_inbox.html}"><i class="fa fa-envelope-o fa-fw"></i> admin inbox</a></li>-->
+									<li>
+										<a href="#"><i class="fa fa-dashboard fa-fw"></i> Khởi tạo hũ <span class="fa arrow"></span></a>
+										<ul class="nav nav-second-level" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+											<li><a href="/config/init_fund.html" th:href="@{/config/init_fund.html}"><i class="fa fa-cog fa-fw"></i> Khởi tạo hũ</a></li>
+										</ul>
+										<ul class="nav nav-second-level" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+											<li><a href="/config/game_state.html" th:href="@{/config/game_state.html}"><i class="fa fa-cog fa-fw"></i> Can thiệp</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/slot.html" th:href="@{/config/slot.html}"><i class="fa fa-cog fa-fw"></i> Slot</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/spin.html" th:href="@{/config/spin.html}"><i class="fa fa-cog fa-fw"></i> Spin</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/transfer.html" th:href="@{/config/transfer.html}"><i class="fa fa-cog fa-fw"></i> Chuyển tiền</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/exchange.html" th:href="@{/config/exchange.html}"><i class="fa fa-cog fa-fw"></i> Tỷ giá nạp tiền</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/exchange_rates.html" th:href="@{/config/gold_rate.html}"><i class="fa fa-exchange"></i> Tỉ giá đổi</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/cashout_rate.html" th:href="@{/config/cashout_rate.html}"><i class="fa fa-cog fa-fw"></i> Đổi thưởng</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/cashout_items.html" th:href="@{/config/cashout_items.html}"><i class="fa fa-external-link"></i> Vật phẩm</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="config/showVersionConfig.html" th:href="@{/config/level_bonus.html/}"><i class="fa fa-cog fa-fw"></i>Thăng hạng</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="config/showVersionConfig.html" th:href="@{/config/showVersionConfig.html/}"><i class="fa fa-cog fa-fw"></i>Danh mục</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="config/dealer_config.html" th:href="@{/config/dealer_config.html/}"><i class="fa fa-cog fa-fw"></i>Phân phối</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="messages/messages.html" th:href="@{/messages/messages.html}"><i class="fa fa-bullhorn fa-fw"></i> Bảng tin</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/daily_tasks.html" th:href="@{/config/daily_tasks.html}"><i class="fa fa-calendar fa-fw"></i> Nhiệm vụ</a></li>
+										</ul>
+										<ul class="nav nav-second-level">
+											<li><a href="/config/achiments.html" th:href="@{/config/achiments.html}"><i class="fa fa-list-alt fa-fw"></i> Thành tích</a></li>
+										</ul>
+									</li>
+									<!--					<li><a href="#"><i class="fa fa-gift fa-fw"></i> Đổi thưởng <span class="fa arrow"></span></a>
+															<ul class="nav nav-second-level">
+																<li><a href="cashflow/server_koin.html" th:href="@{/cashout/request.html}"><i class="fa fa-stack-exchange"></i> Yêu cầu</a></li>
+																<li><a href="cashflow/detail.html" th:href="@{/cashout/history.html}"><i class="fa fa-history fa-fw"></i> Lịch sử</a></li>
+																<li><a href="cashflow/detail.html" th:href="@{/cashout/report.html}"><i class="fa fa-bar-chart fa-fw"></i> Báo cáo</a></li>
+															</ul>
+														</li>-->
+									<!--					<li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="#"><i class="fa fa-hospital-o fa-fw"></i> Hệ thống <span class="fa arrow"></span></a>
+															<ul class="nav nav-second-level">
+																<li><a href="users/list_users.html" th:href="@{/users/list_users.html}"><i class="fa fa-user fa-fw"></i>  Người dùng</a></li>
+															</ul>
+															<ul class="nav nav-second-level">
+																<li><a sec:authorize="hasAnyRole('ROLE_ADMIN')" href="/partners/partner_codes.html" th:href="@{/partners/partner_codes.html}"><i class="fa fa-fw fa-list-alt"></i> Mã đối tác</a></li>
+																<li><a sec:authorize="hasAnyRole('ROLE_ADMIN')" href="/partners/partners.html" th:href="@{/partners/partners.html}"><i class="fa fa-fw fa-list-alt"></i> Đối tác</a></li>
+															</ul>
+															<ul class="nav nav-second-level">
+																<li><a href="/config/messages.html" th:href="@{/config/messages.html}"><i class="fa fa-envelope-o fa-fw"></i> Gửi tin</a></li>
+															</ul>
+															<ul class="nav nav-second-level">
+																<li><a sec:authorize="hasAnyRole('ROLE_ADMIN')" href="/config/reload.html" th:href="@{/config/reload.html}"><i class="fa fa-cog fa-fw"></i> Reload thiết lập</a></li>
+															</ul>
+															<ul class="nav nav-second-level">
+																<li><a href="/config/reload.html" th:href="@{/users/add_money_history.html}"><i class="fa fa-cog fa-fw"></i> Lịch sử cộng tiền</a></li>
+															</ul>
+														</li>-->
+								</ul>
+							</div>
+						</li>
+					</ul>
+					<!-- /#side-menu -->
+				</div>
+				<!-- /.sidebar-collapse -->
+			</nav>
+			<!-- /.navbar-static-side -->
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Blank</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#page-wrapper -->
+		</div>
+		<!-- /#wrapper -->
+		<!-- Core Scripts - Include with every page -->
+		<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+		<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+		<!-- Page-Level Plugin Scripts - Dashboard -->
+		<script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+		<script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+    </body>
+</html>

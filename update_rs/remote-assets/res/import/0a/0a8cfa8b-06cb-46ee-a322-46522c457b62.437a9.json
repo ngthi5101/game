@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "HideMinigame",
+  "_duration": 0.5,
+  "curveData": {
+    "props": {
+      "scale": [
+        {
+          "frame": 0,
+          "value": {
+            "__type__": "cc.Vec2",
+            "x": 1,
+            "y": 1
+          }
+        },
+        {
+          "frame": 0.5,
+          "value": {
+            "__type__": "cc.Vec2",
+            "x": 0.1,
+            "y": 0.1
+          }
+        }
+      ],
+      "angle": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.5,
+          "value": -720
+        }
+      ]
+    }
+  }
+}

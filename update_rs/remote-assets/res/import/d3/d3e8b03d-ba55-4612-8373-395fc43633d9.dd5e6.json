@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "btb",
+    "texture": "1fd424ee8",
+    "rect": [
+      932,
+      261,
+      252,
+      83
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      252,
+      83
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

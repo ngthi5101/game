@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="refresh" content="300" /> <!-- Refresh every 5 minutes -->
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+		<title data-th-text="#{admin.page.title}">CMS - Cấu hình</title>
+
+		<!-- Core CSS - Include with every page -->
+		<link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+		<!-- SB Admin CSS - Include with every page -->
+		<link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+		<div id="wrapper">
+			<div th:if="${userType} == 1">
+				<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+				<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			</div>
+			<div th:if="${userType} == 2">
+				<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+				<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			</div>		
+			<div th:if="${userType} == 3">
+				<div data-th-replace="cskh/sb-care :: top-nav"></div>
+				<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+			</div>
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">BẦU CUA</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								Tham số
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-lg-11 col-md-offset-1">
+										<form role="form" class="form-horizontal" method="post" th:action="@{/config/change_baucua_result.html}">
+											<input type="hidden" value="send" name="action" />
+											<span style="color:red" th:text="${message != null} ? ${message}" ></span>
+											<span th:text="${result_data}" id="json_data">abc</span>
+											<div class="row">
+												<div class="form-group">                                            	
+													<div class="col-sm-6">
+														<style th:inline="text">
+															label{font-weight:normal;}
+															.lich_su_cont, .lich_su_row{width:100%;max-width: 240px;}
+															.lich_su_row::after{display: block;content:""; clear:both;}
+															.lich_su_pot{width:20px;height:20px;float:left;background-size: auto 20px;background-image: url('https://haywin.club/images/cms/bc_history.png');}
+															.lich_su_pot.huu, .lich_su_pot.bet_1{background-position-x: 0px;}
+															.lich_su_pot.bau, .lich_su_pot.bet_2{background-position-x: 100px;}
+															.lich_su_pot.ga, .lich_su_pot.bet_3{background-position-x: 80px;}
+															.lich_su_pot.ca, .lich_su_pot.bet_4{background-position-x: 60px;}
+															.lich_su_pot.cua, .lich_su_pot.bet_5{background-position-x: 20px;}
+															.lich_su_pot.tom, .lich_su_pot.bet_6{background-position-x: 40px;}
+															.host{  [[${host_url}]]   }
+															.tick{display: none;color: green;font-size: 17px;font-weight: bolder;}
+														</style>
+														<p>Lịch sử:</p>
+														<div class="lich_su_cont">
+															<div class="lich_su_row">
+																<div class="lich_su_pot huu"></div>
+																<div class="lich_su_pot bau"></div>
+																<div class="lich_su_pot ga"></div>
+																
+															</div>
+															<div class="lich_su_row">
+																<div class="lich_su_pot ca"></div>
+																<div class="lich_su_pot cua"></div>
+																<div class="lich_su_pot tom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<p>Thời gian tới phiên tiếp theo: <span class="gold_text count_down">0</span><span class="tick time_stage"></span></p>
+														<!--	                                        	<label>Chọn kết quả cho Tài Xỉu</label>-->
+														<div style="font-weight:700;"><input type="radio" value="random" name="type_result" checked="true" class="form-control type_result radio_sub result_radio"/> Random <span class="tick">(v)</span></div>
+														<div style="font-weight:700;"><input type="radio" value="manual" name="type_result" class="form-control type_result radio_sub result_radio"/> Tự chọn kết quả <span class="tick">(v)</span></div>
+														<table>
+															<tbody>
+																<tr>
+																	<td><label for="kq_1">Kết quả 1: <span class="tick" style="display:inline-block;">()</span></label><br/>
+																		<select id="kq_1" name="kq_1">
+																			<option value="0">Chưa chọn</option><option value="1">Hưu</option><option value="2">Bầu</option><option value="3">Gà</option><option value="4">Cá</option><option value="5">Cua</option><option value="6">Tôm</option>
+																		</select></td>
+																	<td><label for="kq_2">Kết quả 2: <span class="tick" style="display:inline-block;">()</span></label><br/>
+																		<select id="kq_2" name="kq_2">
+																			<option value="0">Chưa chọn</option><option value="1">Hưu</option><option value="2">Bầu</option><option value="3">Gà</option><option value="4">Cá</option><option value="5">Cua</option><option value="6">Tôm</option>
+																		</select></td>
+																	<td><label for="kq_3">Kết quả 3: <span class="tick" style="display:inline-block;">()</span></label><br/>
+																		<select id="kq_3" name="kq_3">
+																			<option value="0">Chưa chọn</option><option value="1">Hưu</option><option value="2">Bầu</option><option value="3">Gà</option><option value="4">Cá</option><option value="5">Cua</option><option value="6">Tôm</option>
+																		</select></td>
+																</tr>
+															</tbody>
+														</table>
+														<div style="font-weight:700;"><input type="radio" value="auto" name="type_result" class="form-control type_result radio_sub result_radio"/> Tự động chọn 3 kết quả đc đặt ít nhất<span class="tick">(v)</span></div>
+														<br/>
+														<label><input type="radio" name="reset_result" value="1" class="reset_result" checked="true" />1 Phiên tiếp theo <span class="tick">(v)</span></label><br/>
+														<label><input type="radio" name="reset_result" value="0" class="reset_result" />Tất cả các phiên tiếp theo <span class="tick">(v)</span></label><br/>
+														<button type="submit" class="btn btn-success">Gửi</button>
+													</div>
+												</div>
+												<div>
+													<hr/>
+													<div class="col-sm-12">
+														<table>
+															<thead>
+																<tr>
+																	<th colspan="4">&nbsp;</th>
+																	<th class="total_bet_huu">&nbsp;</th>
+																	<th class="total_bet_bau">&nbsp;</th>
+																	<th class="total_bet_ga">&nbsp;</th>
+																	<th class="total_bet_ca">&nbsp;</th>
+																	<th class="total_bet_cua">&nbsp;</th>
+																	<th class="total_bet_tom">&nbsp;</th>
+																</tr>
+																<tr>
+																	<th>ID</th>
+																	<th>Tên</th>
+																	<th>Tài khoản</th>
+																	<th>Mã đại lý</th>
+																	<th>HƯU</th>
+																	<th>BẦU</th>
+																	<th>GÀ</th>
+																	<th>CÁ</th>
+																	<th>CUA</th>
+																	<th>TÔM</th>
+																</tr>
+															</thead>
+															<tbody class="bet_cont"></tbody>
+														</table>
+													</div>													
+												</div>
+
+											</div>
+										</form>
+									</div>
+									<!-- /.col-lg-6 (nested) -->
+								</div>
+								<!-- /.row (nested) -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#page-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+		<!-- Core Scripts - Include with every page -->
+		<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+		<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+		<!-- Page-Level Plugin Scripts - Tables -->
+		<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+		<!-- SB Admin Scripts - Include with every page -->
+		<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			var data = null;
+			var expect_result = /*[[${expect_result}]]*/ '';
+			var base_link = window.location.origin;
+			$(document).ready(() => {
+				let json_data = $('#json_data').text();
+				var result_data = json_data !== "" ? JSON.parse(json_data) : {};
+				console.log("document ready");
+				QueryBauCuaStatus();
+				
+				if(result_data.setBcResultType){
+					$('.type_result[value="'+result_data.setBcResultType+'"]').prop("checked", true);
+				}
+				if(result_data.resetBcResultAfterUse === true)
+					$('.reset_result[value="1"]').prop("checked", true);
+				if(result_data.resetBcResultAfterUse === false)
+					$('.reset_result[value="0"]').prop("checked", true);
+				if(result_data.BcResult && result_data.BcResult[0])
+							$('#kq_1').val(result_data.BcResult[0]);
+				else $('#kq_1').val(0);
+				if(result_data.BcResult && result_data.BcResult[1])
+							$('#kq_2').val(result_data.BcResult[1]);
+				else $('#kq_2').val(0);
+				if(result_data.BcResult && result_data.BcResult[2])
+							$('#kq_3').val(result_data.BcResult[2]);
+				else $('#kq_3').val(0);
+			});
+			var countDown;
+			function QueryBauCuaStatus() {
+				$.get('get_bau_cua_status.html', (data_str) => {
+					while (data_str.indexOf(",,") != -1) {
+						console.log("clear ,,")
+						data_str = data_str.replaceAll(",,", ",");
+					}
+					while (data_str.indexOf("},]") != -1) {
+						console.log("clear },]")
+						data_str = data_str.replaceAll("},]", "}]");
+					}
+					while (data_str.indexOf("[,") != -1) {
+						console.log("clear [,")
+						data_str = data_str.replaceAll("\\[,", "[");
+					}
+					//console.log("Ok, data_str: " + data_str)
+					if (data_str === "")
+						data = null;
+					else
+						data = JSON.parse(data_str);
+					console.log(data);
+
+					if (data != null) {
+//						data.list_bet.forEach((item, index) => {
+//							var html = '<tr><td><a href="' + base_link + '/cms-api/users/edit_user.html?user_id=' + item.id + '">' + item.id + '</a></td><td><a href="' + base_link + '/cms-api/users/edit_user.html?user_id=' + item.id + '">' + item.name + '</a></td><td>' + numberWithCommas(parseInt(item.amount)) + '</td><td>' + numberWithCommas(parseInt(item.user_gold)) + '</td><td>' + item.ref_code + '</td></tr>';
+//							if (item.bettype === 'tai') {
+//								$('.tai_cont').append(html);
+//								tai_total_amount += parseInt(item.amount);
+//								tai_users += 1;
+//							}
+//							if (item.bettype === 'xiu') {
+//								$('.xiu_cont').append(html);
+//								xiu_total_amount += parseInt(item.amount);
+//								xiu_users += 1;
+//							}
+//						});
+//						if (tai_total_amount > 0)
+//							$('.tai_amount').text(numberWithCommas(tai_total_amount));
+//						if (xiu_total_amount > 0)
+//							$('.xiu_amount').text(numberWithCommas(xiu_total_amount));
+//						if (tai_users > 0)
+//							$('.tai_user').text(tai_users);
+//						if (xiu_users > 0)
+//							$('.xiu_user').text(xiu_users);
+
+						countDown = parseInt(data.time);
+						if (countDown != -1) {
+							countDown--;
+							$('.count_down').text(countDown);
+						}
+
+						var stage = "";
+						switch (data.stage) {
+							case -1:
+								stage = "ĐÃ DỪNG";
+								break;
+							case 0:
+								stage = "DEAL";
+								break;
+							case 1:
+								stage = "SET_BET";
+								break;
+							case 2:
+								stage = "STOP_SET_BET";
+								break;
+							case 3:
+								stage = "END_MATCH";
+								break;
+							case 4:
+								stage = "CALCULATE";
+								break;
+							case 5:
+								stage = "BUY_POT";
+								break;
+						}
+						$('.time_stage').text("(" + stage + ")");
+						$('.time_stage').show();
+						
+						$('.bet_cont').html('');
+						// Hiển thị dữ liệu người dùng đặt cược
+						for(let i=0; i<data.listUserBet.length; i++){
+							let bet_data = data.listUserBet[i];
+							let html_str = '<tr>';
+							html_str += '<td><a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + bet_data.id + '">'+bet_data.id+'</a></td>';
+							html_str += '<td><a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + bet_data.id + '">'+bet_data.fullname+'</a></td>';
+							html_str += '<td>'+bet_data.gold+'</td>';
+							html_str += '<td><a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + bet_data.agency + '">'+bet_data.agency+'</a></td>';
+							html_str += '<td>'+bet_data.bet_1+'</td>';
+							html_str += '<td>'+bet_data.bet_2+'</td>';
+							html_str += '<td>'+bet_data.bet_3+'</td>';
+							html_str += '<td>'+bet_data.bet_4+'</td>';
+							html_str += '<td>'+bet_data.bet_5+'</td>';
+							html_str += '<td>'+bet_data.bet_6+'</td>';
+							html_str += '</tr>';
+							$('.bet_cont').append(html_str);
+						}
+						
+						// Hiển thị lịch sử
+						$('.lich_su_cont').html('');
+						for(let i=data.history.length-1; i>0 && i>data.history.length-10; i--){
+							let hits = data.history[i];
+							let html_str = '<div class="lich_su_row">';
+							for(let j=0; j<hits.faces.length; j++)
+								html_str += '<div class="lich_su_pot bet_'+hits.faces[j]+'"></div>';
+							html_str += '</div>';
+							$('.lich_su_cont').append(html_str);
+						}
+						
+						$('.type_result').siblings(".tick").hide();
+						$('.type_result[value="'+data.type_result+'"]').siblings(".tick").show();
+						
+						$('.reset_result').siblings(".tick").hide();
+						console.log('.reset_result[value="'+(data.resetBcResultAfterUse ? "1" : "0")+'"]');
+						$('.reset_result[value="'+(data.resetBcResultAfterUse ? "1" : "0")+'"]').siblings(".tick").show();
+						
+						for(let j=0; j< data.BcResult.length; j++){
+							let kq_str = '';
+							switch(parseInt(data.BcResult[j])){
+								case 1: kq_str = 'Hươu';break;
+								case 2: kq_str = 'Bầu';break;
+								case 3: kq_str = 'Gà';break;
+								case 4: kq_str = 'Cá';break;
+								case 5: kq_str = 'Cua';break;
+								case 6: kq_str = 'Tôm';break;
+							}
+							$('#kq_'+(j+1)).siblings('label').find('.tick').text(kq_str);
+						}
+						
+						return;						
+						
+						$('#kq_1').siblings("label .tick").text("");
+						$('#kq_2').siblings("label .tick").text("");
+						$('#kq_3').siblings("label .tick").text("");
+						for(var j=0; j<data.BcResult.length; j++){
+							var kq = "";
+							switch(data.BcResult[j]) {
+								case 1: kq = "HƯƠU"; break;
+								case 2: kq = "BẦU"; break;
+								case 3: kq = "GÀ"; break;
+								case 4: kq = "CÁ"; break;
+								case 5: kq = "CUA"; break;
+								case 6: kq = "TÔM"; break;
+								default:
+									kq = "";
+							}
+							$('#kq_'+(j+1)).siblings("label .tick").text(kq);
+						}
+						
+						var list_his = data.history;
+						list_his.splice(0, list_his.length - 17);
+						for (var i = 0; i < list_his.length; i++) {
+							//$('.dot_'+i).text(list_his[i]);
+							if (list_his[i] < 11) {
+								$('.dot_' + i).addClass('xiu');
+							} else {
+								$('.dot_' + i).removeClass('xiu');
+							}
+						}
+
+						$('.result_radio').siblings('.tick').hide();
+						$('.result_radio[value="' + data.changeTaiXiuResult + '"]').siblings('.tick').show();
+
+						$('.number_result_radio').siblings('.tick').hide();
+						if (data.persistentTaiXiuResult === "true")
+							$('.number_result_radio[value="1"]').siblings('.tick').show();
+						if (data.persistentTaiXiuResult === "false")
+							$('.number_result_radio[value="0"]').siblings('.tick').show();
+						
+						
+					}
+				});
+				setTimeout(QueryBauCuaStatus, 1000);
+			}
+			const numberWithCommas = (x) => {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+			String.prototype.replaceAll = function (search, replacement) {
+				var target = this;
+				return target.replace(new RegExp(search, 'g'), replacement);
+			};
+			/*]]>*/
+		</script>
+		<style>table td, table th{padding: 6px 9px;border: 1px solid #000;}
+			.gold_text{font-size: 27px;font-weight: bold;color: #fb2222;}
+			.radio_sub{width: 15px;display: inline-block;height: 15px;vertical-align: sub;}
+			.tick{display:none;color: green;font-size: 17px;font-weight: bolder;}
+			#json_data{display: none;}
+		</style>
+    </body>
+
+</html>

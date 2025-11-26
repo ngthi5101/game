@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "pop",
+    "texture": "14bec930a",
+    "rect": [
+      3,
+      3,
+      811,
+      475
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      811,
+      475
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

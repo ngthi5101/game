@@ -1,0 +1,394 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "MatchHistoryItem",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "MatchHistoryItem",
+    "_children": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 7
+      },
+      {
+        "__id__": 9
+      }
+    ],
+    "_level": 1,
+    "_components": [
+      {
+        "__type__": "cc.Layout",
+        "node": {
+          "__id__": 1
+        },
+        "_layoutSize": {
+          "__type__": "cc.Size",
+          "width": 1280,
+          "height": 20
+        }
+      },
+      {
+        "__type__": "cc.Widget",
+        "node": {
+          "__id__": 1
+        },
+        "alignMode": 0,
+        "_alignFlags": 40,
+        "_left": 1,
+        "_right": -1,
+        "_originalWidth": 365
+      },
+      {
+        "__type__": "d408fv2pBFJgYtSdvLcsWYC",
+        "node": {
+          "__id__": 1
+        },
+        "textTime": {
+          "__id__": 4
+        },
+        "textUserName": {
+          "__id__": 6
+        },
+        "textBet": {
+          "__id__": 8
+        },
+        "textBalance": {
+          "__id__": 10
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "feP5LVEflO7qEWDZD5uQ0c"
+      },
+      "fileId": "68Db81hBBMrYiMQ1wca6uT"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 1280,
+      "height": 20
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 641,
+      "y": -10
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "BG",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 2
+        },
+        "_spriteFrame": {
+          "__uuid__": "a2MjXRFdtLlYQ5ouAFv/+R"
+        },
+        "_sizeMode": 0
+      },
+      {
+        "__type__": "cc.Widget",
+        "node": {
+          "__id__": 2
+        },
+        "alignMode": 0,
+        "_alignFlags": 45,
+        "_originalWidth": 100,
+        "_originalHeight": 100
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "feP5LVEflO7qEWDZD5uQ0c"
+      },
+      "fileId": "54+x7ZWzFIWZuP2IETldtY"
+    },
+    "_opacity": 100,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 37,
+      "g": 82,
+      "b": 163
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 1280,
+      "height": 20
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_Time",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__id__": 4
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "feP5LVEflO7qEWDZD5uQ0c"
+      },
+      "fileId": "92R5vfQ/lKLZaZFf++pfs8"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 20.28,
+      "height": 20
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -184.7,
+      "y": -1
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Label",
+    "node": {
+      "__id__": 3
+    },
+    "_useOriginalSize": false,
+    "_string": "---",
+    "_N$string": "---",
+    "_fontSize": 15,
+    "_lineHeight": 20,
+    "_N$file": {
+      "__uuid__": "36Q0pfBlZPa6XYCXAfJH1B"
+    },
+    "_isSystemFontUsed": false,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_User",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__id__": 6
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "feP5LVEflO7qEWDZD5uQ0c"
+      },
+      "fileId": "2aUoglc/9BApTS1EYU1sR0"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 20.28,
+      "height": 20
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -58.5,
+      "y": -1
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Label",
+    "node": {
+      "__id__": 5
+    },
+    "_useOriginalSize": false,
+    "_string": "---",
+    "_N$string": "---",
+    "_fontSize": 15,
+    "_lineHeight": 20,
+    "_N$file": {
+      "__uuid__": "36Q0pfBlZPa6XYCXAfJH1B"
+    },
+    "_isSystemFontUsed": false,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_Bet",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__id__": 8
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "feP5LVEflO7qEWDZD5uQ0c"
+      },
+      "fileId": "13tC7Xty5DY6zf+N5JcMOV"
+    },
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 42,
+      "g": 177,
+      "b": 202
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 20.28,
+      "height": 20
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 72.7,
+      "y": -1
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Label",
+    "node": {
+      "__id__": 7
+    },
+    "_useOriginalSize": false,
+    "_string": "---",
+    "_N$string": "---",
+    "_fontSize": 15,
+    "_lineHeight": 20,
+    "_N$file": {
+      "__uuid__": "36Q0pfBlZPa6XYCXAfJH1B"
+    },
+    "_isSystemFontUsed": false,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Text_Balance",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__id__": 10
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "feP5LVEflO7qEWDZD5uQ0c"
+      },
+      "fileId": "87sk5p1WJBkK4Lt2Q7BIgN"
+    },
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 179,
+      "g": 54,
+      "b": 238
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 20.28,
+      "height": 20
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 174.6,
+      "y": -1
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Label",
+    "node": {
+      "__id__": 9
+    },
+    "_useOriginalSize": false,
+    "_string": "---",
+    "_N$string": "---",
+    "_fontSize": 15,
+    "_lineHeight": 20,
+    "_N$file": {
+      "__uuid__": "36Q0pfBlZPa6XYCXAfJH1B"
+    },
+    "_isSystemFontUsed": false,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1
+  }
+]

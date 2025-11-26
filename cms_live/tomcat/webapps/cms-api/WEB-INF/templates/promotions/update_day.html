@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}" />
+
+<title data-th-text="#{admin.page.title}">Yoker - Sửa ngày</title>
+
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap-responsive.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+<!-- DataTables CSS -->
+<link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}" />
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+<link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/bootstrap-daterangepicker/bootstrap-datepicker.css}" />
+</head>
+<body>
+	<div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Sửa ngày</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<form role="form" th:action="@{/promotions/update_date.html}" id="dayForm" method="POST" th:object="${day}">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<ul class="nav nav-pills">
+									<li class="active"><p>Tham số</p></li>
+									<li class="pull-right"><button type="submit" class="btn btn-success" title="Save"><i class="fa fa-check">Lưu</i></button></li>
+								</ul>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="form-group">
+									<label for="day">Day</label> <input type="text" class="form-control" th:field="*{day}" />
+								</div>
+								<div class="form-group">
+									<label for="special">Special</label> <select class="form-control" th:field="*{special}">
+										<option value="false">false</option>
+										<option value="true">true</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="type">Type</label>
+									 <select class="form-control" th:field="*{type}">
+										<option value="Chip">Chip</option>
+										<option value="other">Khác</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="description">Description</label> <input th:field="*{description}" type="text" class="form-control"/>
+								</div>
+								<div class="form-group">
+									<label for="amount">Amount</label> 
+									<select class="form-control" th:field="*{amount}">
+										<option value="5000">5.000</option>
+										<option value="10000">10.000</option>
+										<option value="15000">15.000</option>
+										<option value="20000">20.000</option>
+										<option value="25000">25.000</option>
+										<option value="30000">30.000</option>
+										<option value="50000">50.000</option>
+										<option value="100000">10.0000</option>
+									</select>
+								</div>
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-6 -->
+				</div>
+				<!-- /.row -->
+			</form>
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+	<script src="js/sb-admin.js" th:src="@{/resources/bootstrap-daterangepicker/bootstrap-datepicker.min.js}"></script>
+	<script>
+		$(document).ready(function() {
+			$('#dataTables').dataTable({
+				responsive : true
+			});
+			$("#day").datepicker({
+				format : "dd",
+				autoclose : true,
+				todayHighlight : true
+			});
+			$("#month").datepicker({
+				format : "mm",
+				//startView : 'month',
+				startView : 1,
+				minViewMode : 1,
+				autoclose : true,
+				todayHighlight : true
+			});
+			$("#year").datepicker({
+				format : "yyyy",
+				//startView : 'decade',
+				minViewMode : 2,
+				startView : 1,
+				autoclose : true,
+				todayHighlight : true
+			});
+		});
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+    <title>Match Detail</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+    <link href="../font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <link href="../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+    <link href="../css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+	<link href="../bootstrapformhelpers/css/bootstrap-formhelpers.min.css" rel="stylesheet" th:href="@{/resources/bootstrapformhelpers/css/bootstrap-formhelpers.min.css}"/>
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="../css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12" th:if="${match} != null">
+                    <h1 class="page-header"><span th:text="'Trận đấu số: ' + ${match.id}">Trận đấu số: 10</span></h1>
+                </div>
+                <div class="col-lg-12" th:if="${match} == null">
+                	<h2 class="page-header"><span>Thông tin Trận đấu</span></h2>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+        		<div class="col-lg-4">
+                	<br/>
+	                <div class="input-group custom-search-form">
+	                	<input type="text" hidden="true" readonly="readonly" value="" th:value="@{/match/detail.html?match_id=}" id="idSearchLink"/>
+	                    <input type="text" class="form-control" placeholder="Tìm trận số..." onkeyup="if (event.keyCode == 13) doSearchMatch();" id="idSearchValue"/>
+	                    <span class="input-group-btn">
+	                    <button class="btn btn-default" type="button" onclick="doSearchMatch();">
+	                        <i class="fa fa-search"></i>
+	                    </button>
+	                	</span>
+	                </div>
+	                <br/>
+                </div>
+    		</div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary" th:if="${match} != null">
+                        <div class="panel-heading">
+                            Chi tiết trận đánh
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Game</th>
+                                            <th>Bàn số</th>
+                                            <th>Tiền cược</th>
+                                            <th>Bắt đầu</th>
+                                            <th>Kết thúc</th>
+                                            <th>Số người chơi</th>
+                                            <th>Người thắng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                       	 	<td>1</td>
+                                       	 	<td >
+                                              	<div th:switch="${match.zoneId}" th:each="zone: ${zones}">
+                                              		<p th:case ="${zone.id}" th:text="${zone.name}">name</p>
+                                              	</div>
+                                              </td>
+                                            <td th:text="${match.roomId}">012</td>
+                                            <td th:text="${#numbers.formatDecimal(match.bet, 0, 'COMMA', 0, 'POINT')}">123</td>
+                                            <td th:text="${match.staDate}">2014-07-01</td>
+                                            <td th:text="${match.endDate}">2014-07-01</td>
+                                            <td th:text="${match.playerCount}">0</td>
+                                            <td>
+                                            	<a href="#" th:onclick="'javascript:getUserName(\'' + ${match.winner} + '\', \'matchUserName\'); return false;'"><span id="matchUserId" th:text="${match.winner}">vinhbt</span></a>
+                                            	<span id="matchUserName"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+			<div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default" th:if="${chipChanges} != null">
+                        <div class="panel-heading">
+                            Chi tiết thay đổi chip
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Người chơi</th>
+                                            <th>Tổng chip</th>
+                                            <th>Thay đổi</th>
+                                            <th>Ngày giời</th>
+                                            <th>Lý do</th>
+                                            <th>Trận đánh</th>
+                                            <th>Quân bài</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="oneChange, iterStat : ${chipChanges}">
+                                       	 	<td th:text="${iterStat.count}">1</td>
+                                       	 	<td>
+                                            	<a href="#" th:onclick="'javascript:getUserName(\'' + ${oneChange.userId} + '\', \'matchUserName' + ${iterStat.count} + '\'); return false;'">
+                                            		<span id="matchUserId" th:text="${oneChange.userId}">vinhbt</span>
+                                            	</a>
+                                            	<span id="matchUserName" th:id="matchUserName + ${iterStat.count}"></span>
+                                            </td>
+                                            <td th:text="${#numbers.formatDecimal(oneChange.koin, 0, 'COMMA', 0, 'POINT')}">012</td>
+                                            <td th:text="${#numbers.formatDecimal(oneChange.koinChange, 0, 'COMMA', 0, 'POINT')}">123</td>
+                                            <td th:text="${oneChange.datetime}">2014-07-01</td>
+                                            <td th:text="${oneChange.reasonCode}">Nạp thẻ</td>
+                                            <td th:text="${oneChange.matchId}">0</td>
+                                            <td th:text="${oneChange.data}" width="35%"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default" th:if="${chipChanges} != null">
+                        <div class="panel-heading">
+                            Chi tiết thay đổi gold
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Người chơi</th>
+                                            <th>Tổng gold</th>
+                                            <th>Thay đổi</th>
+                                            <th>Ngày giời</th>
+                                            <th>Lý do</th>
+                                            <th>Trận đánh</th>
+                                            <th>Quân bài</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="oneChange, iterStat : ${goldChanges}">
+                                       	 	<td th:text="${iterStat.count}">1</td>
+                                       	 	<td>
+                                            	<a href="#" th:onclick="'javascript:getUserName(\'' + ${oneChange.userId} + '\', \'matchUserName' + ${iterStat.count} + '\'); return false;'">
+                                            		<span id="matchUserId" th:text="${oneChange.userId}">vinhbt</span>
+                                            	</a>
+                                            	<span id="matchUserName" th:id="matchUserName + ${iterStat.count}"></span>
+                                            </td>
+                                            <td th:text="${#numbers.formatDecimal(oneChange.gold, 0, 'COMMA', 0, 'POINT')}">012</td>
+                                            <td th:text="${#numbers.formatDecimal(oneChange.goldChange, 0, 'COMMA', 0, 'POINT')}">123</td>
+                                            <td th:text="${oneChange.datetime}">2014-07-01</td>
+                                            <td th:text="${oneChange.reasonCode}">Nạp thẻ</td>
+                                            <td th:text="${oneChange.matchId}">0</td>
+                                            <td th:text="${oneChange.data}" width="35%"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+    	</div>
+    	<!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="../js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+    <script src="../js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="../bootstrapformhelpers/js/bootstrap-formhelpers.js" th:src="@{/resources/bootstrapformhelpers/js/bootstrap-formhelpers.js}"></script>
+    <script type="text/javascript" src="../bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+    <script type="text/javascript" src="../bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+    <!-- Page-Level Plugin Scripts - Tables -->
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="../js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+    <!-- Page-Level Demo Scripts - Forms - Use for reference -->
+    <script th:inline="javascript">
+    	/*<![CDATA[*/
+    		var currUrl = /*[[@{/}]]*/ "";
+    	/*]]>*/
+	</script>
+	<script>
+	    $(document).ready(function() {
+	    	$('#matchUserId11').click(function() {
+				$.ajax({ // ajax call starts
+			          url: currUrl + 'users/detail.json/?user_id=' + $('#matchUserId').html(), // JQuery loads
+			          data: '', // Send value of the clicked button
+			          dataType: 'json', // Choosing a JSON datatype
+			          success: function(data) // Variable data contains the data we get from serverside
+			          {
+				          console.log('' + data);
+				          $('#matchUserName').html('- ' + data.username);
+			          }
+			      });
+			      return false; // keeps the page from not refreshing 
+			});
+	    });
+
+	    function getUserName(userId, nodeId) {
+		    console.log(userId);
+		    console.log(nodeId);
+	    	$.ajax({ // ajax call starts
+		          url: currUrl + 'users/detail.json/?user_id=' + userId, // JQuery loads
+		          data: '', // Send value of the clicked button
+		          dataType: 'json', // Choosing a JSON datatype
+		          success: function(data) // Variable data contains the data we get from serverside
+		          {
+			          $('#' + nodeId).html('- ' + data.username);
+		          }
+		     });
+		};
+	    
+		function doSearchMatch() {
+			window.location.href = $('#idSearchLink').val() + $("#idSearchValue").val();
+		    return false;
+		};
+		
+		$('#reservationtime').daterangepicker({
+			timePicker: false, 
+	     	format: 'YYYY/MM/DD'
+		}, function(start, end, label) {
+			   console.log('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			   $('#from_date').val(start.format('YYYY-MM-DD'));
+			   $('#to_date').val(end.format('YYYY-MM-DD'));
+		});
+    </script>
+</body>
+
+</html>

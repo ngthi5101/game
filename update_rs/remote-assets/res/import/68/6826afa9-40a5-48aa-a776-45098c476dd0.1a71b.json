@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "slot_l_2",
+    "texture": "12061165e",
+    "rect": [
+      906,
+      3,
+      128,
+      96
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      128,
+      128
+    ],
+    "capInsets": [
+      41,
+      45,
+      38,
+      46
+    ]
+  }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Update Config</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+            <div data-th-replace="fragments/sb-admin :: top-nav"></div>
+    		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Thêm mới Json tháng hiện tại</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Thêm mới
+                            </div>
+                            <div class="panel-body">
+                                <form role="form" method="post" action="addOrEditConfig.html" id="JsonConfig" th:attr="action=@{/config/new.html}">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>Ngày</label>
+                                            <select name="datetime" id="datetime" class="form-control">
+                                                <option value="">Lựa chọn</option>
+                                                <option th:each="day : ${lstDay}" 
+                                                        th:value="${day.datetime}"
+                                                        th:text="${day.datetime}">Lựa chọn</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Special</label>
+
+                                            <select name="special" id="special" class="form-control">
+                                                <option value="false">false</option>
+                                                <option value="true">true</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Type</label>
+                                            <input class="form-control" name="type"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>Description</label>
+                                            <input class="form-control" name="description"/>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label>Amount</label>
+                                            <input class="form-control" name="amount"/>
+                                        </div>
+                                        <div class="col-lg-3">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label>&nbsp;</label>
+                                        <div>
+                                            <button type="submit" id="newDay" name="newDay" class="btn btn-success">Tạo Json</button>
+                                            <label>&nbsp;</label>
+                                            <button type="submit" id="updateData" name="updateData" class="btn btn-success">Cập nhật DB</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /.col-lg-6 (nested) -->
+
+                                <!-- /.row (nested) -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default" th:if="${notify_config} != null">
+                            <div class="panel-heading">
+                                Json
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Ngày</th>
+                                                <th>Special</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneConfig, iterStat : ${notify_config}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td th:text="${oneConfig.datetime}">Hotline</td>
+                                                <td th:text="${oneConfig.special}"> htt://google.com </td>
+                                                <td th:text="${oneConfig.type}">  </td>
+                                                <td th:text="${oneConfig.description}">  </td>
+                                                <td th:text="${oneConfig.amount}">  </td>
+                                                <td>
+                                                    <a type="button" class="btn btn-success" href="#" th:href="@{/config/{datetime}/updateJson.html(datetime=${oneConfig.datetime})}">Thay đổi</a>
+                                                    <a type="button" class="btn btn-danger" href="delete.html" th:href="@{/config/{datetime}/deleteJson.html(datetime=${oneConfig.datetime})}">Xóa</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+        <!-- Page-Level Demo Scripts - Forms - Use for reference -->
+        <div hidden="true" id = "message" name="message" th:text="${message}"></div>
+        <div th:if="${messageType} == true">
+            <script>
+                var  message = $("#message").html();
+                alert(message);
+            </script>
+        </div>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var currUrl = /*[[@{/}]]*/ "";
+            /*]]>*/
+        </script>
+        <script>
+            $(document).ready(function() {
+            });
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };        
+        </script>
+    </body>
+
+</html>

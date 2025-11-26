@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "lden",
+    "texture": "1706bf870",
+    "rect": [
+      3,
+      246,
+      136,
+      38
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      136,
+      38
+    ],
+    "rotated": 1,
+    "capInsets": [
+      10,
+      10,
+      10,
+      10
+    ]
+  }
+}

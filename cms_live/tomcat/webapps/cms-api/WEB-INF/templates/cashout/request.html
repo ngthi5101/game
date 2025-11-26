@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/favicon-96x96.png"
+	th:href="@{/resources/dashboard_files/favicon.png}" />
+<title data-th-text="#{admin.page.title}">Yoker - Duyệt đổi
+	thưởng</title>
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/bootstrap.css}" />
+<!-- DataTables CSS -->
+<link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}" />
+
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+<link href="css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/metisMenu.min.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../bootstrap-daterangepicker/daterangepicker-bs3.css"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+</head>
+<body>
+	<div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h2 class="page-header">Duyệt đổi thường</h2>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<form role="form" method="post"
+							th:action="@{/cashout/request.html}">
+							<div class="row">
+								<label>&nbsp;</label>
+								<div class="col-lg-4">
+									<label>Từ ngày - đến ngày</label>
+									<div class="input-prepend input-group form-group">
+										<span class="add-on input-group-addon"><i
+											class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> <input
+											type="text" name="from_date" id="from_date" hidden="true"
+											th:value="${from_date}" /> <input type="text" name="to_date"
+											id="to_date" hidden="true" th:value="${to_date}" /> <input
+											type="text" style="width: 100%" name="date_range"
+											id="reservationtime" class="form-control"
+											value="08/01/2013 - 08/01/2013"
+											th:value="${from_date} + ' - ' + ${to_date}"
+											readonly="readonly" />
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<label>Trạng thái</label> <select name="status" id="status"
+										class="form-control">
+										<!-- 0:new,1:accept,2:receive,3:reject,4:error -->
+										<option value="-1">Tất cả</option>
+										<option value="0">Mới</option>
+										<option value="1">Duyệt</option>
+										<option value="2">Đã nhận</option>
+										<option value="3">Từ chối</option>
+										<option value="4">Lỗi</option>
+									</select>
+								</div>
+								<div class="col-lg-3">
+									<label>&nbsp;</label>
+									<div>
+										<button type="submit" class="btn btn-info pull-left">
+											Xem</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- /.row (nested) -->
+					</div>
+					<!-- col 12-->
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header"></h1>
+					</div>
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<i>Thông tin</i>
+							</div>
+							<div class="panel-body">
+								<div class="table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										id="dataTableData">
+										<thead>
+											<tr>
+												<th>TT</th>
+												<th>User ID</th>
+												<th>User name</th>
+												<th>Mobile</th>
+												<th>Số lượng</th>
+												<th>Vật phẩm</th>
+												<th>Gold</th>
+												<th>Giá trị</th>
+												<th>Provider</th>
+												<th>Trạng thái</th>
+												<th>Yêu cầu</th>
+												<th>Duyệt</th>
+												<th  th:if="${userType} == 1">Đồng ý</th>
+												<th  th:if="${userType} == 1">Từ chối</th>
+												<th  th:if="${userType} == 1">Gửi lại</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="odd gradeX" th:each="request : ${requests}">
+												<td th:text="${request.id}">TT</td>
+												<td><a
+													th:href="@{'/users/detail.html?user_id=' + ${request.userId}}"
+													th:text="${request.userId}"></a></td>
+												<td th:text="${request.userName}"></td>
+												<td th:text="${request.userMobile}"></td>
+												<td th:text="${request.quantity}"></td>
+												<td th:text="${request.item.name}"></td>
+												<td th:text="${request.item.gold}"></td>
+												<td th:text="${request.item.money}"></td>
+												<td th:text="${request.item.provider}"></td>
+												<td th:switch="${#strings.toString(request.status)}"><span
+													th:case="0" class="btn btn-primary">Mới</span> <span
+													th:case="1" class="btn btn-success">Duyệt</span> <span
+													th:case="2" class="btn btn-info">Đã nhận</span> <span
+													th:case="3" class="btn btn-warning">Từ chối</span> <span
+													th:case="4" class="btn btn-danger">Lỗi</span></td>
+												<td th:text="${request.requesTime}" class="center">0123456789</td>
+												<td th:text="${request.processTime}" class="center">0123456789</td>
+												<td class="text-center" th:if="${userType} == 1">
+													<div th:if="${request.status==0}">
+														<a type="button" class="btn btn-success"
+															th:href="@{/cashout/{id}/accept.html(id=${request.id})}"
+															title="Chấp nhận"><i class="fa fa-check"></i></a>
+													</div>
+												</td>
+												<td class="text-center" th:if="${userType} == 1">
+													<div th:if="${request.status==0}">
+														<a type="button" class="btn btn-danger"
+															th:href="@{/cashout/{id}/reject.html(id=${request.id})}"
+															title="Không chấp nhận"><i class="fa fa-times"></i></a>
+													</div>
+												</td>
+												<td class="text-center" th:if="${userType} == 1">
+													<div th:if="${request.status==2 or request.status==4}">
+														<a type="button" class="btn btn-success"
+															th:href="@{/cashout/{id}/resent.html(id=${request.id})}"
+															title="Gửi lại"><i class="fa fa-repeat"></i></a>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- /.table-responsive -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-6 -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+		</div>
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+	<script src="js/plugins/dataTables/dataTables.bootstrap.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js}"></script>
+	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	<script type="text/javascript"
+		src="../bootstrap-daterangepicker/moment.js"
+		th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+	<script type="text/javascript"
+		src="../bootstrap-daterangepicker/daterangepicker.js"
+		th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(
+				function() {
+					//page load
+					$('#dataTableData').dataTable();
+
+					$('#reservationtime')
+							.daterangepicker(
+									{
+										timePicker : false,
+										format : 'YYYY/MM/DD'
+									},
+									function(start, end, label) {
+										console.log('A date range was chosen: '
+												+ start.format('YYYY-MM-DD')
+												+ ' to '
+												+ end.format('YYYY-MM-DD'));
+										$('#from_date').val(
+												start.format('YYYY-MM-DD'));
+										$('#to_date').val(
+												end.format('YYYY-MM-DD'));
+									});
+
+				});
+		function ConfirmDelete() {
+			var x = confirm("Từ chối đổi thưởng ?");
+			if (x)
+				return true;
+			else
+				return false;
+		}
+	</script>
+
+</body>
+
+</html>

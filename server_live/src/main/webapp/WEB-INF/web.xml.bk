@@ -1,0 +1,89 @@
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Internal WebServer</display-name>
+	
+<!-- 	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:sms-log4j.properties</param-value>
+	</context-param> -->
+	
+	<!-- Spring Context Configuration' s Path definition -->
+<!-- 	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param> -->
+
+	<!-- Log4j Configuration Listener -->
+<!-- 	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener> -->
+	
+	<!-- Spring web listener -->
+<!-- 	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> -->
+	
+	<!-- Restful -->
+	<servlet>
+		<servlet-name>rest-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+<!-- 	<servlet>
+	    <servlet-name>Resource-Servlet</servlet-name>
+	    <servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	</servlet> -->
+
+	<servlet-mapping>
+		<servlet-name>rest-dispatcher</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+<!-- 	<servlet-mapping>
+		<servlet-name>Resource-Servlet</servlet-name>
+		<url-pattern>/static/*</url-pattern>
+	</servlet-mapping> -->
+	
+	<!-- UI -->
+	<!-- <servlet>
+		<servlet-name>DashboardUI</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+		<init-param>
+			<param-name>UI</param-name>
+			<param-value>vn.yotel.yoker.web.ui.DashboardUI</param-value>
+		</init-param>
+		<init-param>
+			<param-name>widgetset</param-name>
+			<param-value>vn.yotel.yoker.web.ui.DashboardWidgetSet</param-value>
+		</init-param>
+		<init-param>
+			<param-name>UIProvider</param-name>
+			<param-value>vn.yotel.yoker.web.ui.DashboardUIProvider</param-value>
+		</init-param>
+		<init-param>
+			<param-name>productionMode</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DashboardUI</servlet-name>
+		<url-pattern>/gui/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DashboardUI</servlet-name>
+		<url-pattern>/VAADIN/*</url-pattern>
+	</servlet-mapping> -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+</web-app>

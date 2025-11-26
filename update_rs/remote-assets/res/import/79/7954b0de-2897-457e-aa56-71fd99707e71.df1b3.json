@@ -1,0 +1,101 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "bonus",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "bonus",
+    "_children": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_level": 1,
+    "_components": [
+      {
+        "__type__": "73db0L3xVBHPoRS92rTZSwB",
+        "node": {
+          "__id__": 1
+        },
+        "listSpine": [
+          {
+            "__id__": 2
+          }
+        ]
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "79VLDeKJdFfqpWcf2ZcH5x"
+      },
+      "fileId": "00byUkeDlKx6leoVKuIahO"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 150,
+      "height": 150
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "spine",
+    "_parent": {
+      "__id__": 1
+    },
+    "_level": 2,
+    "_components": [
+      {
+        "__type__": "sp.Skeleton",
+        "node": {
+          "__id__": 2
+        },
+        "defaultAnimation": "bonus",
+        "_preCacheMode": 0,
+        "premultipliedAlpha": false,
+        "_animationName": "bonus",
+        "_N$skeletonData": {
+          "__uuid__": "d3YCL3NQJBP7/RnqwWgUfS"
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "79VLDeKJdFfqpWcf2ZcH5x"
+      },
+      "fileId": "83fSoqhoVJeI5ysHLF6QwL"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 148,
+      "height": 196.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "y": -99.282
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 0.8,
+      "y": 0.8,
+      "z": 1
+    }
+  }
+]

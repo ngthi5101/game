@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+		<title data-th-text="#{admin.page.title}">CMS - Cấu hình</title>
+
+		<!-- Core CSS - Include with every page -->
+		<link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+		<!-- SB Admin CSS - Include with every page -->
+		<link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+		<div id="wrapper">
+			<div th:if="${userType} == 1">
+				<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+				<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			</div>
+			<div th:if="${userType} == 2">
+				<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+				<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			</div>		
+			<div th:if="${userType} == 3">
+				<div data-th-replace="cskh/sb-care :: top-nav"></div>
+				<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+			</div>
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Giới hạn Hành động trong game</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								Tham số
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<form role="form" class="form-horizontal" method="post" th:action="@{/config/set_game_restrict_status.html}" >
+										<span style="color:red" th:text="${message != null} ? ${message}" >someValue</span>
+										<div class="col-lg-6 ">
+											<p>Nhập id người chơi vào mục mong muốn, nhiều người chơi phân tách bằng dấu "," không sử dụng dấu Space</p>
+											<div class="row">
+
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID bị cấm chơi Quay Hũ</label>
+														<input type="text" class="form-control" id="idsnotallowspin" name="idsnotallowspin"/>
+													</div>
+												</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>các ID được phép chơi Quay Hũ (thường là các amin/agency user)</label>
+														<input type="text" class="form-control" id="idsallowspin" name="idsallowspin"/>
+													</div>
+												</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID bị cấm không cho chơi tài xỉu</label>
+														<input type="text" class="form-control" id="idsnotallowtx" name="idsnotallowtx"/>
+													</div>
+												</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID được phép chơi tài xỉu (thường là các amin/agency user)</label>
+														<input type="text" class="form-control" id="idsallowtx" name="idsallowtx"/>
+													</div>
+												</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID không được phép chuyển tiền</label>
+														<input type="text" class="form-control" id="idsnotallowsendgold" name="idsnotallowsendgold"/>
+													</div>
+												</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID không được phép nhận tiền</label>
+														<input type="text" class="form-control" id="idsnotallowreceivegold" name="idsnotallowreceivegold"/>
+													</div>
+												</div>
+												<div class="form-group">	
+													<div class="col-sm-12">
+														<button th:if="${userType} != 3" type="submit" class="btn btn-success">Submit</button>
+													</div>
+												</div>
+											</div >
+										</div>
+										<div class="col-lg-6 ">
+											<div class="row">
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID đại lí cấp 1 bị giới hạn chuyển tiền</label>
+														<input type="text" class="form-control" id="idsagency1restricttransfergold" name="idsagency1restricttransfergold"/>
+													</div>
+												</div>
+												<hr/>
+													<div class="form-group">                                            	
+														<div class="col-sm-12">
+															<label>Các ID đại lí cấp 2 được phép chuyển tiền cho tất cả các người chơi thường</label>
+															<input type="text" class="form-control" id="idsagency2allowedtransergoldtoallnormalmember" name="idsagency2allowedtransergoldtoallnormalmember"/>
+														</div>
+													</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID tài khoản Live</label>
+														<input type="text" class="form-control" id="idslive" name="idslive"/>
+													</div>
+												</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID đại lí bị giới hạn tỉ lệ thắng slot của khách</label>
+														<input type="text" class="form-control" id="idsagencyrestrictwinrateslot" name="idsagencyrestrictwinrateslot"/>
+													</div>
+												</div>
+												<div class="form-group">                                            	
+													<div class="col-sm-12">
+														<label>Các ID bị giới hạn tỉ lệ thắng slot của khách</label>
+														<input type="text" class="form-control" id="idsrestrictwinrateslot" name="idsrestrictwinrateslot"/>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+									</form>
+								</div>
+								<!-- /.row (nested) -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#page-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+		<!-- Core Scripts - Include with every page -->
+		<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+		<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+		<!-- Page-Level Plugin Scripts - Tables -->
+		<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+		<!-- SB Admin Scripts - Include with every page -->
+		<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+		<script type="text/javascript" th:inline="javascript">
+			/*<![CDATA[*/
+			var json_data = /*[[${jsonData}]]*/ "";
+			console.log("json_data: ")
+			console.log(json_data)
+			console.log("json_data object: ")
+			console.log(JSON.parse(json_data))
+			$(document).ready(() => {
+				json_data = JSON.parse(json_data)
+				if (json_data.IdsNotAllowSpin)
+					$('#idsnotallowspin').val(json_data.IdsNotAllowSpin)
+				if (json_data.IdsAllowSpin)
+					$('#idsallowspin').val(json_data.IdsAllowSpin)
+				if (json_data.IdsNotAllowTx)
+					$('#idsnotallowtx').val(json_data.IdsNotAllowTx)
+				if (json_data.IdsAllowTx)
+					$('#idsallowtx').val(json_data.IdsAllowTx)
+				if (json_data.IdsNotAllowSendGold)
+					$('#idsnotallowsendgold').val(json_data.IdsNotAllowSendGold)
+				if (json_data.IdsNotAllowReceiveGold)
+					$('#idsnotallowreceivegold').val(json_data.IdsNotAllowReceiveGold)
+				if (json_data.IdsLive)
+					$('#idslive').val(json_data.IdsLive)
+				if (json_data.IdsAgencyRestrictWinRateSlot)
+					$('#idsagencyrestrictwinrateslot').val(json_data.IdsAgencyRestrictWinRateSlot)
+				if (json_data.IdsRestrictWinRateSlot)
+					$('#idsrestrictwinrateslot').val(json_data.IdsRestrictWinRateSlot)
+				if (json_data.IdsAgency1RestrictTransferGold)
+					$('#idsagency1restricttransfergold').val(json_data.IdsAgency1RestrictTransferGold)
+				if (json_data.IdsAgency2AllowedTranserGoldToAllNormalMember)
+					$('#idsagency2allowedtransergoldtoallnormalmember').val(json_data.IdsAgency2AllowedTranserGoldToAllNormalMember)
+			})
+			/*]]>*/
+		</script>
+    </body>
+
+</html>

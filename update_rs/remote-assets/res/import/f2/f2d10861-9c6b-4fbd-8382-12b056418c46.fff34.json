@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "thanh-pass",
+    "texture": "1ca9894a0",
+    "rect": [
+      955,
+      3,
+      292,
+      48
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      292,
+      48
+    ],
+    "rotated": 1,
+    "capInsets": [
+      39,
+      0,
+      32,
+      0
+    ]
+  }
+}

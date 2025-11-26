@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">SMS - Tổng đài</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+         <!-- DataTables CSS -->
+        <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Tổng đài SMS</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+								<p>Tạo mới tin nhắn</p>
+								<form role="form" class="form-horizontal" method="get" th:action="@{/config/tong-dai-sms.html}">
+									<div class="form-group">
+										<div class="col-sm-8 sms-td-cont">
+											<style>
+												.sms-td-cont{}
+												.sms-td-cont label{}
+												.sms-td-cont input[type="text"]{}
+												.sms-td-cont textarea{}
+											</style>
+											<label>Số điện thoại người nhận</label>
+											<input type="text" id="receiver" name="phonenumber"/>
+											<br/>
+											<label>Nội dung tin nhắn</label>
+											<textarea id="sms-content" name="content"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-8">
+										<button type="submit" class="btn btn-success">Gửi</button>
+										</div>
+									</div>
+								</form>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Số ĐT</th>
+                                                <th>Nội dung SMS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_body">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+     <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+        <script src="js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js}"></script>
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script th:inline="javascript">
+		var list_sms = /*[[${data}]]*/ '';
+        </script>
+		<script>
+			/*<![CDATA[*/
+			$(document).ready(function () {
+			console.log("list_sms: "+list_sms);
+			list_sms = JSON.parse(list_sms);		
+			console.log(list_sms);
+			for(var i=0; i < list_sms.length; i++){
+				var sms = list_sms[i];
+				$('#table_body').append("<tr><td>"+sms.receiver+"</td><td>"+sms.content+"</td></tr>");
+			}
+			
+            //page load
+          	 $('#dataTable').dataTable();
+          });
+		  /*]]>*/
+		</script>
+
+    </body>
+
+</html>

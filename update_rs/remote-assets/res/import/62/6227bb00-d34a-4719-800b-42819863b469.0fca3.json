@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bt2b",
+    "texture": "12debd993",
+    "rect": [
+      852,
+      3,
+      176,
+      56
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      176,
+      56
+    ],
+    "rotated": 1,
+    "capInsets": [
+      31,
+      0,
+      32,
+      0
+    ]
+  }
+}

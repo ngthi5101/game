@@ -1,0 +1,33 @@
+.navbar-fixed-top {
+    margin-bottom: 0;
+    background-color: rgb(3, 179, 178);
+}
+.navbar-header .slogan{color: #FFF}
+.navbar-brand {
+    float: left;
+    padding: 7px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 20px;
+}
+.navbar-brand img{
+    width: 50px !important;
+    height: 35px !important;
+}
+.dropdown-toggle {color: #FFF}
+.page-header {
+    padding-bottom: 9px;
+    margin: 20px 0 10px; 
+    border-bottom: 1px solid #eee;
+    color: #666
+}
+
+.form-horizontal .form-group {
+    margin-left: 0px; 
+    margin-right: 0px; 
+}
+.inside-full-height {
+  height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+}

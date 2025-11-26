@@ -1,0 +1,214 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "toggleEvent",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "toggleEvent",
+    "_children": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 5
+      }
+    ],
+    "_level": 1,
+    "_components": [
+      {
+        "__type__": "cc.Toggle",
+        "node": {
+          "__id__": 1
+        },
+        "_N$transition": 1,
+        "transition": 1,
+        "_N$target": {
+          "__id__": 2
+        },
+        "checkMark": {
+          "__id__": 4
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "efXvSecN5ON6zRlX7qGynx"
+      },
+      "fileId": "e6GcQBKB1Et65yItBP5/Q1"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 250,
+      "height": 53
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "y": -26.5
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Background",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 2
+        },
+        "_spriteFrame": {
+          "__uuid__": "e9L2MaXGFETJzSb6ifskqH"
+        },
+        "_type": 1,
+        "_sizeMode": 0
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "efXvSecN5ON6zRlX7qGynx"
+      },
+      "fileId": "e3C65gXStLYL9Ez9/fcRGu"
+    },
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 250,
+      "height": 53
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "checkmark",
+    "_parent": {
+      "__id__": 1
+    },
+    "_components": [
+      {
+        "__id__": 4
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "efXvSecN5ON6zRlX7qGynx"
+      },
+      "fileId": "c1h7QtgelFG4lWQJtd4paD"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 250,
+      "height": 53
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Sprite",
+    "node": {
+      "__id__": 3
+    },
+    "_spriteFrame": {
+      "__uuid__": "edavxpfi9M0pufq56bYgBi"
+    },
+    "_type": 1,
+    "_sizeMode": 0,
+    "_isTrimmedMode": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "label",
+    "_parent": {
+      "__id__": 1
+    },
+    "_level": 2,
+    "_components": [
+      {
+        "__type__": "cc.Label",
+        "node": {
+          "__id__": 5
+        },
+        "_useOriginalSize": false,
+        "_string": "Alpha test",
+        "_N$string": "Alpha test",
+        "_fontSize": 25,
+        "_N$file": {
+          "__uuid__": "b3H7FTBFRNAKkfP7h9rEXT"
+        },
+        "_isSystemFontUsed": false,
+        "_N$horizontalAlign": 1,
+        "_N$verticalAlign": 1
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "efXvSecN5ON6zRlX7qGynx"
+      },
+      "fileId": "84lvbvbbFNZaJgrEdPB7aW"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 109.72,
+      "height": 50.4
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -91.852,
+      "y": 2.088
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  }
+]

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/favicon-96x96.png"
+	th:href="@{/resources/dashboard_files/favicon.png}" />
+
+<title data-th-text="#{admin.page.title}">Game - User Detail</title>
+
+<!-- Core CSS - Include with every page -->
+<link href="../css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="../font-awesome/css/font-awesome.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../bootstrap-daterangepicker/daterangepicker-bs3.css"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+<!-- DataTables CSS -->
+<link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}" />
+<link href="css/plugins/responsive.dataTables.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/responsive.dataTables.min.css}" />
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="../css/plugins/timeline/timeline.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+<link href="../bootstrapformhelpers/css/bootstrap-formhelpers.min.css"
+	rel="stylesheet"
+	th:href="@{/resources/bootstrapformhelpers/css/bootstrap-formhelpers.min.css}" />
+<!-- SB Admin CSS - Include with every page -->
+<link href="../css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						<span th:text="${user.fullname}">vinhbt</span>
+					</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<div class="row" th:if="${add_success == true}">
+				<div class="col-lg-12">
+					<div class="alert alert-success">
+						Cộng thành công <span
+							th:text="${chip_change} + ' chips, ' + ${gold_change}+ ' golds'">0
+							chip</span> cho tài khoản: <span th:text="${user.fullname}">vinhbt</span>
+					</div>
+				</div>
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Thông tin khách hàng</div>
+						<div class="panel-body">
+							<div class="row">
+								<form role="form" method="post" action="add_money.html"
+									th:action="@{/users/add_money.html}">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>Tiền hiện có</label> <input class="form-control"
+												th:value="${user.koin.koin}" name="koin" readonly="readonly" />
+										</div>
+										<div class="form-group">
+											<label>Tiền được cộng</label> <input
+												class="form-control bfh-number" value="0" name="chip_change" />
+										</div>
+
+
+										<div class="form-group">
+											<label>Gold hiện có</label> <input class="form-control"
+												th:value="${user.gold.gold}" name="gold" readonly="readonly" />
+										</div>
+										<div class="form-group">
+											<label>Gold được cộng</label> <input
+												class="form-control bfh-number" value="0" name="gold_change" />
+										</div>
+
+										<div class="form-group">
+											<label>Lý do cộng tiền</label> <input class="form-control"
+												value="0" name="reason" th:value="${reason}" />
+										</div>
+										<button type="submit" class="btn btn-success" id="add_money"
+											name="add_money" th:if="${userType  == 1 or userType  == 2}">Cộng
+											tiền</button>
+										<a th:if="${userType  == 1}" href="#" class="btn btn-warning"
+											th:href="@{'/users/reset_password.html?user_id=' + ${user.id}}">Đặt
+											lại mật khẩu</a>
+										<div class="form-group">
+											<label>Tin nhắn</label>
+											<textarea class="form-control" rows="4" cols="50"
+												name="message" id="message">
+											  </textarea>
+										</div>
+										<div class="alert alert-success">
+											<span id="msgInfo" th:if="${sent_success == true}">Gửi
+												tin nhắn thành công.</span>
+										</div>
+										<button type="submit" id="sent_message" name="sent_message"
+											class="btn btn-primary">Gửi tin</button>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group" hidden="true">
+											<label>Id</label> <input class="form-control"
+												th:value="${user.id}" name="user_id" readonly="readonly"
+												id="userId" />
+										</div>
+										<div class="form-group">
+											<label>Tên đăng nhập</label> <input class="form-control"
+												th:value="${user.username}" name="username"
+												readonly="readonly" />
+										</div>
+										<div class="form-group">
+											<label>Tên hiển thị</label>
+											<div class="input-group">
+												<input class="form-control" id="fullname"
+													th:value="${user.fullname}" name="fullname"
+													disabled="disabled" />
+												<div class="input-group-btn">
+													<input class="btn btn-primary" id="btnEditFullName"
+														type="button" value="Edit"></input>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>Số điện thoại</label> <input class="form-control"
+												th:value="${user.mobile}" name="mobile" readonly="readonly" />
+										</div>
+										<div class="form-group">
+											<label>Phiên bản</label> <input class="form-control"
+												th:value="${user.clientVersion}" name="clientVersion"
+												readonly="readonly" />
+										</div>
+										<div class="form-group">
+											<label>platform</label> <input class="form-control"
+												th:value="${user.platform}" name="platform"
+												readonly="readonly" />
+										</div>
+										<div class="form-group">
+											<label>Ngày đăng ký</label> <input class="form-control"
+												th:value="${user.dateCreated}" name="dateCreated"
+												readonly="readonly" />
+										</div>
+										<div class="form-group">
+											<label>Đăng nhập lần cuối</label> <input class="form-control"
+												th:value="${user.lastLogin}" name="lastLogin"
+												readonly="readonly" />
+										</div>
+										<div class="form-group">
+
+											<label>Mã nhà phân phối cấp 1</label> <input
+												class="form-control" th:value="${user.providerCode}"
+												name="providerCode" readonly="readonly" />
+
+										</div>
+										<div class="form-group">
+
+											<label>Mã nhà phân phối cấp 2</label> <input
+												class="form-control" th:value="${user.refcode}"
+												name="refcode" readonly="readonly" />
+
+										</div>
+									</div>
+								</form>
+								<!-- /.col-lg-6 (nested) -->
+							</div>
+							<!-- /.row (nested) -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-primary">
+						<div class="panel-body">
+							<form role="form" method="post" action="#"
+								th:action="@{'/users/detail.html?user_id=' + ${user.id}}">
+								<div class="row">
+									<div class="col-lg-6 col-md-6">
+										<input hidden="true" value="0" name="type" /> <label>Từ
+											ngày - đến ngày</label>
+										<div class="input-prepend input-group form-group">
+											<span class="add-on input-group-addon"><i
+												class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> <input
+												type="text" name="from_date" id="from_date" hidden="true"
+												th:value="${from_date}" /> <input type="text"
+												name="to_date" id="to_date" hidden="true"
+												th:value="${to_date}" /> <input type="text"
+												name="date_range" id="reservationtime" class="form-control"
+												value="08/01/2013 - 08/01/2013"
+												th:value="${from_date} + ' - ' + ${to_date}"
+												readonly="readonly" />
+										</div>
+									</div>
+								</div>
+								<div class="row" th:if="${userType  == 1 or userType  == 2}">
+									<div class="col-lg-4 col-md-3">
+										<button type="submit" class="btn btn-primary">Lịch sử
+											nạp Chip-Gold</button>
+									</div>
+								</div>
+							</form>
+							<!-- /.row (nested) -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- col 12-->
+			</div>
+			<!-- row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-primary" th:if="${reqCards} != null">
+						<div class="panel-heading">
+							Nạp thẻ cào: <span style="color: red;"
+								th:text="${#numbers.formatDecimal(reqCards.size(), 0, 'COMMA', 0, 'POINT')}"></span>
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="display responsive" width="100%"
+									id="dataTables-card">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Serial</th>
+											<th>Mệnh giá</th>
+											<th>Chip</th>
+											<th>Ngày nạp</th>
+											<th>Trạng thái</th>
+											<th>PaymentGW</th>
+											<th>Ghi chú</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="oneCard, iterStat : ${reqCards}">
+											<td th:text="${iterStat.count}">1</td>
+											<td th:text="${oneCard.serial}">Serial</td>
+											<td
+												th:text="${#numbers.formatDecimal(oneCard.money, 0, 'COMMA', 0, 'POINT')}">0</td>
+											<td
+												th:text="${#numbers.formatDecimal(oneCard.eqKoin, 0, 'COMMA', 0, 'POINT')}">0</td>
+											<td th:text="${oneCard.datetime}">2014-07-01</td>
+											<td>
+												<div th:switch="'' + ${oneCard.processStatus}">
+													<p th:case="1">Nạp thành công</p>
+													<p th:case="0">Không thành công</p>
+													<p th:case="2">Không thành công</p>
+													<p th:case="3">Không thành công</p>
+												</div>
+											</td>
+											<td th:text="${oneCard.gwMessage}">Thành công</td>
+											<td th:text="${oneCard.note}">Note</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.table-responsive -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-primary" th:if="${reqSmss} != null">
+						<div class="panel-heading">
+							Tin nhắn: <span style="color: red;"
+								th:text="${#numbers.formatDecimal(reqSmss.size(), 0, 'COMMA', 0, 'POINT')}"></span>
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="display responsive" width="100%"
+									id="dataTables-sms">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Từ số</th>
+											<th>Đầu số</th>
+											<th>Ngày nạp</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="oneSms, iterStat : ${reqSmss}">
+											<td th:text="${iterStat.count}">1</td>
+											<td th:text="${oneSms.from}">012</td>
+											<td th:text="${oneSms.to}">123</td>
+											<td th:text="${oneSms.datetime}">2014-07-01</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.table-responsive -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-primary" th:if="${chipChanges} != null">
+						<div class="panel-heading">Lịch sử thay đổi Chip</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="display responsive" width="100%"
+									id="dataTables-chips">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th class="all">Tổng chip</th>
+											<th class="all">Thay đổi</th>
+											<th class="desktop">Ngày gửi</th>
+											<th class="desktop">Lý do</th>
+											<th class="all">Trận đánh</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="oneChange, iterStat : ${chipChanges}">
+											<td th:text="${iterStat.count}">1</td>
+											<td
+												th:text="${#numbers.formatDecimal(oneChange.koin, 0, 'COMMA', 0, 'POINT')}">012</td>
+											<td
+												th:text="${#numbers.formatDecimal(oneChange.koinChange, 0, 'COMMA', 0, 'POINT')}">123</td>
+											<td th:text="${oneChange.datetime}">2014-07-01</td>
+											<td
+												th:text="${oneChange.reasonCode} +' - '+ ${oneChange.reason}">Nạp
+												thẻ</td>
+											<td><a href="/match/detail.html?match_id=1232"
+												th:href="@{'/match/detail.html?match_id=' + ${oneChange.matchId}}"
+												th:text="${oneChange.matchId}">0</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.table-responsive -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-primary" th:if="${goldChanges} != null">
+						<div class="panel-heading">Lịch sử thay đổi Gold</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="display responsive" width="100%"
+									id="dataTables-golds">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th class="all">Tổng gold</th>
+											<th class="all">Thay đổi</th>
+											<th class="desktop">Ngày gửi</th>
+											<th class="desktop">Lý do</th>
+											<th class="all">Trận đánh</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="oneChange, iterStat : ${goldChanges}">
+											<td th:text="${iterStat.count}">1</td>
+											<td
+												th:text="${#numbers.formatDecimal(oneChange.gold, 0, 'COMMA', 0, 'POINT')}">012</td>
+											<td
+												th:text="${#numbers.formatDecimal(oneChange.goldChange, 0, 'COMMA', 0, 'POINT')}">123</td>
+											<td th:text="${oneChange.datetime}">2014-07-01</td>
+											<td
+												th:text="${oneChange.reasonCode} +' - '+ ${oneChange.reason}">Nạp
+												thẻ</td>
+											<td><a href="/match/detail.html?match_id=1232"
+												th:href="@{'/match/detail.html?match_id=' + ${oneChange.matchId}}"
+												th:text="${oneChange.matchId}">0</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- /.table-responsive -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+
+
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="../js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="../js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="../js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="../bootstrapformhelpers/js/bootstrap-formhelpers.js"
+		th:src="@{/resources/bootstrapformhelpers/js/bootstrap-formhelpers.js}"></script>
+	<script type="text/javascript"
+		src="../bootstrap-daterangepicker/moment.js"
+		th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+	<script type="text/javascript"
+		src="../bootstrap-daterangepicker/daterangepicker.js"
+		th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+	<script src="js/plugins/dataTables/dataTables.bootstrap.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.responsive.min.js}"></script>
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="../js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		var currUrl = /*[[@{/}]]*/"";
+		/*]]>*/
+	</script>
+
+	<!-- Page-Level Demo Scripts - Forms - Use for reference -->
+	<script>
+		$(document).ready(function() {
+			$('#dataTables-chips').dataTable({
+				responsive : true
+			});
+			$('#dataTables-golds').dataTable({
+				responsive : true
+			});
+			$('#dataTables-sms').dataTable();
+			$('#dataTables-card').dataTable();
+			$("#txtMsg").val('');
+			$("#msgInfo").hide();
+			$("#btnSendMsg").click(function() {
+				var userId = $("#userId").val();
+				/* $.ajax({
+				    url: currUrl + "user/json/send_msg.html",
+				    jsonp: "callback",
+				    dataType: "jsonp",
+				    data: {
+					    "user_id": userId,
+					    "msg" : $("#txtMsg").val()
+				    },
+				    success: function( response ) {
+						$("#txtMsg").val(response);
+				    }
+				}); */
+				console.log(currUrl + "user/send_msg.json");
+				$.ajax({
+					dataType : "json",
+					url : currUrl + "user/send_msg.json",
+					data : {
+						"user_id" : userId,
+						"msg" : $("#txtMsg").val()
+					},
+					success : function(response) {
+						$("#msgInfo").html(response.desc);
+						$("#msgInfo").show();
+					}
+				});
+			});
+
+			$("#btnEditFullName").click(function() {
+				document.getElementById("fullname").disabled = false;
+				var elem = document.getElementById("btnEditFullName");
+				if (elem.value == "Edit")
+					elem.value = "OK";
+				else
+					editFullName();
+			});
+
+			function editFullName() {
+				var userId = $("#userId").val();
+				var fullname = $("#fullname").val();
+				$.ajax({
+					type : 'POST',
+					url : currUrl +'users/editfullname',
+					data : {
+						'user_id' : userId,
+						'fullname' : fullname
+					},
+					success : function(msg) {
+						document.getElementById("fullname").disabled = true;
+						document.getElementById("btnEditFullName").value = 'Edit';
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						alert("some error");
+					}
+				});
+			}
+			;
+
+		});
+
+		function doSearchUser() {
+			window.location.href = 'users.html?fullname='
+					+ $(".custom-search-form > input").val();
+			return false;
+		};
+		$('#reservationtime').daterangepicker(
+				{
+					timePicker : false,
+					format : 'YYYY/MM/DD'
+				},
+				function(start, end, label) {
+					console.log('A date range was chosen: '
+							+ start.format('YYYY-MM-DD') + ' to '
+							+ end.format('YYYY-MM-DD'));
+					$('#from_date').val(start.format('YYYY-MM-DD'));
+					$('#to_date').val(end.format('YYYY-MM-DD'));
+				});
+	</script>
+</body>
+
+</html>

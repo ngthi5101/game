@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+	<script	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script	src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+	<script src="js/morris.min.js"></script>
+	<script	src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+	<script src="js/example.js"></script>
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" href="js/example.css">
+	<link rel="stylesheet"	href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css">
+	<link rel="stylesheet" href="js/morris.css">
+	<title>Yoker - CCU</title>
+</head>
+<body>
+	<h1>Online Users: </h1><span id="curr_time"></span>
+	<div id="graph"></div>
+	<script type="text/javascript">
+	var nReloads = 0;
+	var data = [];
+	var graph = Morris.Line({
+		element: 'graph',
+		data: data,
+		xkey: 'dtTimeStamp',
+		ykeys: ['onlineUser', 'bot'],
+		labels: ['onlineUser', 'bot'],
+		dateFormat: function (x) { dte = new Date(); return (dte.getHours() +':' + dte.getMinutes());},
+	    parseTime: false,
+	    ymin: 0,
+	    ymax: 'auto',
+	    hideHover: true
+	});
+
+	function update() {
+		$("curr_time").val(new Date());
+		$.post("/api/yoker/sessions.json", "", function(data, textStatus) {
+			graph.setData(data);
+		}, "json");
+	}
+	update();
+	setInterval(update, 10000);
+</script>
+</body>

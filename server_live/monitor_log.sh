@@ -1,0 +1,1 @@
+tail -5000f logs/rtrace.log | grep "$1"

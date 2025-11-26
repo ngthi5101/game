@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bp2b",
+    "texture": "1df41a05c",
+    "rect": [
+      550,
+      3,
+      113,
+      123
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      113,
+      123
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

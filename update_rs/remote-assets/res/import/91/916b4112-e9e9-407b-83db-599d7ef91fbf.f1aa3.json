@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "combobt",
+    "texture": "1706bf870",
+    "rect": [
+      275,
+      57,
+      23,
+      17
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      23,
+      17
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

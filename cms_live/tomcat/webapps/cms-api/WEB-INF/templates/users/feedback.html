@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Phản hồi</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="../font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+        <link rel="stylesheet" type="text/css" media="all" href="../bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="../css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+        <!-- Page-Level Plugin CSS - Dashboard -->
+         <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}"/>
+        <link href="css/plugins/responsive.dataTables.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/responsive.dataTables.min.css}"/>
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header"><span>Phản hồi của người chơi</span></h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" method="post" action="send_feedback.html" th:action="@{/users/feedback.html}">
+                            <div class="row">
+                                <label>&nbsp;</label>
+                                <div class="col-lg-4">
+                                    <label>Từ ngày - đến ngày</label>
+                                    <div class="input-prepend input-group form-group">
+                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                        <input type="text" name = "from_date" id = "from_date" hidden="true" th:value="${from_date}"/>
+                                        <input type="text" name = "to_date" id = "to_date" hidden="true"  th:value="${to_date}"/> 
+                                        <input type="text" style="width: 100%" name="date_range" id="reservationtime" class="form-control"
+                                               value="08/01/2013 - 08/01/2013" th:value="${from_date} + ' - ' + ${to_date}" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Loại phản ánh</label>
+                                    <select name="feedback_type" id="feedback_type" class="form-control">
+                                        <option value="-1">Lựa chọn</option>
+                                        <option value="0">Giao diện</option>
+                                        <option value="1">Game</option>
+                                        <option value="2">Tài khoản</option>
+                                        <option value="3">Phản ánh khác</option>
+                                        <option value="4">Send error</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <button type="submit" class="btn btn-info pull-left">Xem phản ánh</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- col 12-->
+                </div>
+                <div class="row">
+                    <div hidden="true" id = "feedbackTypeId" th:text="${feedbackTypeId}">
+                    </div>
+                </div>                         
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info" th:if="${lstFeedBack} != null">
+                            <div class="panel-heading">
+                                Số phản ánh: <span style="color: red;" th:text="${#numbers.formatDecimal(lstFeedBack.size(), 0, 'COMMA', 0, 'POINT')}"></span>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="display responsive" width="100%" id = "dataTables">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th class="all">UserName</th>
+                                                <th class="desktop">Phản ánh</th>
+                                                <th class="desktop">Nội dung</th>
+                                                <th class="desktop">Ngày</th>
+                                                 <th class="all">Trạng thái</th>
+                                                <th class="all">Trả lời</th>
+                                                <th class="none">Nội dung trả lời </th>
+                                                <th class="none">Người trả lời </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneSms, iterStat : ${lstFeedBack}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td>
+												<a href= "/users/detail.html?user_id=1'" th:href="@{'/users/detail.html?user_id=' + ${oneSms.userId}}" th:text="${oneSms.username}">Abc</a>
+												</td>
+                                                <td>
+                                                    <div th:switch="'' + ${oneSms.fbType}">
+                                                        <p th:case="0">Giao diện</p>
+                                                        <p th:case="1">Game</p>
+                                                        <p th:case="2">Tài khoản</p>
+                                                        <p th:case="3">Phản ánh khác</p>
+                                                        <p th:case="4">send error</p>
+                                                    </div>
+                                                </td>
+                                                <td th:text="${oneSms.fbContent}">Test001</td>
+                                                <td th:text="${oneSms.dateCreated}">Test001</td>
+                                                
+                                                <td>
+                                                    <div th:switch="'' + ${oneSms.status}">
+                                                        <p th:case="0">Mới</p>
+                                                        <p th:case="1">Đã trả lời</p>
+                                                    </div>
+                                                </td>
+                                                 <td>
+                                                    <a type="button" class="btn btn-success btn-xs" href="#" th:href="@{/users/{id}/reply.html(id=${oneSms.id})}">reply</a>
+                                                </td>
+                                                <td th:text="${oneSms.reply}">Test001</td>
+                                                 <td th:text="${oneSms.respondent != ''} ? ${oneSms.respondent} : 'chưa trả lời!'"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="../js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.11.3.min.js}"></script>
+        <script src="../js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="../js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="../js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+         <script src="js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.responsive.min.js}"></script>
+          <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script type="text/javascript" src="../bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+        <script type="text/javascript" src="../bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+        <script>
+            $(document).ready(function() {
+            	$('#dataTables').dataTable({
+    	    		responsive: true
+    	    	});
+            });
+            
+            $('#reservationtime').daterangepicker({
+                timePicker: false, 
+                format: 'YYYY/MM/DD'
+            }, function(start, end, label) {
+                console.log('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                $('#from_date').val(start.format('YYYY-MM-DD'));
+                $('#to_date').val(end.format('YYYY-MM-DD'));
+            });
+            function update() {  
+                var  feedbackTypeId = $("#feedbackTypeId").html();
+                $("#feedback_type").val(feedbackTypeId);                           
+            }
+            update();
+        </script>
+    </body>
+
+</html>

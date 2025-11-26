@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "placehoder",
+    "texture": "1ca9894a0",
+    "rect": [
+      903,
+      3,
+      370,
+      46
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      370,
+      46
+    ],
+    "rotated": 1,
+    "capInsets": [
+      48,
+      0,
+      41,
+      0
+    ]
+  }
+}

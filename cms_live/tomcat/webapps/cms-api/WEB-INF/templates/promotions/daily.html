@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Config</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap-responsive.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+ 		<!-- DataTables CSS -->
+         <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}"/>
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/bootstrap-daterangepicker/bootstrap-datepicker.css}"/>
+    </head>
+    <body>
+        <div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Khuyến mãi ngày</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <form role="form" th:action="@{/promotions/daily.html}" id="dayForm" method="POST">
+                <div class="row">
+                   <div class="col-lg-3">
+                       	 <div class="form-group">
+						    <label for="month">Tháng</label>
+						    <input type="text" class="form-control" id="month" name="month" th:value="${promotionCfg.month}"/>
+						  </div>
+                   </div>
+                   <div class="col-lg-3">
+                       	 <div class="form-group">
+						    <label for="year">Năm</label>
+						    <input type="text" class="form-control" id="year" name="year" th:value="${promotionCfg.year}"/>
+						  </div>
+                   </div>
+               	</div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                            	<ul class="nav nav-pills">
+									<li class="active"><p>Tham số</p></li>
+									<li th:if="${userType} != 3" class="pull-right"><button type="button" class="btn btn-warning" title="New" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle">New</i></button></li>									                                 
+									<li th:if="${userType} != 3" class="pull-right"><button type="submit" class="btn btn-success" title="Save"><i class="fa fa-check">Lưu</i></button></li>
+								</ul>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title">Thêm mới</h4>
+							      </div>
+							      <div class="modal-body">								        
+								        <div class="form-group">
+										    <label for="day">Day</label>
+										    <input type="text" class="form-control" id="day" name="day" placeholder="day"/>
+										  </div>
+										  <div class="form-group">
+										    <label for="special">Special</label>
+										    <select name="special" id="special" class="form-control">
+                                                <option value="false">false</option>
+                                                <option value="true">true</option>
+                                            </select>
+										  </div>
+										  <div class="form-group">
+										    <label for="type">Type</label>
+										    <select name="type" id="type" class="form-control">
+                                                <option value="Chip">Chip</option>
+                                                <option value="other">Khác</option>
+                                            </select>
+										  </div>
+										  <div class="form-group">
+										    <label for="description">Description</label>
+										    <input type="text" class="form-control" id="description" name="description" placeholder="Description"/>
+										  </div>
+										  <div class="form-group">
+										    <label for="amount">Amount</label>
+										    <select name="amount" id="amount" class="form-control">
+                                                <option value="5000">5.000</option>
+                                                <option value="10000">10.000</option>
+                                                <option value="15000">15.000</option>
+                                                <option value="20000">20.000</option>
+                                                <option value="25000">25.000</option>
+                                                <option value="30000">30.000</option>
+                                                <option value="50000">50.000</option>
+                                                <option value="100000">100.0000</option>
+                                            </select>
+										  </div>
+							      </div>
+							      <div class="modal-footer" >
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							        <button type="submit" class="btn btn-primary" name="add">Save</button>
+							      </div>
+							    </div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="display responsive" id="dataTables">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Ngày</th>
+                                                <th>Special</th>
+                                                <th>Type</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th th:if="${userType} != 3">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneConfig, iterStat : ${promotionCfg.days}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td th:text="${oneConfig.day}">Hotline</td>
+                                                <td th:text="${oneConfig.special}"> htt://google.com </td>
+                                                <td th:text="${oneConfig.type}">  </td>
+                                                <td th:text="${oneConfig.description}">  </td>
+                                                <td th:text="${oneConfig.amount}">  </td>
+                                                <td th:if="${userType} != 3">
+                                                    <a type="button" class="btn btn-success" href="#" th:href="@{/promotions/{index}/daily.html(index=${iterStat.count})}">Thay đổi</a>
+                                                    <a type="button" class="btn btn-danger" href="delete.html" th:href="@{/promotions/{index}/delete_date.html(index=${iterStat.count})}">Xóa</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
+                 </form>
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+        <script src="js/sb-admin.js" th:src="@{/resources/bootstrap-daterangepicker/bootstrap-datepicker.min.js}"></script>
+        <script>
+        $(document).ready(function() {
+	    	$('#dataTables').dataTable({
+	    		responsive: true
+	    	});
+	    	$("#day").datepicker( {
+	    	    format: "dd",
+	    	    autoclose: true,
+	    	    todayHighlight:true
+	    	});
+	    	$("#month").datepicker( {
+	    	    format: "mm",
+	    	    //startView : 'month',
+	    	    startView: 1,
+	    	    minViewMode:1,
+	    	    autoclose: true,
+	    	    todayHighlight:true
+	    	});
+	    	$("#year").datepicker( {
+	    		 format: "yyyy",
+	    		 //startView : 'decade',
+	    		 minViewMode:2,
+	    	     startView: 1,
+	    	    autoclose: true,
+	    	    todayHighlight:true
+	    	});
+        });
+        </script>
+
+    </body>
+
+</html>

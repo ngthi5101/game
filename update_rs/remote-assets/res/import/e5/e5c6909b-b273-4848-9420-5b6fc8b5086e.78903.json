@@ -1,0 +1,813 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "tayduki nohu",
+  "skeletonJsonStr": "{\r\n\"skeleton\": {\r\n\t\"hash\": \"CqxqfDDr0KTeS1tHZmXv3NbKQ58\",\r\n\t\"spine\": \"3.6.53\",\r\n\t\"width\": 1007.36,\r\n\t\"height\": 1001.04,\r\n\t\"images\": \"./images/tayduky nohu/\"\r\n},\r\n\"bones\": [\r\n\t{ \"name\": \"root\" },\r\n\t{ \"name\": \"bone\", \"parent\": \"root\", \"x\": 20.55, \"y\": 160.48 },\r\n\t{ \"name\": \"bone2\", \"parent\": \"root\", \"x\": 14.62, \"y\": 322.67, \"color\": \"b3ff22ff\" },\r\n\t{ \"name\": \"bone4\", \"parent\": \"root\", \"length\": 157.52, \"rotation\": 91.35, \"x\": 16.28, \"y\": 222.26 },\r\n\t{ \"name\": \"bone3\", \"parent\": \"bone4\", \"rotation\": 143.97, \"x\": 165.44, \"y\": -40.12, \"color\": \"031f50ff\" }\r\n],\r\n\"slots\": [\r\n\t{ \"name\": \"light2\", \"bone\": \"bone3\", \"attachment\": \"light2\" },\r\n\t{ \"name\": \"bg1\", \"bone\": \"bone3\", \"attachment\": \"bg1\" },\r\n\t{ \"name\": \"light\", \"bone\": \"bone3\", \"attachment\": \"light\" },\r\n\t{ \"name\": \"batgioi\", \"bone\": \"bone4\", \"attachment\": \"batgioi\" },\r\n\t{ \"name\": \"satang\", \"bone\": \"bone4\", \"attachment\": \"satang\" },\r\n\t{ \"name\": \"ngokhong\", \"bone\": \"bone4\", \"attachment\": \"ngokhong\" },\r\n\t{ \"name\": \"suphu\", \"bone\": \"bone4\", \"attachment\": \"suphu\" },\r\n\t{ \"name\": \"Group 2\", \"bone\": \"bone\", \"attachment\": \"Group 2\" },\r\n\t{ \"name\": \"nohu\", \"bone\": \"bone2\", \"attachment\": \"nohu\" },\r\n\t{ \"name\": \"NỔ HŨ 1\", \"bone\": \"bone2\", \"attachment\": \"NỔ HŨ 1\" }\r\n],\r\n\"skins\": {\r\n\t\"default\": {\r\n\t\t\"Group 2\": {\r\n\t\t\t\"Group 2\": { \"x\": -1.75, \"y\": 61.92, \"width\": 808, \"height\": 330 }\r\n\t\t},\r\n\t\t\"NỔ HŨ 1\": {\r\n\t\t\t\"NỔ HŨ 1\": { \"x\": -0.82, \"y\": 19.23, \"width\": 354, \"height\": 127 }\r\n\t\t},\r\n\t\t\"batgioi\": {\r\n\t\t\t\"batgioi\": { \"x\": 213.23, \"y\": -189.61, \"rotation\": -91.35, \"width\": 274, \"height\": 443 }\r\n\t\t},\r\n\t\t\"bg1\": {\r\n\t\t\t\"bg1\": { \"x\": 12.74, \"y\": -65.67, \"width\": 724, \"height\": 713 }\r\n\t\t},\r\n\t\t\"light\": {\r\n\t\t\t\"light\": { \"x\": 0.24, \"y\": -48.17, \"width\": 731, \"height\": 678 }\r\n\t\t},\r\n\t\t\"light2\": {\r\n\t\t\t\"light2\": { \"x\": 13.24, \"y\": -62.17, \"width\": 709, \"height\": 706 }\r\n\t\t},\r\n\t\t\"ngokhong\": {\r\n\t\t\t\"ngokhong\": { \"x\": 163.71, \"y\": -20.39, \"rotation\": -91.35, \"width\": 398, \"height\": 538 }\r\n\t\t},\r\n\t\t\"nohu\": {\r\n\t\t\t\"nohu\": { \"x\": 1.18, \"y\": 8.23, \"width\": 394, \"height\": 179 }\r\n\t\t},\r\n\t\t\"satang\": {\r\n\t\t\t\"satang\": { \"x\": 176.29, \"y\": 152.36, \"rotation\": -91.35, \"width\": 250, \"height\": 493 }\r\n\t\t},\r\n\t\t\"suphu\": {\r\n\t\t\t\"suphu\": { \"x\": 127.15, \"y\": 104.51, \"rotation\": -91.35, \"width\": 654, \"height\": 481 }\r\n\t\t}\r\n\t}\r\n},\r\n\"animations\": {\r\n\t\"idle\": {\r\n\t\t\"slots\": {\r\n\t\t\t\"Group 2\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 1.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"light\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"02acffff\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" },\r\n\t\t\t\t\t{ \"time\": 0.6667, \"color\": \"02acffff\" },\r\n\t\t\t\t\t{ \"time\": 1, \"color\": \"ffffffff\" },\r\n\t\t\t\t\t{ \"time\": 1.3333, \"color\": \"02acffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"nohu\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0.6667, \"color\": \"ffffffff\", \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 1.3333, \"color\": \"ffffffff\", \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t},\r\n\t\t\"bones\": {\r\n\t\t\t\"bone\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 0, \"y\": 0 }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"bone4\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": -0.7, \"y\": 29.72, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"x\": -0.7, \"y\": 29.72 }\r\n\t\t\t\t],\r\n\t\t\t\t\"scale\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 1.13, \"y\": 1.128 },\r\n\t\t\t\t\t{ \"time\": 1, \"x\": 1.05, \"y\": 1.05 },\r\n\t\t\t\t\t{ \"time\": 2, \"x\": 1.13, \"y\": 1.128 }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"bone2\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.6667, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 1.3333, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 0, \"y\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.6667, \"x\": 0, \"y\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 1.3333, \"x\": 0, \"y\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"x\": 0, \"y\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"scale\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"x\": 1.5, \"y\": 1.5 },\r\n\t\t\t\t\t{ \"time\": 0.6667, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 1, \"x\": 1.5, \"y\": 1.5 },\r\n\t\t\t\t\t{ \"time\": 1.3333, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 1.6667, \"x\": 1.5, \"y\": 1.5 },\r\n\t\t\t\t\t{ \"time\": 2, \"x\": 1, \"y\": 1 }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"bone3\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 0, \"y\": 0 }\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\t},\r\n\t\"start\": {\r\n\t\t\"slots\": {\r\n\t\t\t\"Group 2\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\", \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"NỔ HŨ 1\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"batgioi\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"bg1\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"light\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" },\r\n\t\t\t\t\t{ \"time\": 0.6667, \"color\": \"02acffff\" },\r\n\t\t\t\t\t{ \"time\": 1, \"color\": \"ffffffff\" },\r\n\t\t\t\t\t{ \"time\": 1.3333, \"color\": \"02acffff\" },\r\n\t\t\t\t\t{ \"time\": 1.6667, \"color\": \"ffffffff\" },\r\n\t\t\t\t\t{ \"time\": 2, \"color\": \"02acffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"light2\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"ngokhong\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"nohu\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\", \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.8667, \"color\": \"ffffffff\", \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 1.4, \"color\": \"ffffffff\", \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"satang\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"suphu\": {\r\n\t\t\t\t\"color\": [\r\n\t\t\t\t\t{ \"time\": 0, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.1667, \"color\": \"ffffff00\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"color\": \"ffffffff\" }\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t},\r\n\t\t\"bones\": {\r\n\t\t\t\"bone\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 0, \"y\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"scale\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 1, \"y\": 1 }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"bone4\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": -16.92, \"y\": 716.49 },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"x\": -0.7, \"y\": 29.72 }\r\n\t\t\t\t],\r\n\t\t\t\t\"scale\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 0.5, \"y\": 0.5 },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 0.6667, \"x\": 1.13, \"y\": 1.128 },\r\n\t\t\t\t\t{ \"time\": 1, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 1.5, \"x\": 1.05, \"y\": 1.05 },\r\n\t\t\t\t\t{ \"time\": 2, \"x\": 1, \"y\": 1 }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"bone2\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.8667, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 1.4, \"angle\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 0, \"y\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"x\": 0, \"y\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.8667, \"x\": 0, \"y\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 1.4, \"x\": 0, \"y\": 0, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 2, \"x\": 0, \"y\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"scale\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 1, \"y\": 1, \"curve\": \"stepped\" },\r\n\t\t\t\t\t{ \"time\": 0.3333, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 0.6, \"x\": 1.5, \"y\": 1.5 },\r\n\t\t\t\t\t{ \"time\": 0.8667, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 1.1333, \"x\": 1.5, \"y\": 1.5 },\r\n\t\t\t\t\t{ \"time\": 1.4, \"x\": 1, \"y\": 1 },\r\n\t\t\t\t\t{ \"time\": 1.7, \"x\": 1.5, \"y\": 1.5 },\r\n\t\t\t\t\t{ \"time\": 2, \"x\": 1, \"y\": 1 }\r\n\t\t\t\t]\r\n\t\t\t},\r\n\t\t\t\"bone3\": {\r\n\t\t\t\t\"rotate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"angle\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"translate\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 0, \"y\": 0 }\r\n\t\t\t\t],\r\n\t\t\t\t\"scale\": [\r\n\t\t\t\t\t{ \"time\": 0, \"x\": 1, \"y\": 1 }\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}\r\n}",
+  "_skeletonJson": {
+    "skeleton": {
+      "hash": "CqxqfDDr0KTeS1tHZmXv3NbKQ58",
+      "spine": "3.6.53",
+      "width": 1007.36,
+      "height": 1001.04,
+      "images": "./images/tayduky nohu/"
+    },
+    "bones": [
+      {
+        "name": "root"
+      },
+      {
+        "name": "bone",
+        "parent": "root",
+        "x": 20.55,
+        "y": 160.48
+      },
+      {
+        "name": "bone2",
+        "parent": "root",
+        "x": 14.62,
+        "y": 322.67,
+        "color": "b3ff22ff"
+      },
+      {
+        "name": "bone4",
+        "parent": "root",
+        "length": 157.52,
+        "rotation": 91.35,
+        "x": 16.28,
+        "y": 222.26
+      },
+      {
+        "name": "bone3",
+        "parent": "bone4",
+        "rotation": 143.97,
+        "x": 165.44,
+        "y": -40.12,
+        "color": "031f50ff"
+      }
+    ],
+    "slots": [
+      {
+        "name": "light2",
+        "bone": "bone3",
+        "attachment": "light2"
+      },
+      {
+        "name": "bg1",
+        "bone": "bone3",
+        "attachment": "bg1"
+      },
+      {
+        "name": "light",
+        "bone": "bone3",
+        "attachment": "light"
+      },
+      {
+        "name": "batgioi",
+        "bone": "bone4",
+        "attachment": "batgioi"
+      },
+      {
+        "name": "satang",
+        "bone": "bone4",
+        "attachment": "satang"
+      },
+      {
+        "name": "ngokhong",
+        "bone": "bone4",
+        "attachment": "ngokhong"
+      },
+      {
+        "name": "suphu",
+        "bone": "bone4",
+        "attachment": "suphu"
+      },
+      {
+        "name": "Group 2",
+        "bone": "bone",
+        "attachment": "Group 2"
+      },
+      {
+        "name": "nohu",
+        "bone": "bone2",
+        "attachment": "nohu"
+      },
+      {
+        "name": "NỔ HŨ 1",
+        "bone": "bone2",
+        "attachment": "NỔ HŨ 1"
+      }
+    ],
+    "skins": {
+      "default": {
+        "Group 2": {
+          "Group 2": {
+            "x": -1.75,
+            "y": 61.92,
+            "width": 808,
+            "height": 330
+          }
+        },
+        "NỔ HŨ 1": {
+          "NỔ HŨ 1": {
+            "x": -0.82,
+            "y": 19.23,
+            "width": 354,
+            "height": 127
+          }
+        },
+        "batgioi": {
+          "batgioi": {
+            "x": 213.23,
+            "y": -189.61,
+            "rotation": -91.35,
+            "width": 274,
+            "height": 443
+          }
+        },
+        "bg1": {
+          "bg1": {
+            "x": 12.74,
+            "y": -65.67,
+            "width": 724,
+            "height": 713
+          }
+        },
+        "light": {
+          "light": {
+            "x": 0.24,
+            "y": -48.17,
+            "width": 731,
+            "height": 678
+          }
+        },
+        "light2": {
+          "light2": {
+            "x": 13.24,
+            "y": -62.17,
+            "width": 709,
+            "height": 706
+          }
+        },
+        "ngokhong": {
+          "ngokhong": {
+            "x": 163.71,
+            "y": -20.39,
+            "rotation": -91.35,
+            "width": 398,
+            "height": 538
+          }
+        },
+        "nohu": {
+          "nohu": {
+            "x": 1.18,
+            "y": 8.23,
+            "width": 394,
+            "height": 179
+          }
+        },
+        "satang": {
+          "satang": {
+            "x": 176.29,
+            "y": 152.36,
+            "rotation": -91.35,
+            "width": 250,
+            "height": 493
+          }
+        },
+        "suphu": {
+          "suphu": {
+            "x": 127.15,
+            "y": 104.51,
+            "rotation": -91.35,
+            "width": 654,
+            "height": 481
+          }
+        }
+      }
+    },
+    "animations": {
+      "idle": {
+        "slots": {
+          "Group 2": {
+            "color": [
+              {
+                "time": 1.3333,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "light": {
+            "color": [
+              {
+                "time": 0,
+                "color": "02acffff"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              },
+              {
+                "time": 0.6667,
+                "color": "02acffff"
+              },
+              {
+                "time": 1,
+                "color": "ffffffff"
+              },
+              {
+                "time": 1.3333,
+                "color": "02acffff"
+              }
+            ]
+          },
+          "nohu": {
+            "color": [
+              {
+                "time": 0.6667,
+                "color": "ffffffff",
+                "curve": "stepped"
+              },
+              {
+                "time": 1.3333,
+                "color": "ffffffff",
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "color": "ffffffff"
+              }
+            ]
+          }
+        },
+        "bones": {
+          "bone": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "bone4": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": -0.7,
+                "y": 29.72,
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "x": -0.7,
+                "y": 29.72
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1.13,
+                "y": 1.128
+              },
+              {
+                "time": 1,
+                "x": 1.05,
+                "y": 1.05
+              },
+              {
+                "time": 2,
+                "x": 1.13,
+                "y": 1.128
+              }
+            ]
+          },
+          "bone2": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.6667,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 1.3333,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.6667,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 1.3333,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.3333,
+                "x": 1.5,
+                "y": 1.5
+              },
+              {
+                "time": 0.6667,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1,
+                "x": 1.5,
+                "y": 1.5
+              },
+              {
+                "time": 1.3333,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1.6667,
+                "x": 1.5,
+                "y": 1.5
+              },
+              {
+                "time": 2,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "bone3": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        }
+      },
+      "start": {
+        "slots": {
+          "Group 2": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff",
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "NỔ HŨ 1": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "batgioi": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "bg1": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "light": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              },
+              {
+                "time": 0.6667,
+                "color": "02acffff"
+              },
+              {
+                "time": 1,
+                "color": "ffffffff"
+              },
+              {
+                "time": 1.3333,
+                "color": "02acffff"
+              },
+              {
+                "time": 1.6667,
+                "color": "ffffffff"
+              },
+              {
+                "time": 2,
+                "color": "02acffff"
+              }
+            ]
+          },
+          "light2": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "ngokhong": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "nohu": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff",
+                "curve": "stepped"
+              },
+              {
+                "time": 0.8667,
+                "color": "ffffffff",
+                "curve": "stepped"
+              },
+              {
+                "time": 1.4,
+                "color": "ffffffff",
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "satang": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              }
+            ]
+          },
+          "suphu": {
+            "color": [
+              {
+                "time": 0,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.1667,
+                "color": "ffffff00"
+              },
+              {
+                "time": 0.3333,
+                "color": "ffffffff"
+              }
+            ]
+          }
+        },
+        "bones": {
+          "bone": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "bone4": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": -16.92,
+                "y": 716.49
+              },
+              {
+                "time": 0.3333,
+                "x": -0.7,
+                "y": 29.72
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 0.5,
+                "y": 0.5
+              },
+              {
+                "time": 0.3333,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.6667,
+                "x": 1.13,
+                "y": 1.128
+              },
+              {
+                "time": 1,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1.5,
+                "x": 1.05,
+                "y": 1.05
+              },
+              {
+                "time": 2,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "bone2": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.3333,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.8667,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 1.4,
+                "angle": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.3333,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.8667,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 1.4,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 2,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 0.3333,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 0.6,
+                "x": 1.5,
+                "y": 1.5
+              },
+              {
+                "time": 0.8667,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1.1333,
+                "x": 1.5,
+                "y": 1.5
+              },
+              {
+                "time": 1.4,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 1.7,
+                "x": 1.5,
+                "y": 1.5
+              },
+              {
+                "time": 2,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "bone3": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              }
+            ],
+            "translate": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\r\ntayduki nohu.png\r\nsize: 2048,2048\r\nformat: RGBA8888\r\nfilter: Linear,Linear\r\nrepeat: none\r\nGroup 2\r\n  rotate: true\r\n  xy: 1461, 1233\r\n  size: 808, 330\r\n  orig: 808, 330\r\n  offset: 0, 0\r\n  index: -1\r\nNỔ HŨ 1\r\n  rotate: false\r\n  xy: 2, 8\r\n  size: 354, 127\r\n  orig: 354, 127\r\n  offset: 0, 0\r\n  index: -1\r\nbatgioi\r\n  rotate: true\r\n  xy: 713, 687\r\n  size: 274, 443\r\n  orig: 274, 443\r\n  offset: 0, 0\r\n  index: -1\r\nbg1\r\n  rotate: false\r\n  xy: 2, 1328\r\n  size: 724, 713\r\n  orig: 724, 713\r\n  offset: 0, 0\r\n  index: -1\r\nlight\r\n  rotate: false\r\n  xy: 728, 1363\r\n  size: 731, 678\r\n  orig: 731, 678\r\n  offset: 0, 0\r\n  index: -1\r\nlight2\r\n  rotate: false\r\n  xy: 2, 620\r\n  size: 709, 706\r\n  orig: 709, 706\r\n  offset: 0, 0\r\n  index: -1\r\nngokhong\r\n  rotate: true\r\n  xy: 728, 963\r\n  size: 398, 538\r\n  orig: 398, 538\r\n  offset: 0, 0\r\n  index: -1\r\nnohu\r\n  rotate: true\r\n  xy: 1268, 967\r\n  size: 394, 179\r\n  orig: 394, 179\r\n  offset: 0, 0\r\n  index: -1\r\nsatang\r\n  rotate: false\r\n  xy: 1793, 1548\r\n  size: 250, 493\r\n  orig: 250, 493\r\n  offset: 0, 0\r\n  index: -1\r\nsuphu\r\n  rotate: false\r\n  xy: 2, 137\r\n  size: 654, 481\r\n  orig: 654, 481\r\n  offset: 0, 0\r\n  index: -1\r\n",
+  "textures": [
+    {
+      "__uuid__": "12YQ7D7IdIsZA0MWOwSuwI"
+    }
+  ],
+  "textureNames": [
+    "tayduki nohu.png"
+  ]
+}

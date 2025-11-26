@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:annotation-config />
+	<context:property-placeholder location="classpath:sms-mysql.properties,classpath:epay-cardch-charging.properties,classpath:epay-cardch-topup.properties,classpath:sms-cp.properties,classpath:payment.properties"/>
+	<import resource="applicationContext-api-persistence.xml" />
+	<import resource="applicationContext-api-hazelcast.xml" />
+	<import resource="applicationContext-api-quartz.xml" />
+	<import resource="applicationContext-api-payment.xml" />
+
+	<!-- Auto scan the components -->
+	<context:component-scan base-package="vn.yotel.yoker">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="regex" expression="vn\.yotel\.yoker\.bo\.impl\.RoomBo.*"/>
+	</context:component-scan>
+	
+
+	<!-- queue -->
+	<bean id="loginQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="achivementQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="dailyTaskQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="zoneExpQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="globalExpQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="iGameQueue" class="vn.yotel.yoker.util.Queue"/>
+	<bean id="goldHistoryQueue" class="java.util.concurrent.ConcurrentLinkedQueue" scope="singleton" />
+	<bean id="goldHistoryQueueNotifier" class="java.lang.Object" scope="singleton" />
+	<bean id="koinHistoryQueue" class="java.util.concurrent.ConcurrentLinkedQueue" scope="singleton" />
+	<bean id="koinHistoryQueueNotifier" class="java.lang.Object" scope="singleton" />
+		
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>
+	<bean id = "objNotifier" class="java.lang.Object" scope="singleton"/>
+	<bean id="paymentQueue" class="java.util.concurrent.ConcurrentLinkedQueue" scope="singleton"/>
+	<bean class="vn.yotel.yoker.util.SessionIdGenerator" name="idGenerator"></bean>
+	
+	<!-- The Spring application context -->
+	<bean id="appContext" class="vn.yotel.yoker.context.AppContext" />
+	<bean name="apiBootstrap" class="vn.yotel.yoker.web.bo.impl.APIBootstrapBoImpl" init-method="initializeGame"/>
+</beans>

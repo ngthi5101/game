@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "refresh",
+    "texture": "14bec930a",
+    "rect": [
+      3,
+      484,
+      244,
+      244
+    ],
+    "offset": [
+      0,
+      1
+    ],
+    "originalSize": [
+      256,
+      256
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

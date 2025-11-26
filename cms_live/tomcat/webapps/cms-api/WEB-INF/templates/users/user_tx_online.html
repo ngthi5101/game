@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="refresh" content="300" /> <!-- Refresh every 5 minutes -->
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+	<title data-th-text="#{admin.page.title}">CMS - Cấu hình</title>
+
+	<!-- Core CSS - Include with every page -->
+	<link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+	<link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+	<!-- SB Admin CSS - Include with every page -->
+	<link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+	<div id="wrapper">
+	    <div th:if="${userType} == 1">
+		<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+	    </div>
+	    <div th:if="${userType} == 2">
+		<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+	    </div>		
+	    <div th:if="${userType} == 3">
+		<div data-th-replace="cskh/sb-care :: top-nav"></div>
+		<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+	    </div>
+	    <div id="page-wrapper">
+		<div class="row">
+		    <div class="col-lg-12">
+			<h1 class="page-header">Danh sách người chơi thật đánh Tài Xỉu</h1>
+		    </div>
+		    <!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<div class="row">
+		    <div class="col-lg-12">
+			<div class="panel panel-primary">
+			    <div class="panel-heading">
+				Tham số
+			    </div>
+			    <div class="panel-body">
+				<div class="row">
+				    <div class="col-lg-11 col-md-offset-1">
+					<form role="form" class="form-horizontal" method="post" th:action="@{/config/change_taixiu_result.html}" th:object="${jackpot}">
+					    <span style="color:red" th:text="${message != null} ? ${message}" ></span>
+					    <span th:text="${user_bet_data}" id="json_data"></span>
+					    <div class="row">
+						<div class="form-group">                                            	
+						    <div class="col-sm-8">      
+							<style th:inline="text">
+							    .his_cont{position: relative;width: 427px;height: 31px;max-width: 100%;overflow: hidden;}
+							    .his_bg{position: absolute;top:0px;right:0px;background:url('https://haywin.club/cms-api/resources/taixiu/TX_bg.png') no-repeat;width:427px;height:31px;}
+							    .dot{width:19px;height:20px; float:left;margin-top: 6px;margin-left: 4px;
+								 background:url('https://haywin.club/cms-api/resources/taixiu/TX_Tai.png') no-repeat;}
+							    .dot.tai{background:url('https://haywin.club/cms-api/resources/taixiu/TX_Tai.png') no-repeat;}
+							    .dot.xiu{background:url('https://haywin.club/cms-api/resources/taixiu/TX_Xiu.png') no-repeat;}
+							    .host{  [[${host_url}]]   }
+							</style>
+							<p>Lịch sử:</p>
+							<div class="his_cont">
+							    <div class="his_bg">
+								<div class="dot dot_0"></div>
+								<div class="dot dot_1"></div>
+								<div class="dot dot_2"></div>
+								<div class="dot dot_3"></div>
+								<div class="dot dot_4"></div>
+								<div class="dot dot_5"></div>
+								<div class="dot dot_6"></div>
+								<div class="dot dot_7"></div>
+								<div class="dot dot_8"></div>
+								<div class="dot dot_9"></div>
+								<div class="dot dot_10"></div>
+								<div class="dot dot_11"></div>
+								<div class="dot dot_12"></div>
+								<div class="dot dot_13"></div>
+								<div class="dot dot_14"></div>
+								<div class="dot dot_15"></div>
+								<div class="dot dot_16"></div>
+							    </div>
+							</div>
+							<p>Thời gian tới phiên tiếp theo: <span class="gold_text count_down">0</span><span class="tick time_stage"></span></p>
+						    </div>
+						</div>
+						<div>
+						    <div class="col-sm-6">
+							<p>Tổng tiền người chơi đặt cho Tài: <span class="tai_amount gold_text">0</span><span class="gold_text"></span></p>
+							<p>Tổng số người chơi đặt cho Tài: <span class="tai_user gold_text">0</span></p>
+							<p>Danh sách người chơi đặt Tài</p>
+							<table>
+							    <thead>
+								<tr>
+								    <td>ID</td>
+								    <td>Tên</td>
+								    <td>Số tiền cược</td>
+								    <td>Tài khoản</td>
+								    <td>Mã đại lý</td>
+								</tr>
+							    </thead>
+							    <tbody class="tai_cont"></tbody>
+							</table>
+						    </div>
+						    <div class="col-sm-6">
+							<p>Tổng tiền người chơi đặt cho Xỉu: <span class="xiu_amount gold_text">0</span><span class="gold_text"></span></p>
+							<p>Tổng số người chơi đặt cho Xỉu: <span class="xiu_user gold_text">0</span></p>
+							<p>Danh sách người chơi đặt Xỉu</p>
+							<table>
+							    <thead>
+								<tr>
+								    <td>ID</td>
+								    <td>Tên</td>
+								    <td>Số tiền cược</td>
+								    <td>Tài khoản</td>
+								    <td>Mã đại lý</td>
+								</tr>
+							    </thead>
+							    <tbody class="xiu_cont"></tbody>
+							</table>
+						    </div>
+						</div>
+
+					    </div>
+					</form>
+				    </div>
+				    <!-- /.col-lg-6 (nested) -->
+				</div>
+				<!-- /.row (nested) -->
+			    </div>
+			    <!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		    </div>
+		    <!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+	    </div>
+	    <!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+	<script th:inline="javascript">
+			/*<![CDATA[*/
+			//var data = eval(data_str);
+			var data = null;
+			var expect_result = /*[[${expect_result}]]*/ '';
+			var base_link = window.location.origin;
+			var restrict_ids = /*[[${restrict_ids}]]*/ '';
+			$(document).ready(() => {
+				var data_str = $('#json_data').text();
+//				console.log("document ready");
+
+				QueryTaiXiuStatus();
+				
+//				console.log("restrict_ids: ");
+//				console.log(restrict_ids);
+			});
+			var countDown;
+			function QueryTaiXiuStatus() {
+				$.get('get_tai_xiu_status.html', (data_str) => {
+//					console.log("ajax result: ");
+//					console.log(data_str)
+					while (data_str.indexOf(",,") != -1) {
+//						console.log("clear ,,")
+						data_str = data_str.replaceAll(",,", ",");
+					}
+					while (data_str.indexOf("},]") != -1) {
+//						console.log("clear },]")
+						data_str = data_str.replaceAll("},]", "}]");
+					}
+					while (data_str.indexOf("[,") != -1) {
+//						console.log("clear [,")
+						data_str = data_str.replaceAll("\\[,", "[");
+					}
+//					console.log("Ok, data_str: " + data_str)
+					if(data_str === "")
+						data = null;
+					else 
+						data = JSON.parse(data_str);
+//					console.log(data);
+					var tai_total_amount = 0;
+					var xiu_total_amount = 0;
+					var tai_users = 0;
+					var xiu_users = 0;
+					$('.tai_cont').html('');
+					$('.xiu_cont').html('');
+					$('.tai_amount').text(0);
+					$('.xiu_amount').text(0);
+					$('.tai_user').text(0);
+					$('.xiu_user').text(0);
+					if (data != null) {
+						data.list_bet.forEach((item, index) => {
+							
+							var html = '<tr><td>' +
+									'<a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + item.id + '">' + item.id + 
+									//Nếu đây là tk live thì hiển thị live
+									// ( restrict_ids.IdsNotAllowSendGold.indexOf(parseInt(item.id)) > -1 ? '<br><span style="color:orange;">(TK live)</span>' : '' ) +
+									'</a></td>'+
+									'<td><a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + item.id + '">' + item.name + '</a></td>'+
+									'<td>' + numberWithCommas(parseInt(item.amount)) + '</td><td>' + numberWithCommas(parseInt(item.user_gold)) + '</td><td>' + item.ref_code + 
+									'</td></tr>';
+							if (item.bettype === 'tai') {
+								$('.tai_cont').append(html);
+								tai_total_amount += parseInt(item.amount);
+								tai_users += 1;
+							}
+							if (item.bettype === 'xiu') {
+								$('.xiu_cont').append(html);
+								xiu_total_amount += parseInt(item.amount);
+								xiu_users += 1;
+							}
+						});
+						if (tai_total_amount > 0)
+							$('.tai_amount').text(numberWithCommas(tai_total_amount));
+						if (xiu_total_amount > 0)
+							$('.xiu_amount').text(numberWithCommas(xiu_total_amount));
+						if (tai_users > 0)
+							$('.tai_user').text(tai_users);
+						if (xiu_users > 0)
+							$('.xiu_user').text(xiu_users);
+
+						countDown = parseInt(data.time);
+						if (countDown != -1) {
+							countDown--;
+							$('.count_down').text(countDown);
+						}
+
+						var list_his = data.history;
+						list_his.splice(0, list_his.length - 17);
+						for (var i = 0; i < list_his.length; i++) {
+							//$('.dot_'+i).text(list_his[i]);
+							if (list_his[i] < 11) {
+								$('.dot_' + i).addClass('xiu');
+							} else {
+								$('.dot_' + i).removeClass('xiu');
+							}
+						}
+
+						$('.result_radio').siblings('.tick').hide();
+						$('.result_radio[value="' + data.changeTaiXiuResult + '"]').siblings('.tick').show();
+
+						$('.number_result_radio').siblings('.tick').hide();
+						if (data.persistentTaiXiuResult === "true")
+							$('.number_result_radio[value="1"]').siblings('.tick').show();
+						if (data.persistentTaiXiuResult === "false")
+							$('.number_result_radio[value="0"]').siblings('.tick').show();
+						    
+						var stage = "";
+						switch(data.stage){
+						    case 0:
+							stage = "ĐANG ĐẶT CƯỢC";
+							break;
+						    case 1:
+							stage = "DỪNG ĐẶT CƯỢC";
+							break;
+						    case 2:
+							stage = "KẾT THÚC VÁN";
+							break;
+						    case 8:
+							stage = "MỞ BÁT";
+							break;
+						}
+						$('.time_stage').text("("+stage+")");
+						$('.time_stage').show();
+					}
+				});
+				setTimeout(QueryTaiXiuStatus, 1000);
+			}
+			const numberWithCommas = (x) => {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+			String.prototype.replaceAll = function (search, replacement) {
+				var target = this;
+				return target.replace(new RegExp(search, 'g'), replacement);
+			};
+			/*]]>*/
+	</script>
+	<style>table td, table th{padding: 6px 9px;border: 1px solid #000;}
+	    .gold_text{font-size: 27px;font-weight: bold;color: #fb2222;}
+	    .radio_sub{width: 15px;display: inline-block;height: 15px;vertical-align: sub;}
+	    .tick{display:none;color: green;font-size: 17px;font-weight: bolder;}
+	    #json_data{display: none;}
+	</style>
+    </body>
+
+</html>

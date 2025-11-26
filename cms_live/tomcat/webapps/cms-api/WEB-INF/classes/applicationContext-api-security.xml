@@ -1,0 +1,70 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+	<!-- <http pattern="/j_spring_security_check*" security="none" />
+	<http pattern="/login*" security="none" /> -->
+	<http pattern="/resources/**" security="none" />
+	<http pattern="/login.html*" security="none" />
+	<http pattern="/index.html*" security="none" />
+	<http pattern="/receive_sms.html*" security="none" />
+	<http pattern="/1pay_*" security="none" />
+	<http pattern="/epay_*" security="none" />
+	<http pattern="/config/get_list_sms.html*" security="none" />
+	<http pattern="/config/add-sms.html*" security="none" />
+	<http pattern="/config/remove_sending_sms.html*" security="none" />
+	<http pattern="/config/remove_list_sending_sms.html*" security="none" />
+	<http pattern="/danhsachdaili.html*" security="none" />
+
+	<http auto-config="true" use-expressions="true">
+		<!-- <intercept-url pattern="/reports/device_history.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/login_history.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/match_history.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/match_suspect.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/register_history.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/report_hour.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/revenues.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/revenues_partners.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/revenues_sub.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> 
+			<intercept-url pattern="/reports/user_device_partners.html" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/> -->
+		<intercept-url pattern="/config/reload.html" access="hasAnyRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/config/init_fund.html" access="hasAnyRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/config/taken_jackpot.html" access="hasAnyRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/config/game_state.html" access="hasAnyRole('ROLE_ADMIN')"/>
+		<intercept-url pattern="/users/list_users.html" access="hasAnyRole('ROLE_ADMIN')"/>
+
+		<intercept-url pattern="/j_spring_security_check" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/login-pro" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		
+
+		<intercept-url pattern="/**" access="isAuthenticated()"/>
+		<form-login login-page="/login.html" default-target-url="/index.html"  login-processing-url="/login-pro" username-parameter="j_username" password-parameter="j_password"
+			always-use-default-target="false" authentication-failure-url="/login-error.html"
+			authentication-success-handler-ref="myAuthenticationSuccessHandler" authentication-details-source-ref="ExtraParamSource"/>
+		<!-- <csrf/> -->
+		<csrf disabled="true"/>
+		<access-denied-handler error-page="/403-auth.html" />
+		<logout invalidate-session="true" delete-cookies="true" logout-success-url="/login.html" logout-url="/j_spring_security_logout"/>
+		<session-management invalid-session-url="/j_spring_security_logout">
+			<concurrency-control error-if-maximum-exceeded="true" max-sessions="1"/>
+		</session-management>
+	</http>
+
+	<beans:bean id="myAuthenticationSuccessHandler"
+		class="vn.yotel.yoker.web.security.MySimpleUrlAuthenticationSuccessHandler" />
+
+	<beans:bean id="myPermissionEvaluator"
+		class="vn.yotel.yoker.web.security.MyPermissionEvaluator" />
+
+	<beans:bean id="customAuthenticationProvider"
+		class="vn.yotel.yoker.web.security.CustomAuthenticationProvider"></beans:bean>
+        
+        <beans:bean id="ExtraParamSource" class="vn.yotel.yoker.web.security.ExtraParamSource"/>
+
+	<authentication-manager>
+		<authentication-provider ref="customAuthenticationProvider" />
+	</authentication-manager>
+</beans:beans>

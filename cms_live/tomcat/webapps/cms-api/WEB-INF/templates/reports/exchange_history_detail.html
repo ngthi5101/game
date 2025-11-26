@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Lịch sử giao dịch</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+        <link rel="stylesheet" type="text/css" media="all" href="bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}"/>
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+	    <div th:if="${userType} == 1">
+		<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+	    </div>
+	    <div th:if="${userType} == 2">
+		<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+	    </div>		
+	    <div th:if="${userType} == 4">
+		<div data-th-replace="solieu/sb-solieu :: top-nav"></div>
+		<div data-th-replace="solieu/sb-solieu :: vert-nav-admin"></div>
+	    </div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Lịch sử giao dịch</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="panel-body">
+                        <form role="form" method="post" th:action="@{/reports/exchange_history_detail.html}">
+                            <div class="row">
+                                <input hidden="true" value="0" name="type" />
+                                <div class="col-lg-3"  sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+                                    <label>Id khách hàng</label>
+				    <input type="text" name = "user_id" th:value="${user_id}" class="form-control span4"/>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Từ ngày - đến ngày</label>
+                                    <div class="input-prepend input-group">
+                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                        <input type="text" name = "from_date" id = "from_date" hidden="true" th:value="${from_date}"/>
+                                        <input type="text" name = "to_date" id = "to_date" hidden="true"  th:value="${to_date}"/> 
+                                        <input type="text" style="width: 100%" name="date_range" id="reservationtime" class="form-control span4"
+                                               value="08/01/2013 - 08/01/2013" th:value="${from_date} + ' - ' + ${to_date}" readonly="readonly" />
+                                    </div>
+                                </div>
+				<div class="col-lg-3">
+                                    <label>Loại giao dịch</label>
+                                    <div>
+                                        <select name="trade_type" class="form-control">
+					    <option value="all" th:selected="${trade_type == 'all'}">Tất cả</option>
+					    <option value="sendreceive" th:selected="${trade_type == 'sendreceive'}">Gửi/Nhận</option>
+					    <option value="send" th:selected="${trade_type == 'send'}">Gửi</option>
+					    <option value="receive" th:selected="${trade_type == 'receive'}">Nhận</option>
+					    <option value="play" th:selected="${trade_type == 'play'}">Chơi game</option>
+					</select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <button type="submit" class="btn btn-info">Xem </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+                        </form>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <div hidden="true" id = "platformId" th:text="${platformId}">
+                </div>
+                <div hidden="true" id = "cpNameId" th:text="${cpNameId}">
+                </div>
+                <div hidden="true" id = "subCpNameId" th:text="${subCpNameId}">
+                </div>
+                <div id="dataDay" class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-info" th:if="${ListGoldExchange} != null">
+                            
+                                <p>Đã tìm thấy <span th:text="${ListGoldExchangeNumber}"></span> dữ liệu</p>
+				<!-- <p class="report_text">Báo cáo trong thời gian từ: <span th:text="${from_date}"></span> đến <span th:text="${to_date}"></span></p>
+				<p>=================</p>
+				<p>ID cấp trên là: <span th:text="${list_ref_codes}"></span></p>
+				<p class="report_text">Số tiền nhận từ cấp trên: <span class="rcv_fr_parent"></span></p>
+				<p class="report_text">Số tiền chuyển cho cấp trên: <span class="send_to_parent"></span></p> -->
+				<br/>
+				<table class="summarize_table">
+					<tbody>
+						<!--<tr>
+							<td>Tổng bán đến user thường</td>
+							<td class="total_na_send_to" style="color: #d8a209;"></td>
+						</tr>
+						<tr>
+							<td>Tổng mua của user thường</td>
+							<td class="total_na_receive_from" style="color: #3c87bd;"></td>
+						</tr> -->
+						
+						<tr style="padding: 20px;border: 1px solid #000;">
+							<td>Tổng tiền gửi đến user thường</td>
+							<td class="total_na_send_to"></td>
+						</tr>
+						<tr style="padding: 20px;border: 1px solid #000;">
+							<td>Tổng tiền nhận từ user thường</td>
+							<td class="total_na_receive_from"></td>
+						</tr>
+						
+						<tr style="border: 1px solid #000;" sec:authorize="!hasAnyRole('ROLE_TONG', 'ROLE_C2')">
+							<td>Tổng tiền gửi đến admin </td>
+							<td class="total_a_send_to"></td>
+						</tr>
+						<tr style="border: 1px solid #000;" sec:authorize="!hasAnyRole('ROLE_TONG', 'ROLE_C2')">
+							<td>Tổng tiền nhận từ admin </td>
+							<td class="total_a_receive_from"></td>
+						</tr>
+						
+						<tr style="padding: 20px;border: 1px solid #000;">
+							<td>Tổng tiền gửi đến đại lí cấp 1</td>
+							<td class="total_agen1_send_to"></td>
+						</tr>
+						<tr style="padding: 20px;border: 1px solid #000;">
+							<td>Tổng tiền nhận từ đại lí cấp 1</td>
+							<td class="total_agen1_receive_from"></td>
+						</tr>
+						
+						<tr style="padding: 20px;border: 1px solid #000;" sec:authorize="!hasAnyRole('ROLE_TONG', 'ROLE_C2')">
+							<td>Tổng tiền gửi đến đại lí cấp 2</td>
+							<td class="total_agen2_send_to"></td>
+						</tr>
+						<tr style="padding: 20px;border: 1px solid #000;" sec:authorize="!hasAnyRole('ROLE_TONG', 'ROLE_C2')">
+							<td>Tổng tiền nhận từ đại lí cấp 2</td>
+							<td class="total_agen2_receive_from"></td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<div class="panel-heading">
+				<!--<div style="background: #80b8ff;padding: 20px;border: 1px solid #000;" sec:authorize="!hasAnyRole('ROLE_TONG', 'ROLE_C2')">
+					<p><br/></p>
+					<p>Tổng tiền gửi đến admin: <span class="total_a_send_to"></span></p>
+					<table class="table table-striped table-bordered table-hover">
+						<tbody class="list_a_send_to"></tbody>
+					</table>
+					<p><br/></p>
+					<p>Tổng tiền nhận từ admin: <span class="total_a_receive_from"></span></p>
+					<table class="table table-striped table-bordered table-hover" >
+						<tbody class="list_a_receive_from"></tbody>
+					</table>
+				</div>-->
+				<!-- <div style="background: #ecc376;padding: 20px;border: 1px solid #000;">
+					<p><br/></p>
+					<p>Tổng tiền gửi đến đại lí cấp 1: <span class="total_agen1_send_to"></span></p>
+					<table class="table table-striped table-bordered table-hover">
+						<tbody class="list_agen1_send_to"></tbody>
+					</table>
+					<p><br/></p>
+					<p>Tổng tiền nhận từ đại lí cấp 1: <span class="total_agen1_receive_from"></span></p>
+					<table class="table table-striped table-bordered table-hover" >
+						<tbody class="list_agen1_receive_from"></tbody>
+					</table>
+				</div>-->
+				<!--<div style="background: #76f7cc;padding: 20px;border: 1px solid #000;" sec:authorize="!hasAnyRole('ROLE_TONG', 'ROLE_C2')">
+					<p><br/></p>
+					<p>Tổng tiền gửi đến đại lí cấp 2: <span class="total_agen2_send_to"></span></p>
+					<table class="table table-striped table-bordered table-hover">
+						<tbody class="list_agen2_send_to"></tbody>
+					</table>
+					<p><br/></p>
+					<p>Tổng tiền nhận từ đại lí cấp 2: <span class="total_agen2_receive_from"></span></p>
+					<table class="table table-striped table-bordered table-hover" >
+						<tbody class="list_agen2_receive_from"></tbody>
+					</table>
+				</div>-->
+				<!--<div style="background: darkkhaki;padding: 20px;border: 1px solid #000;">
+					<p><br/></p>
+					<p>Tổng tiền gửi đến user thường: <span class="total_na_send_to"></span></p>
+					<table class="table table-striped table-bordered table-hover">
+						<tbody class="list_na_send_to"></tbody>
+					</table>
+					<p><br/></p>
+					<p>Tổng tiền nhận từ user thường: <span class="total_na_receive_from"></span></p>
+					<table class="table table-striped table-bordered table-hover" >
+						<tbody class="list_na_receive_from"></tbody>
+					</table>
+				</div>-->
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id = "tblUsers">
+                                        <thead>
+                                            <tr>
+						<th>ID Tài khoản</th>
+						<th>Ngày giờ</th>
+						<th>Thay đổi</th>
+						<th>Gold sau thay đổi</th>
+						<th>Nội dung giao dịch</th>
+						<th>Loại giao dịch</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneData, iterStat : ${ListGoldExchange}">
+						<td th:text="${oneData.userId}"> 0 </td>
+						<td th:text="${oneData.datetime}"> 0 </td>
+						<td th:text="${#numbers.formatDecimal(oneData.goldChange, 0, 'COMMA', 0, 'POINT')}" class="td_change_number"> 0 </td>
+						<td th:text="${#numbers.formatDecimal(oneData.gold, 0, 'COMMA', 0, 'POINT')}"> 0 </td>
+						<td th:text="${oneData.reason}" class="td_noidung"> 0 </td>
+                                                <td th:text="${oneData.reasonCode}"> 0 </td>
+						<!--                                                <td th:text="${oneData.id}"> 0 </td>
+																		<td th:text="${oneData.matchId}"> 0 </td>
+																		<td th:text="${oneData.impact}"> 0 </td>
+																		<td th:text="${oneData.data}"> 0 </td>-->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="../js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+        <script src="../js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js}"></script>
+
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+        <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+        <script type="text/javascript" src="bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+        <script type="text/javascript" src="bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+        <!-- export data -->
+        <script src="js/plugins/dataTables/excellentexport.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/excellentexport.min.js}"></script>
+        <script type="text/javascript" th:inline="javascript">
+			/*<![CDATA[*/
+			var data = [];
+			var dataDashboard = [];
+			var currUrl = /*[[@{/}]]*/ "";
+			var list_ref_codes = /*[[${list_ref_codes}]]*/ '';
+			list_ref_codes = (""+list_ref_codes).split(",");
+			console.log("list_ref_codes: ");
+			console.log(list_ref_codes);
+			var ids_of_admin = /*[[${ids_of_admin}]]*/ '';
+			ids_of_a = (""+ids_of_admin).split(",");
+			console.log("ids_of_a:");
+			console.log(ids_of_a);
+			var ids_of_agen1 = /*[[${ids_of_agen1}]]*/ '';
+			ids_of_agen1 = (""+ids_of_agen1).split(",");
+			console.log("ids_of_agen1:");
+			console.log(ids_of_agen1);
+			var ids_of_agen2 = /*[[${ids_of_agen2}]]*/ '';
+			ids_of_agen2 = (""+ids_of_agen2).split(",");
+			console.log("ids_of_agen2:");
+			console.log(ids_of_agen2);
+			/*]]>*/
+        </script>
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script type="text/javascript" th:inline="javascript">
+			//<![CDATA[
+			function doViewRevenueReport() {
+			}
+			;
+
+			function doSearchUser() {
+				window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+				return false;
+			}
+			;
+
+			$(document).ready(function () {
+				//$('#tblUsers').dataTable( );
+				var platformId = $("#platformId").html();
+				$("#platform").val(platformId);
+
+				var cpNameId = $("#cpNameId").html();
+				$("#cpName").val(cpNameId);
+				var subCpNameId = $("#subCpNameId").html();
+				$("#subCpName").val(subCpNameId);
+
+				CalculateTotalGold();
+			});
+
+			$('#reservationtime').daterangepicker({
+				timePicker: false,
+				format: 'YYYY/MM/DD'
+			}, function (start, end, label) {
+				console.log('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+				$('#from_date').val(start.format('YYYY-MM-DD'));
+				$('#to_date').val(end.format('YYYY-MM-DD'));
+			});
+
+			var rcv_fr_parent = 0;	// Tổng số tiền nhận từ cấp trên
+			var send_to_parent = 0;	// Tổng số tiền gửi cho cấp trên
+			
+			var total_a_send_to = 0; // Tổng số tiền gửi cho các admin
+			var list_a_send_to = [];   // Danh sách các admin đã nhận tiền
+			var total_a_receive_from = 0; // Tổng số tiền nhận từ các admin
+			var list_a_receive_from = [];   // Danh sách các admin đã gửi tiền đến
+			
+			var total_agen1_send_to = 0; // Tổng số tiền gửi cho các agency level 1
+			var list_agen1_send_to = [];   // Danh sách các agency level 1 đã nhận tiền
+			var total_agen1_receive_from = 0; // Tổng số tiền nhận từ các agency level 1
+			var list_agen1_receive_from = [];   // Danh sách các agency level 1 đã gửi tiền đến
+			
+			var total_agen2_send_to = 0; // Tổng số tiền gửi cho các agency level 2
+			var list_agen2_send_to = [];   // Danh sách các agency level 2 đã nhận tiền
+			var total_agen2_receive_from = 0; // Tổng số tiền nhận từ các agency level 2
+			var list_agen2_receive_from = [];   // Danh sách các agency level 2 đã gửi tiền đến
+			
+			var total_na_send_to = 0; // Tổng số tiền gửi cho các user thường
+			var list_na_send_to = [];   // Danh sách các user thừng đã nhận tiền
+			var total_na_receive_from = 0; // Tổng số tiền nhận từ các user thường
+			var list_na_receive_from = [];   // Danh sách các user thường đã gửi tiền đến
+			
+			function CalculateTotalGold() {
+				// Lặp toàn bộ nội dung chuyển tiền
+				$('.td_noidung').each((i, o) => {
+					console.log("=================\n")
+					// Phần nội dung chuyển tiền, xóa chỗ tin nhắn:
+					var noidung = $(o).text();
+					var tn_position = noidung.indexOf("Tin nhắn:");
+					if (tn_position !== -1)
+						noidung = noidung.substring(0, tn_position);
+					console.log("noidung: " + noidung);
+					if(noidung[noidung.length-1] === '.')
+						noidung = noidung.substring(0, noidung.length-1);
+					if(noidung[noidung.length-2] === '.')
+						noidung = noidung.substring(0, noidung.length-2);
+					if(noidung[noidung.length-3] === '.')
+						noidung = noidung.substring(0, noidung.length-3);
+					var patt = /[0-9]+\-.*/;	// Pattern để tìm [id]-[tên] của đối tượng đích trong tin nhắn giao dịch
+					var id_and_name_target = ""+patt.exec(noidung);
+					// console.log("id_and_name_target: "+id_and_name_target)
+					var id_target = id_and_name_target.substring(0, id_and_name_target.indexOf("-")) ;
+					console.log("id_target: "+id_target)
+					
+					// Lấy số tiền
+					var amout = $(o).parent().find('.td_change_number').text();
+					amout = amout.replaceAll(",", "");
+					amout = parseInt(amout);
+					console.log("amout 3: " + amout);
+					console.log("agen1 include "+id_target+": " + ids_of_agen1.includes(id_target));
+					if(id_target != ""){
+						console.log("gui/nhan tien tu user thuong");
+					}
+					
+					// Tinhs 
+					if(ids_of_a.includes(id_target)){
+						console.log("a");
+					    // Tính tổng tiền đã gửi cho admin
+					    if(amout < 0){
+						total_a_send_to += amout
+						if(typeof list_a_send_to[id_target] === 'undefined'){
+						    list_a_send_to[id_target] = {"id": id_target, "amout" : amout}
+						} else {
+						    list_a_send_to[id_target].amout += amout
+						}
+					    }
+					    // Tính tổng tiền đã nhận từ admin/agency
+					    if(amout > 0){
+						total_a_receive_from += amout
+						if(typeof list_a_receive_from[id_target] === 'undefined'){
+						    list_a_receive_from[id_target] = {"id": id_target, "amout" : amout}
+						} else {
+						    list_a_receive_from[id_target].amout += amout
+						}
+					    }
+					}
+					else if(ids_of_agen1.includes(id_target)){
+						console.log("b");
+					    // Tính tổng tiền đã gửi cho agency1
+					    if(amout < 0){
+							total_agen1_send_to += amout
+							if(typeof list_agen1_send_to[id_target] === 'undefined'){
+								list_agen1_send_to[id_target] = {"id": id_target, "amout" : amout}
+							} else {
+								list_agen1_send_to[id_target].amout += amout
+							}
+					    }
+					    // Tính tổng tiền đã nhận từ agency1
+					    if(amout > 0){
+							total_agen1_receive_from += amout
+							if(typeof list_agen1_receive_from[id_target] === 'undefined'){
+								list_agen1_receive_from[id_target] = {"id": id_target, "amout" : amout}
+							} else {
+								list_agen1_receive_from[id_target].amout += amout
+							}
+					    }
+					}
+					else if(ids_of_agen2.includes(id_target)){
+						console.log("c");
+					    // Tính tổng tiền đã gửi cho agency1
+					    if(amout < 0){
+						total_agen2_send_to += amout
+							if(typeof list_agen2_send_to[id_target] === 'undefined'){
+								list_agen2_send_to[id_target] = {"id": id_target, "amout" : amout}
+							} else {
+								list_agen2_send_to[id_target].amout += amout
+							}
+					    }
+					    // Tính tổng tiền đã nhận từ agency1
+					    if(amout > 0){
+							total_agen2_receive_from += amout
+							if(typeof list_agen2_receive_from[id_target] === 'undefined'){
+								list_agen2_receive_from[id_target] = {"id": id_target, "amout" : amout}
+							} else {
+								list_agen2_receive_from[id_target].amout += amout
+							}
+					    }
+					}
+					else if(list_ref_codes.includes(id_target)){
+						console.log("d");
+						// Kiểm tra xem nội dung chuyển tiền có phải là chuyển cho cấp trên không
+						if (amout > 0) {
+						rcv_fr_parent += amout;
+						}
+						if (amout < 0) {
+							send_to_parent += amout;
+						}					
+					}
+					else if(id_target != ""){
+						console.log("e");
+						console.log("gui/nhan tien tu user thuong");
+					    // Tính tổng tiền đã gửi cho users
+					    if(amout < 0){
+							total_na_send_to += amout
+							if(typeof list_na_send_to[id_target] === 'undefined'){
+								list_na_send_to[id_target] = {"id": id_target, "amout" : amout}
+							} else {
+								list_na_send_to[id_target].amout += amout
+							}
+					    }
+					    // Tính tổng tiền đã nhận từ users
+					    if(amout > 0){
+							total_na_receive_from += amout
+							if(typeof list_na_receive_from[id_target] === 'undefined'){
+								list_na_receive_from[id_target] = {"id": id_target, "amout" : amout}
+							} else {
+								list_na_receive_from[id_target].amout += amout
+							}
+					    }
+					}
+					console.log("fnish =======");
+				});
+				console.log("rcv_fr_parent: " + rcv_fr_parent + ", send_to_parent: " + send_to_parent);
+				$('.rcv_fr_parent').text(numberWithCommas(rcv_fr_parent));
+				$('.send_to_parent').text(numberWithCommas(send_to_parent*-1));
+				$('.report_text').show();
+				
+				//Hiện báo cáo với các admin
+				console.log("total_a_send_to")
+				console.log(total_a_send_to)
+				$('.total_a_send_to').text(numberWithCommas(total_a_send_to*-1))
+				console.log("list_a_send_to ")
+				console.log(list_a_send_to)
+				for(var x in list_a_send_to){
+				    $('.list_a_send_to').append("<tr><td>"+list_a_send_to[x].id+"</td><td>"+numberWithCommas(list_a_send_to[x].amout*-1)+"</td></tr>");
+				}
+				console.log("total_a_receive_from ")
+				console.log(total_a_receive_from)
+				$('.total_a_receive_from').text(numberWithCommas(total_a_receive_from))
+				console.log("list_a_receive_from ")
+				console.log(list_a_receive_from)
+				for(var x in list_a_receive_from){
+				    $('.list_a_receive_from').append("<tr><td>"+list_a_receive_from[x].id+"</td><td>"+numberWithCommas(list_a_receive_from[x].amout)+"</td></tr>");
+				}
+				
+				//Hiện báo cáo với các agen1
+				console.log("total_agen1_send_to")
+				console.log(total_agen1_send_to)
+				$('.total_agen1_send_to').text(numberWithCommas(total_agen1_send_to*-1))
+				console.log("list_agen1_send_to ")
+				console.log(list_agen1_send_to)
+				for(var x in list_agen1_send_to){
+				    $('.list_agen1_send_to').append("<tr><td>"+list_agen1_send_to[x].id+"</td><td>"+numberWithCommas(list_agen1_send_to[x].amout*-1)+"</td></tr>");
+				}
+				console.log("total_agen1_receive_from ")
+				console.log(total_agen1_receive_from)
+				$('.total_agen1_receive_from').text(numberWithCommas(total_agen1_receive_from))
+				console.log("list_agen1_receive_from ")
+				console.log(list_agen1_receive_from)
+				for(var x in list_agen1_receive_from){
+				    $('.list_agen1_receive_from').append("<tr><td>"+list_agen1_receive_from[x].id+"</td><td>"+numberWithCommas(list_agen1_receive_from[x].amout)+"</td></tr>");
+				}
+				
+				//Hiện báo cáo với các agen2
+				console.log("total_agen2_send_to")
+				console.log(total_agen2_send_to)
+				$('.total_agen2_send_to').text(numberWithCommas(total_agen2_send_to*-1))
+				console.log("list_agen2_send_to ")
+				console.log(list_agen2_send_to)
+				for(var x in list_agen2_send_to){
+				    $('.list_agen2_send_to').append("<tr><td>"+list_agen2_send_to[x].id+"</td><td>"+numberWithCommas(list_agen2_send_to[x].amout*-1)+"</td></tr>");
+				}
+				console.log("total_agen2_receive_from ")
+				console.log(total_agen2_receive_from)
+				$('.total_agen2_receive_from').text(numberWithCommas(total_agen2_receive_from))
+				console.log("list_agen2_receive_from ")
+				console.log(list_agen2_receive_from)
+				for(var x in list_agen2_receive_from){
+				    $('.list_agen2_receive_from').append("<tr><td>"+list_agen2_receive_from[x].id+"</td><td>"+numberWithCommas(list_agen2_receive_from[x].amout)+"</td></tr>");
+				}
+				
+				//Hiện báo cáo với các user khác
+				console.log("total_na_send_to")
+				console.log(total_na_send_to)
+				$('.total_na_send_to').text(numberWithCommas(total_na_send_to*-1))
+				console.log("list_na_send_to ")
+				console.log(list_na_send_to)
+				for(var x in list_na_send_to){
+				    $('.list_na_send_to').append("<tr><td>"+list_na_send_to[x].id+"</td><td>"+numberWithCommas(list_na_send_to[x].amout*-1)+"</td></tr>");
+				}
+				console.log("total_na_receive_from ")
+				console.log(total_na_receive_from)
+				$('.total_na_receive_from').text(numberWithCommas(total_na_receive_from))
+				console.log("list_na_receive_from ")
+				console.log(list_na_receive_from)
+				for(var x in list_na_receive_from){
+				    $('.list_na_receive_from').append("<tr><td>"+list_na_receive_from[x].id+"</td><td>"+numberWithCommas(list_na_receive_from[x].amout)+"</td></tr>");
+				}
+			}
+
+			const numberWithCommas = (x) => {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+			String.prototype.replaceAll = function (search, replacement) {
+				var target = this;
+				return target.replace(new RegExp(search, 'g'), replacement);
+			};
+			/*]]>*/
+        </script>
+	<script>
+		$(document).ready(()=>{
+			$('.td_noidung').each((i, o)=>{
+				if($(o).text().substr(0, 4) == 'Gửi '){
+					$(o).addClass("ban");
+				}
+				if($(o).text().substr(0, 4) == 'Nhận'){
+					$(o).addClass("mua");
+				}
+			});
+		});
+	</script>
+	<style>.report_text{display: none;}
+	table{border-collapse: collapse;}
+	td, th {
+		border: 1px solid #000;
+		text-align: left;
+		padding: 8px;
+	  }
+	  td{font-weight: bold; min-width: 120px;}
+	  .td_noidung.ban{color: #d8a209;font-weight: bold;}
+	  .td_noidung.mua{color: #3c87bd;font-weight: bold;}
+	  .summarize_table tr td:first-child{color:#000;font-weight: normal;}
+	  .summarize_table tr:nth-child(odd) td:nth-child(2){color: #d8a209;}
+	  .summarize_table tr:nth-child(even) td:nth-child(2){color: #3c87bd;}
+	</style>
+    </body>
+
+</html>

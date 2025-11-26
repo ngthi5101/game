@@ -1,0 +1,132 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Spring Quartz -->
+	<bean name="checkClientJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.CheckClientJob" />
+	</bean>
+	
+	<bean name="timerTickJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.TimerTickJob" />
+	</bean>
+
+	<bean name="cleanSessionJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.CleanSessionJob" />
+	</bean>
+	<bean name="cleanChannelJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.CleanChannelJob" />
+	</bean>
+	
+	<!-- update top job -->
+	<bean name="updateTopJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.UpdateTopJob" />
+	</bean>
+	<!-- update daily task job -->
+	<bean name="dailyTaskJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.DailyTaskJob" />
+	</bean>
+	<bean name="updateBotKoinJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.UpdateKoinForBotJob" />
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="bots">
+					<list>
+						<value>bot001</value>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean name="jvmGCJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.JvmGCJob" />
+	</bean>
+	
+	<bean name="statsMonitorJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="vn.yotel.yoker.job.GameStatsMonitorJob" />
+	</bean>
+	
+	<!-- Simple Trigger, run every 5 seconds -->
+	<bean id="checkClientJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="checkClientJob" />
+		<property name="repeatInterval" value="300000" /> <!-- 300s -->
+		<property name="startDelay" value="1000" />
+	</bean>
+	<bean id="cleanChannelJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="cleanChannelJob" />
+		<property name="repeatInterval" value="60000" /> <!-- 60s -->
+		<property name="startDelay" value="2000" />
+	</bean>
+	
+	<bean id="timerTickJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="timerTickJob" />
+		<property name="repeatInterval" value="1000" /> <!-- 1s -->
+		<property name="startDelay" value="1000" />
+	</bean>
+
+	<bean id="cleanSessionJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="cleanSessionJob" />
+		<property name="repeatInterval" value="60000" /> <!-- 60s -->
+		<property name="startDelay" value="1000" />
+	</bean>
+	<bean id="updateTopJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="updateTopJob" />
+		<property name="repeatInterval" value="600000" /> <!-- 10*60s -->
+		<property name="startDelay" value="5000" />
+	</bean>		
+	<!-- daily task Trigger, run 12h every days -->
+	<bean id="dailyTaskJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="dailyTaskJob" />
+			<!-- every 30 sec -->
+		<!-- <property name="cronExpression" value="0/30 * * * * ?"/> -->
+		<!-- run every days at 24 H -->
+    	<property name="cronExpression" value="0 0 0 * * ?"/>
+	</bean>		
+	<bean id="updateBotKoinJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="updateBotKoinJob" />
+		<property name="repeatInterval" value="30000" /> <!-- 10' -->
+		<property name="startDelay" value="30000" />
+	</bean>
+	<bean id="jvmGCJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="jvmGCJob" />
+		<property name="repeatInterval" value="60000" /> <!-- 20s -->
+		<property name="startDelay" value="10000" />
+	</bean>
+	
+	<bean id="statsMonitorJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="statsMonitorJob" />
+		<property name="repeatInterval" value="30000" /> <!-- 60s -->
+		<property name="startDelay" value="3000" />
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+<!--		<property name="jobDetails">
+			<list>
+				<ref bean="checkClientJob" />
+				<ref bean="timerTickJob" />
+				<ref bean="cleanSessionJob" />
+				<ref bean="cleanChannelJob" />				
+				<ref bean="updateBotKoinJob" />
+				<ref bean="jvmGCJob" />
+				<ref bean="statsMonitorJob" />
+				<ref bean="updateTopJob" />
+				<ref bean="dailyTaskJob" />
+			</list>
+		</property>-->
+		<property name="triggers">
+			<list>
+				<ref bean="checkClientJobTrigger" />
+				<ref bean="timerTickJobTrigger" />
+				<ref bean="cleanSessionJobTrigger" />
+				<ref bean="cleanChannelJobTrigger" />				
+				<ref bean="updateBotKoinJobTrigger" />
+				<ref bean="jvmGCJobTrigger" />
+				<ref bean="statsMonitorJobTrigger" />
+				<ref bean="updateTopJobTrigger" />
+				<ref bean="dailyTaskJobTrigger" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

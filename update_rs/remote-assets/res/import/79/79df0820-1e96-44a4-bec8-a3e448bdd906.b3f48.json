@@ -1,0 +1,60 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "TaiXiu_Effect.plist",
+  "_spriteFrames": {
+    "ef01": {
+      "__uuid__": "e6SmNwqZ1Am6dJa85TAzNv"
+    },
+    "ef02": {
+      "__uuid__": "f0nUcsAKZNJrJZTRo0Q5/1"
+    },
+    "ef03": {
+      "__uuid__": "3fSje2arhHAJrlY4MGJWZO"
+    },
+    "ef04": {
+      "__uuid__": "e0lg9RkEpL67/0afoJAXs7"
+    },
+    "ef05": {
+      "__uuid__": "010zK4R71JfacdngeTE/k0"
+    },
+    "ef06": {
+      "__uuid__": "83ENGiilJA+otEUbNn4OPV"
+    },
+    "ef07": {
+      "__uuid__": "7alfWOapJK35151uSxMOSK"
+    },
+    "ef08": {
+      "__uuid__": "d867hyPe1DtLiiktA8LOcW"
+    },
+    "ef09": {
+      "__uuid__": "eeScPAtwhBtJhZMyRjn0tj"
+    },
+    "ef10": {
+      "__uuid__": "66dUN8MnpNtIXvuF5ZPOk0"
+    },
+    "ef11": {
+      "__uuid__": "049w+yCpFOL4MDmFbWSlVc"
+    },
+    "ef12": {
+      "__uuid__": "73vHT/wA5P7qBmxaqXRBSk"
+    },
+    "ef13": {
+      "__uuid__": "c81rzm3wZE1abfM06an6c3"
+    },
+    "ef14": {
+      "__uuid__": "1bK6RScGJGL4LMSCRbi9Hr"
+    },
+    "ef15": {
+      "__uuid__": "f8sGyhiWZAxoklaKB2W1/j"
+    },
+    "ef16": {
+      "__uuid__": "3ckNl5VO5EA5UAo0j5VKh1"
+    },
+    "ef17": {
+      "__uuid__": "65mSReP1hIu5794dYLjji/"
+    },
+    "ef18": {
+      "__uuid__": "a4UssvXHNOcZiD6qkxX1P4"
+    }
+  }
+}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}" />
+
+		<title data-th-text="#{admin.page.title}">Yoker - Dealer Config</title>
+
+		<!-- Core CSS - Include with every page -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+		<link rel="stylesheet" type="text/css" media="all" href="bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+		<!-- SB Admin CSS - Include with every page -->
+		<link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}"/>
+		<link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+    </head>
+
+    <body>
+
+		<div id="wrapper">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Giftcode</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="panel-body">
+						<form role="form" method="post" th:action="@{/config/giftcodes.html}">
+							<div class="row">
+								<input hidden="true" value="0" name="type" />
+								<div class="col-lg-3">
+									<label for="code_id">Mã Giftcode</label> 
+									<input type="text" name="code_id" id="code_id" class="form-control" th:value="${code_id}"/>
+								</div>
+								<div class="col-lg-3" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_TONG')">
+									<label for="user_id">ID Đại lí</label> 
+									<input type="text" name="user_id" id="user_id" class="form-control" th:value="${user_id} == 0 ? '' : ${user_id}" />
+								</div>
+								<!--							<div class="col-lg-3">
+																<label>Từ ngày - đến ngày</label>
+																<div class="input-prepend input-group">
+																	<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> <input type="text" name="from_date"
+																		id="from_date" hidden="true" th:value="${from_date}" /> <input type="text" name="to_date" id="to_date" hidden="true" th:value="${to_date}" /> <input
+																		type="text" style="width: 100%" name="date_range" id="reservationtime" class="form-control span4" value="08/11/2016 - 08/09/2017"
+																		th:value="${from_date} + ' - ' + ${to_date}" readonly="readonly" />
+																</div>
+															</div>
+															<div class="col-lg-3">
+																<label>Trạng thái</label> <select name="status" id="status" class="form-control">
+																	<option value="0">Mới</option>
+																	<option value="1">Đã đổi</option>
+																</select>
+															</div>-->
+								<div class="col-lg-2">
+									<label>&nbsp;</label>
+									<div>
+										<button type="submit" class="btn btn-info">Tìm</button>
+									</div>
+								</div>
+							</div>
+							<!-- .row -->
+						</form>
+						<div class="row">
+							<div class="col-xs-12">
+								<br/>
+								<div th:if="${total_gc}">
+									<p style="color: #ecba00;font-weight: bold;font-size: 16px;">Tổng tiền giftcode đã in: <span class="format_gold" th:text="${total_gc}"></span></p>
+								</div>
+								<div th:if="${used_gc}">
+									<p style="color: #e60303;font-weight: bold;font-size: 16px;">Tổng tiền giftcode đã dùng <span class="format_gold" th:text="${used_gc}"></span></p>
+								</div>
+								<div th:if="${free_gc}">
+									<p style="color: green;font-weight: bold;font-size: 16px;">Tổng tiền giftcode chưa dùng: <span class="format_gold" th:text="${free_gc}"></span></p>
+								</div>
+							</div>
+						</div>
+						<!-- /.row (nested) -->
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<form role="form" method="POST" th:action="@{/config/creategiftcodes.html}" th:object="${giftCodes}">
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<ul class="nav nav-pills">
+										<li>Thông tin</li>
+										<li class="pull-right"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+												<i class="fa fa-plus-circle"> Tạo mới giftcodes</i>
+											</button></li>
+									</ul>
+								</div>
+								<!-- Modal -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title" id="myModalLabel">Tạo mã code</h4>
+											</div>
+											<div class="modal-body">
+												<div class="form-group">
+													<label for="number">Số lượng</label>
+													<input type="text" class="form-control" id="number" name="number" placeholder="number"/>
+												</div>
+												<div class="form-group">
+													<label for="value">Giá trị</label>
+													<select name="value" id="value" class="form-control">
+														<option value="5000">5.000</option>
+														<option value="10000">10.000</option>
+														<option value="15000">15.000</option>
+														<option value="20000">20.000</option>
+														<option value="25000">25.000</option>
+														<option value="30000">30.000</option>
+														<option value="50000">50.000</option>
+														<option value="100000">100.0000</option>
+														<option value="200000">200.0000</option>
+														<option value="500000">500.0000</option>
+														<option value="1000000">1.000.0000</option>
+														<option value="2000000">2.000.0000</option>
+													</select>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary" name="add">Save</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="table-responsive">
+											<table class="display responsive" id="dataTables">
+												<thead>
+													<tr>
+														<th>#</th>
+														<th class="alway_show">Mã thẻ</th>
+														<th>Lô</th>
+														<th>Giá trị</th>
+														<th>Trạng thái</th>
+														<th>Ngày hết hạn</th>
+														<th>Ngày đổi</th>
+														<th>Tên Người sử dụng</th>
+													</tr>
+												</thead>
+												<tbody th:if="${giftCodes} != null">
+													<tr th:each="oneCard, iterStat : ${giftCodes}">
+														<td th:text="${iterStat.count}">1</td>
+														<td th:text="${oneCard.code}" class="alway_show">Thẻ 10K</td>
+														<td>Lô <span th:text="${oneCard.groupId}"></span></td>
+														<td th:text="${oneCard.value}" class="numbers_align format_gold">5</td>
+														<td>
+															<div th:switch="'' + ${oneCard.status}">
+																<p th:case="0" class="row_status">Mới</p>
+																<p th:case="1" class="row_status">Đã đổi</p>
+															</div>
+														</td>
+														<td th:text="${oneCard.expireDate}" class="numbers_align">100K</td>
+														<td th:text="${oneCard.chargeDate}" class="numbers_align">100K</td>
+
+														<td th:text="${oneCard.username}" class="numbers_align">100K</td>
+													</tr>
+												</tbody>
+											</table>
+											<button class="btn btn-info" onclick="OnlyCodesColumn(); return false;">Chỉ xem cột codes</button>
+										</div>
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+								<!-- /.panel-body -->
+							</div>
+							<!-- /.panel -->
+						</form>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#page-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- Core Scripts - Include with every page -->
+		<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+		<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+		<!-- Page-Level Plugin Scripts - Dashboard -->
+		<script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+		<script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+		<!-- Page-Level Plugin Scripts - Tables -->
+		<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+		<!-- SB Admin Scripts - Include with every page -->
+		<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+		<!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+		<script type="text/javascript" src="bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+		<script type="text/javascript" src="bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+		<script src="js/sb-admin.js" th:src="@{/resources/bootstrap-daterangepicker/bootstrap-datepicker.min.js}"></script>
+		<!-- export data -->
+		<script src="js/plugins/dataTables/excellentexport.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/excellentexport.min.js}"></script>
+		<script>
+								// Chặn nhấn phím enter
+								$(document).keypress(
+										function (event) {
+											if (event.which == '13') {
+												event.preventDefault();
+											}
+										});
+								$(document).ready(function () {
+									$('.row_status').each((i, o) => {
+										if ($(o).text() == "Đã đổi") {
+											$(o).parents('tr').addClass('charged');
+										}
+									});
+									$('#dataTables').dataTable({
+										responsive: true
+									});
+									$("#day").datepicker({
+										format: "yyyy-MM-dd",
+										autoclose: true,
+										todayHighlight: true
+									});
+									
+									$('.format_gold').each((i, o)=>{
+										let text = $(o).text();
+										$(o).text(numberWithCommas(text));
+									});
+								});
+								$('#reservationtime').daterangepicker({
+									timePicker: false,
+									format: 'YYYY/MM/DD'
+								}, function (start, end, label) {
+									console.log('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+									$('#from_date').val(start.format('YYYY-MM-DD'));
+									$('#to_date').val(end.format('YYYY-MM-DD'));
+								});
+								function OnlyCodesColumn() {
+									$('#dataTables').toggleClass("onlycodescolumn");
+								}
+								const numberWithCommas = (x) => {
+									return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+								}
+								String.prototype.replaceAll = function (search, replacement) {
+									var target = this;
+									return target.replace(new RegExp(search, 'g'), replacement);
+								};
+		</script>
+		<style>
+			#dataTables.onlycodescolumn tr th, #dataTables.onlycodescolumn tr td{display:none;}
+			#dataTables.onlycodescolumn tr th.alway_show, #dataTables.onlycodescolumn tr td.alway_show{display:table-cell !important;}
+			tr.charged td{    background: #ff7373c9 !important;}
+			tr.charged td .row_status{color:red;font-weight: bold;}
+		</style>
+    </body>
+
+</html>

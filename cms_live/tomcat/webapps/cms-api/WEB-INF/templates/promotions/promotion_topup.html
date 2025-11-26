@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title data-th-text="#{admin.page.title}">Yoker - Khuyễn mãi nạp SMS, Thẻ cào</title>
+
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="bootstrap-daterangepicker/daterangepicker-bs3.css"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="css/plugins/timeline/timeline.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Khuyến mại</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Tham số khuyến mại SMS</div>
+						<div class="panel-body">
+							<form role="form" method="post" action="promotion_topup.html">
+								<div class="row">
+									<input hidden="true" value="0" name="type" />
+									<div class="col-lg-5">
+										<label>Từ ngày - đến ngày</label>
+										<div class="input-prepend input-group">
+											<span class="add-on input-group-addon"><i
+												class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> <input
+												type="text" style="width: 100%;" name="sms_date_range"
+												id="reservationtime" class="form-control span4"
+												value="08/01/2013 01:00 - 08/01/2013 21:30"
+												th:value="${smsConfig.fromTo}" readonly="readonly" />
+										</div>
+									</div>
+									<div class="col-lg-1">
+										<label>Hệ số</label>
+										<div id="dt-picker3" class="form-group input-group">
+											<input type="text" class="form-control" name="multiply"
+												value="0" th:value="${smsConfig.multiply}" />
+										</div>
+									</div>
+									<!-- /.col-lg-6 (nested) -->
+								</div>
+								<div class="row">
+									<div class="col-lg-4">
+										<button type="submit" class="btn btn-default">Lưu
+											tham số</button>
+									</div>
+								</div>
+							</form>
+							<!-- /.row (nested) -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Tham số khuyến mại thẻ cào</div>
+						<div class="panel-body">
+							<form role="form" method="post" action="promotion_topup.html">
+								<div class="row">
+									<input hidden="true" value="1" name="type" />
+									<div class="col-lg-5">
+										<label>Từ ngày - đến ngày</label>
+										<div class="input-prepend input-group">
+											<span class="add-on input-group-addon"><i
+												class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> <input
+												type="text" style="width: 100%;" name="card_date_range"
+												id="reservationtime2" class="form-control span4"
+												value="08/01/2013 01:00 - 08/01/2013 21:30"
+												th:value="${cardConfig.fromTo}" readonly="readonly" />
+										</div>
+									</div>
+									<div class="col-lg-1"></div>
+								</div>
+								<!-- /.col-lg-6 (nested) -->
+								<div class="row"  style="margin-top: 30px;"> 		
+											                                
+                                       <div class="col-lg-3">    
+                                       <label>Thẻ 10.000 VNĐ</label>                                                
+                                        <div id="dt-picker3" class="form-group input-group">                                                                            
+                                            <input type="text" class="form-control" name="value10"
+                                                value="0" th:value="${cardConfig.value10}" />
+                                        </div>
+                                        </div>
+                                            <div class="col-lg-3">
+                                            <label>Thẻ 20.000 VNĐ</label>
+                                            <div id="dt-picker3" class="form-group input-group">
+                                                <input type="text" class="form-control" name="value20"
+                                                    value="0" th:value="${cardConfig.value20}" />
+                                            </div>    
+                                            </div>                                            
+                                           
+                                            <div class="col-lg-3">
+                                                <label>Thẻ 30.000 VNĐ</label>
+                                                <div id="dt-picker3" class="form-group input-group">
+                                                    <input type="text" class="form-control" name="value30"
+                                                        value="0" th:value="${cardConfig.value30}" />
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                <label>Thẻ 50.000 VNĐ</label>
+                                                <div id="dt-picker3" class="form-group input-group">
+                                                    <input type="text" class="form-control" name="value50"
+                                                        value="0" th:value="${cardConfig.value50}" />
+                                                </div>
+                                            </div>                                             
+                                            <div class="col-lg-3">
+                                                <label>Thẻ 100.000 VNĐ</label>
+                                                <div id="dt-picker3" class="form-group input-group">
+                                                    <input type="text" class="form-control" name="value100"
+                                                        value="0" th:value="${cardConfig.value100}" />
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                <label>Thẻ 200.000 VNĐ</label>
+                                                <div id="dt-picker3" class="form-group input-group">
+                                                    <input type="text" class="form-control" name="value200"
+                                                        value="0" th:value="${cardConfig.value200}" />
+                                                </div>
+                                            </div>                                           
+                                            <div class="col-lg-3">
+                                                <label>Thẻ 300.000 VNĐ</label>
+                                                <div id="dt-picker3" class="form-group input-group">
+                                                    <input type="text" class="form-control" name="value300"
+                                                        value="0" th:value="${cardConfig.value300}" />
+                                                </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                <label>Thẻ 500.000 VNĐ</label>
+                                                <div id="dt-picker3" class="form-group input-group">
+                                                    <input type="text" class="form-control" name="value500"
+                                                        value="0" th:value="${cardConfig.value500}" />
+                                                </div>
+                                            </div> 
+								</div>
+								<div class="row">
+									<div class="col-lg-4">
+										<button type="submit" class="btn btn-default">Lưu
+											tham số</button>
+									</div>
+								</div>
+							</form>
+							<!-- /.row (nested) -->
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="js/plugins/morris/raphael-2.1.0.min.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="js/plugins/morris/morris.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+	<script type="text/javascript"
+		src="bootstrap-daterangepicker/moment.js"
+		th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+	<script type="text/javascript"
+		src="bootstrap-daterangepicker/daterangepicker.js"
+		th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+
+	<!-- Page-Level Demo Scripts - Forms - Use for reference -->
+	<script>
+		function doSearchUser() {
+			window.location.href = 'users.html?fullname='
+					+ $(".custom-search-form > input").val();
+			return false;
+		};
+	</script>
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					/* $('#reservationtime').daterangepicker({
+					  timePicker: true,
+					  timePickerIncrement: 30,
+					  format: 'MM/DD/YYYY h:mm A'
+					}, function(start, end, label) {
+					  console.log(start.toISOString(), end.toISOString(), label);
+					}); */
+					$('#reservationtime').daterangepicker(
+							{
+								timePicker : true,
+								format : 'YYYY/MM/DD HH:mm',
+							/* 	     	startDate: '2014/01/01 01:01',
+							 endDate: '2014/12/31 23:59' */
+							},
+							function(start, end, label) {
+								console.log('A date range was chosen: '
+										+ start.format('YYYY-MM-DD hh:mm')
+										+ ' to '
+										+ end.format('YYYY-MM-DD hh:mm'));
+							});
+					$('#reservationtime2').daterangepicker(
+							{
+								timePicker : true,
+								format : 'YYYY/MM/DD HH:mm',
+							/* 	     	startDate: '2014/01/01 01:01',
+							 endDate: '2014/12/31 23:59' */
+							},
+							function(start, end, label) {
+								console.log('A date range was chosen: '
+										+ start.format('YYYY-MM-DD hh:mm')
+										+ ' to '
+										+ end.format('YYYY-MM-DD hh:mm'));
+							});
+				});
+	</script>
+</body>
+
+</html>

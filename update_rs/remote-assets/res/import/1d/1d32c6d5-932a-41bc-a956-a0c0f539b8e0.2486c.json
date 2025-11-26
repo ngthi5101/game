@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "popup2",
+    "texture": "1fd424ee8",
+    "rect": [
+      3,
+      691,
+      325,
+      186
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      325,
+      186
+    ],
+    "rotated": 1,
+    "capInsets": [
+      28,
+      24,
+      25,
+      26
+    ]
+  }
+}

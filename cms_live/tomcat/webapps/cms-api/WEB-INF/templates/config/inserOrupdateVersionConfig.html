@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Update Version Config</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+          <div data-th-replace="fragments/sb-admin :: top-nav"></div>
+    		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		 <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Update Version Config</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Update Version Config
+                            </div>
+                            <div class="panel-body">
+                                <div class="row" >
+                                    <div class="col-lg-12">
+                                        <form role="form" method="post" action="versionConfig_new_or_update.html" th:attr="action=@{/config/versionConfig_new_or_update.html}">
+                                            <div class="form-group" hidden="true">
+                                                <label>Id</label>
+                                                <input class="form-control" th:value="${configVersion.id}" name="Id" hidden="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input class="form-control" readonly="true" th:value="${configVersion.key}" name="key"/>
+                                            </div>            
+                                            <div class="form-group">
+                                                <label>Value</label>
+                                                <textarea class="form-control" style="height: 500px" th:field="${configVersion.value}" name="value"></textarea>
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn btn-success">Cập nhật</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
+                                </div>
+                                <!-- /.row (nested) -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+        <!-- Page-Level Demo Scripts - Forms - Use for reference -->
+        <div hidden="true" id = "message" name="message" th:text="${message}"></div>
+        <div th:if="${messageType} == true">
+            <script>
+                var  message = $("#message").html();
+                alert(message);
+            </script>
+        </div>
+        <script>
+            $(document).ready(function() {
+            });
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };        
+        </script>
+    </body>
+
+</html>

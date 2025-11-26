@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Config</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap-responsive.css}"/>
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+ 		<!-- DataTables CSS -->
+         <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}"/>
+        <link href="css/plugins/responsive.dataTables.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/responsive.dataTables.min.css}"/>
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+          	<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+    		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+           <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Các giá trị config</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="panel-body">
+                        <div>
+                            <a type="button" class="btn btn-success pull-left" href="config/new.html" th:href="@{/config/new.html/}">Thêm mới Json</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="panel panel-default" th:if="${notify_config} != null">
+                            <div class="panel-heading">
+                                <!--                                Bảng tin thông báo-->
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="display responsive" width="100%" id="dataTables">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th class="all">Ngày</th>
+                                                <th class="min-phone-l">Special</th>
+                                                <th class="min-tablet">Type</th>
+                                                <th class="none">Description</th>
+                                                <th class="desktop">Amount</th>
+                                                <th class="all">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneConfig, iterStat : ${notify_config}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td th:text="${oneConfig.datetime}">Hotline</td>
+                                                <td th:text="${oneConfig.special}"> htt://google.com </td>
+                                                <td th:text="${oneConfig.type}">  </td>
+                                                <td th:text="${oneConfig.description}">  </td>
+                                                <td th:text="${oneConfig.amount}">  </td>
+                                                <td>
+                                                    <a type="button" class="btn btn-success" href="#" th:href="@{/config/{datetime}/update.html(datetime=${oneConfig.datetime})}">Thay đổi</a>
+                                                    <a type="button" class="btn btn-danger" href="delete.html" th:href="@{/config/{datetime}/delete.html(datetime=${oneConfig.datetime})}">Xóa</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+         <script src="js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.responsive.min.js}"></script>
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script>
+        $(document).ready(function() {
+	    	$('#dataTables').dataTable({
+	    		responsive: true
+	    	});
+        });
+            function doViewRevenueReport() {
+            };
+		
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };
+        </script>
+
+    </body>
+
+</html>

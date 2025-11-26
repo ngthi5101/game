@@ -1,0 +1,54 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "dropdown_item",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "dropdown_item",
+    "_level": 4,
+    "_components": [
+      {
+        "__type__": "cc.Label",
+        "node": {
+          "__id__": 1
+        },
+        "_useOriginalSize": false,
+        "_string": "Label",
+        "_N$string": "Label",
+        "_fontSize": 20,
+        "_lineHeight": 30,
+        "_N$horizontalAlign": 1,
+        "_N$verticalAlign": 1
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "camMYFKCRLj43NIoAZpqhV"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 48.94,
+      "height": 37.8
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "y": -18.9
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "eventPage",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "eventPage",
+    "_children": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_level": 1,
+    "_components": [
+      {
+        "__type__": "cc.Button",
+        "node": {
+          "__id__": 1
+        },
+        "_N$transition": 1,
+        "transition": 1,
+        "_N$normalColor": {
+          "__type__": "cc.Color",
+          "r": 255,
+          "g": 255,
+          "b": 255
+        },
+        "_N$target": {
+          "__id__": 2
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "e2wdAsmqdBRqPQxKd0hEla"
+      },
+      "fileId": "37EOsDPblKu4IA/sN7ZZn+"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 388,
+      "height": 455
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 194
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "poster",
+    "_parent": {
+      "__id__": 1
+    },
+    "_level": 2,
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 2
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "e2wdAsmqdBRqPQxKd0hEla"
+      },
+      "fileId": "ee9FV5nndOFJhNs+kEx2bJ"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 338,
+      "height": 455
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  }
+]

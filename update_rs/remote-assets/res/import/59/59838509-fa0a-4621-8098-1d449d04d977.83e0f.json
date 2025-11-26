@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "slot_thumb_6",
+    "texture": "1bd4e5881",
+    "rect": [
+      623,
+      142,
+      104,
+      60
+    ],
+    "offset": [
+      0,
+      2
+    ],
+    "originalSize": [
+      108,
+      68
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

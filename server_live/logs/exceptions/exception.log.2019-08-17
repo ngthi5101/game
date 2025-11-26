@@ -1,0 +1,365 @@
+WARN	2019-08-17 00:11:07.267	ALL_EXCEPTION.handleEvent() ::Slow handle 215 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:13:24.179	ALL_EXCEPTION.handleEvent() ::Slow handle 217 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":1000,"pot":"2","type":214}] 
+WARN	2019-08-17 00:14:32.208	ALL_EXCEPTION.handleEvent() ::Slow handle 212 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":1000,"pot":"2","type":214}] 
+WARN	2019-08-17 00:15:22.353	ALL_EXCEPTION.handleEvent() ::Slow handle 208 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":1000,"pot":"2","type":214}] 
+WARN	2019-08-17 00:17:05.122	ALL_EXCEPTION.handleEvent() ::Slow handle 212 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:18:30.671	ALL_EXCEPTION.handleEvent() ::Slow handle 215 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:18:35.713	ALL_EXCEPTION.handleEvent() ::Slow handle 214 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:19:03.908	ALL_EXCEPTION.handleEvent() ::Slow handle 215 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:19:43.401	ALL_EXCEPTION.handleEvent() ::Slow handle 207 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:20:29.820	ALL_EXCEPTION.handleEvent() ::Slow handle 210 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:22:14.708	ALL_EXCEPTION.handleEvent() ::Slow handle 206 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:22:45.936	ALL_EXCEPTION.handleEvent() ::Slow handle 207 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 00:22:48.881	ALL_EXCEPTION.handleEvent() ::Slow handle 208 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=780957725, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 01:03:08.001	ALL_EXCEPTION.handleEvent() ::Slow handle 212 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 01:05:19.778	ALL_EXCEPTION.handleEvent() ::Slow handle 209 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 01:05:25.984	ALL_EXCEPTION.handleEvent() ::Slow handle 208 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+ERROR	2019-08-17 01:12:50.296	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009700, gold=587530, username=tym00n02, fullName=Trugssim, sessionId=310908219] java.lang.NullPointerException 
+ERROR	2019-08-17 01:12:50.296	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=310908219, requestId=0]PayLoad={"bet":"1000","type":23,"chipType":1}] 
+ERROR	2019-08-17 01:12:54.763	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009700, gold=589830, username=tym00n02, fullName=Trugssim, sessionId=310908219] java.lang.NullPointerException 
+ERROR	2019-08-17 01:12:54.763	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=310908219, requestId=0]PayLoad={"bet":"100","type":23,"chipType":1}] 
+WARN	2019-08-17 01:16:49.888	ALL_EXCEPTION.handleEvent() ::Slow handle 219 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 01:24:59.547	ALL_EXCEPTION.handleEvent() ::Slow handle 211 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+ERROR	2019-08-17 01:28:36.484	ALL_EXCEPTION.run() :: 
+org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:580)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:378)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:474)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:289)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy95.save(Unknown Source)
+	at vn.yotel.yoker.service.impl.AbstractBo.save(AbstractBo.java:30)
+	at vn.yotel.yoker.job.UpdateTaixiuUserHistoryThread.run(UpdateTaixiuUserHistoryThread.java:49)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:73)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.begin(LogicalConnectionManagedImpl.java:263)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.begin(JdbcResourceLocalTransactionCoordinatorImpl.java:236)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:86)
+	at org.hibernate.internal.AbstractSharedSessionContract.beginTransaction(AbstractSharedSessionContract.java:468)
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:535)
+	... 14 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet successfully received from the server was 1,093,999 milliseconds ago.  The last packet sent successfully to the server was 1,093,999 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2074)
+	at org.apache.commons.dbcp.DelegatingConnection.setAutoCommit(DelegatingConnection.java:371)
+	at org.apache.commons.dbcp.PoolingDataSource$PoolGuardConnectionWrapper.setAutoCommit(PoolingDataSource.java:328)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:67)
+	... 19 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: The last packet successfully received from the server was 1,093,999 milliseconds ago.  The last packet sent successfully to the server was 1,093,999 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at sun.reflect.GeneratedConstructorAccessor98.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:593)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:654)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:986)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryString(NativeProtocol.java:921)
+	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1154)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2064)
+	... 22 more
+Caused by: java.net.SocketException: Connection reset
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:115)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:155)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	at com.mysql.cj.protocol.a.SimplePacketSender.send(SimplePacketSender.java:55)
+	at com.mysql.cj.protocol.a.TimeTrackingPacketSender.send(TimeTrackingPacketSender.java:50)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:584)
+	... 27 more
+ERROR	2019-08-17 01:31:25.210	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=100450, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 01:31:25.210	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"1000","type":23,"chipType":1}] 
+WARN	2019-08-17 01:31:29.591	ALL_EXCEPTION.handleEvent() ::Slow handle 101 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+ERROR	2019-08-17 01:31:41.028	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=91350, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 01:31:41.028	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"10000","type":23,"chipType":1}] 
+ERROR	2019-08-17 01:32:02.668	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=85850, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 01:32:02.669	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"100","type":23,"chipType":1}] 
+ERROR	2019-08-17 01:32:05.417	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=85850, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 01:32:05.417	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"10000","type":23,"chipType":1}] 
+ERROR	2019-08-17 01:32:37.483	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=99850, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 01:32:37.483	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"100","type":23,"chipType":1}] 
+ERROR	2019-08-17 01:32:40.958	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=97850, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 01:32:40.959	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"1000","type":23,"chipType":1}] 
+ERROR	2019-08-17 01:33:59.141	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=103250, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 01:33:59.141	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"100","type":23,"chipType":1}] 
+WARN	2019-08-17 02:04:54.072	ALL_EXCEPTION.handleEvent() ::Slow handle 211 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1581272597, requestId=0]PayLoad={"amount":"100000","pot":"5","type":214}] 
+WARN	2019-08-17 02:06:18.485	ALL_EXCEPTION.handleEvent() ::Slow handle 213 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:08:42.737	ALL_EXCEPTION.handleEvent() ::Slow handle 212 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1581272597, requestId=0]PayLoad={"amount":"100000","pot":"5","type":214}] 
+WARN	2019-08-17 02:14:54.850	ALL_EXCEPTION.handleEvent() ::Slow handle 211 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:15:14.677	ALL_EXCEPTION.handleEvent() ::Slow handle 207 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:15:19.295	ALL_EXCEPTION.handleEvent() ::Slow handle 212 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:15:21.417	ALL_EXCEPTION.handleEvent() ::Slow handle 206 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:15:23.159	ALL_EXCEPTION.handleEvent() ::Slow handle 214 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:15:33.706	ALL_EXCEPTION.handleEvent() ::Slow handle 214 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1581272597, requestId=0]PayLoad={"amount":"100000","pot":"5","type":214}] 
+WARN	2019-08-17 02:15:42.662	ALL_EXCEPTION.handleEvent() ::Slow handle 211 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1581272597, requestId=0]PayLoad={"amount":"100000","pot":"5","type":214}] 
+WARN	2019-08-17 02:16:14.240	ALL_EXCEPTION.handleEvent() ::Slow handle 212 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:16:46.797	ALL_EXCEPTION.handleEvent() ::Slow handle 213 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1581272597, requestId=0]PayLoad={"amount":"100000","pot":"5","type":214}] 
+WARN	2019-08-17 02:18:19.465	ALL_EXCEPTION.handleEvent() ::Slow handle 216 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1581272597, requestId=0]PayLoad={"amount":"100000","pot":"5","type":214}] 
+WARN	2019-08-17 02:42:22.121	ALL_EXCEPTION.handleEvent() ::Slow handle 213 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:44:20.629	ALL_EXCEPTION.handleEvent() ::Slow handle 213 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 02:44:25.112	ALL_EXCEPTION.handleEvent() ::Slow handle 213 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1011275148, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+ERROR	2019-08-17 05:01:56.695	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009721, gold=0, username=anhhai999, fullName=12345678cc, sessionId=84566099] java.lang.NullPointerException 
+ERROR	2019-08-17 05:01:56.695	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=84566099, requestId=0]PayLoad={"bet":"1000","type":23,"chipType":1}] 
+ERROR	2019-08-17 05:05:41.995	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009721, gold=0, username=anhhai999, fullName=12345678cc, sessionId=84566099] java.lang.NullPointerException 
+ERROR	2019-08-17 05:05:41.995	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=84566099, requestId=0]PayLoad={"bet":"100","type":23,"chipType":1}] 
+ERROR	2019-08-17 07:02:29.767	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=96655, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 07:02:29.767	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"10000","type":23,"chipType":1}] 
+ERROR	2019-08-17 07:03:00.126	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=90255, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 07:03:00.126	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"1000","type":23,"chipType":1}] 
+ERROR	2019-08-17 07:03:10.799	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=82255, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 07:03:10.799	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"100","type":23,"chipType":1}] 
+ERROR	2019-08-17 07:03:18.313	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=76255, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 07:03:18.313	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"10000","type":23,"chipType":1}] 
+ERROR	2019-08-17 07:03:19.110	ALL_EXCEPTION.handleEvent() ::channelRead0: UserImpl [id=1009714, gold=76255, username=12233445566, fullName=123547812, sessionId=584766379] java.lang.NullPointerException 
+ERROR	2019-08-17 07:03:19.111	ALL_EXCEPTION.handleEvent() ::msg:YokerRequestMessage [requestType=null, sessionId=584766379, requestId=0]PayLoad={"bet":"100","type":23,"chipType":1}] 
+WARN	2019-08-17 07:05:25.683	ALL_EXCEPTION.handleEvent() ::Slow handle 213 ms: null-YokerRequestMessage [requestType=TAIXIU_GAMES, sessionId=584766379, requestId=0]PayLoad={"type":23,"chipType":1}] 
+WARN	2019-08-17 07:42:34.893	ALL_EXCEPTION.handleEvent() ::Slow handle 207 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 07:44:53.235	ALL_EXCEPTION.handleEvent() ::Slow handle 213 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 07:51:30.082	ALL_EXCEPTION.handleEvent() ::Slow handle 212 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 07:53:12.443	ALL_EXCEPTION.handleEvent() ::Slow handle 211 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 07:57:41.675	ALL_EXCEPTION.handleEvent() ::Slow handle 209 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 07:59:03.889	ALL_EXCEPTION.handleEvent() ::Slow handle 215 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 08:02:39.196	ALL_EXCEPTION.handleEvent() ::Slow handle 209 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 08:03:13.843	ALL_EXCEPTION.handleEvent() ::Slow handle 208 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 08:03:16.207	ALL_EXCEPTION.handleEvent() ::Slow handle 211 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 08:05:06.341	ALL_EXCEPTION.handleEvent() ::Slow handle 218 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+WARN	2019-08-17 08:10:11.472	ALL_EXCEPTION.handleEvent() ::Slow handle 208 ms: null-YokerRequestMessage [requestType=MINI_BAUCUA, sessionId=1931256696, requestId=0]PayLoad={"amount":"100000","pot":"2","type":214}] 
+ERROR	2019-08-17 10:39:25.490	ALL_EXCEPTION.run() :: 
+org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:580)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:378)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:474)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:289)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy51.save(Unknown Source)
+	at vn.yotel.yoker.service.impl.AbstractBo.save(AbstractBo.java:30)
+	at vn.yotel.yoker.job.UpdateRoomUserHistoryThread.run(UpdateRoomUserHistoryThread.java:49)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:73)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.begin(LogicalConnectionManagedImpl.java:263)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.begin(JdbcResourceLocalTransactionCoordinatorImpl.java:236)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:86)
+	at org.hibernate.internal.AbstractSharedSessionContract.beginTransaction(AbstractSharedSessionContract.java:468)
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:535)
+	... 14 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet successfully received from the server was 1,143,001 milliseconds ago.  The last packet sent successfully to the server was 1,143,001 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2074)
+	at org.apache.commons.dbcp.DelegatingConnection.setAutoCommit(DelegatingConnection.java:371)
+	at org.apache.commons.dbcp.PoolingDataSource$PoolGuardConnectionWrapper.setAutoCommit(PoolingDataSource.java:328)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:67)
+	... 19 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: The last packet successfully received from the server was 1,143,001 milliseconds ago.  The last packet sent successfully to the server was 1,143,001 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:593)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:654)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:986)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryString(NativeProtocol.java:921)
+	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1154)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2064)
+	... 22 more
+Caused by: java.net.SocketException: Connection reset
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:115)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:155)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	at com.mysql.cj.protocol.a.SimplePacketSender.send(SimplePacketSender.java:55)
+	at com.mysql.cj.protocol.a.TimeTrackingPacketSender.send(TimeTrackingPacketSender.java:50)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:584)
+	... 27 more
+ERROR	2019-08-17 12:44:51.484	ALL_EXCEPTION.run() :: 
+org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:580)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:378)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:474)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:289)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy95.save(Unknown Source)
+	at vn.yotel.yoker.service.impl.AbstractBo.save(AbstractBo.java:30)
+	at vn.yotel.yoker.job.UpdateTaixiuUserHistoryThread.run(UpdateTaixiuUserHistoryThread.java:49)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:73)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.begin(LogicalConnectionManagedImpl.java:263)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.begin(JdbcResourceLocalTransactionCoordinatorImpl.java:236)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:86)
+	at org.hibernate.internal.AbstractSharedSessionContract.beginTransaction(AbstractSharedSessionContract.java:468)
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:535)
+	... 14 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet successfully received from the server was 2,690,999 milliseconds ago.  The last packet sent successfully to the server was 2,691,000 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2074)
+	at org.apache.commons.dbcp.DelegatingConnection.setAutoCommit(DelegatingConnection.java:371)
+	at org.apache.commons.dbcp.PoolingDataSource$PoolGuardConnectionWrapper.setAutoCommit(PoolingDataSource.java:328)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:67)
+	... 19 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: The last packet successfully received from the server was 2,690,999 milliseconds ago.  The last packet sent successfully to the server was 2,691,000 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at sun.reflect.GeneratedConstructorAccessor124.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:593)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:654)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:986)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryString(NativeProtocol.java:921)
+	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1154)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2064)
+	... 22 more
+Caused by: java.net.SocketException: Connection reset
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:115)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:155)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	at com.mysql.cj.protocol.a.SimplePacketSender.send(SimplePacketSender.java:55)
+	at com.mysql.cj.protocol.a.TimeTrackingPacketSender.send(TimeTrackingPacketSender.java:50)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:584)
+	... 27 more
+ERROR	2019-08-17 15:52:00.484	ALL_EXCEPTION.run() :: 
+org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:580)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:378)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:474)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:289)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy95.save(Unknown Source)
+	at vn.yotel.yoker.service.impl.AbstractBo.save(AbstractBo.java:30)
+	at vn.yotel.yoker.job.UpdateTaixiuUserHistoryThread.run(UpdateTaixiuUserHistoryThread.java:49)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:73)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.begin(LogicalConnectionManagedImpl.java:263)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.begin(JdbcResourceLocalTransactionCoordinatorImpl.java:236)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:86)
+	at org.hibernate.internal.AbstractSharedSessionContract.beginTransaction(AbstractSharedSessionContract.java:468)
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:535)
+	... 14 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet successfully received from the server was 888,999 milliseconds ago.  The last packet sent successfully to the server was 888,999 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2074)
+	at org.apache.commons.dbcp.DelegatingConnection.setAutoCommit(DelegatingConnection.java:371)
+	at org.apache.commons.dbcp.PoolingDataSource$PoolGuardConnectionWrapper.setAutoCommit(PoolingDataSource.java:328)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:67)
+	... 19 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: The last packet successfully received from the server was 888,999 milliseconds ago.  The last packet sent successfully to the server was 888,999 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at sun.reflect.GeneratedConstructorAccessor124.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:593)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:654)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:986)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryString(NativeProtocol.java:921)
+	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1154)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2064)
+	... 22 more
+Caused by: java.net.SocketException: Connection reset
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:115)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:155)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	at com.mysql.cj.protocol.a.SimplePacketSender.send(SimplePacketSender.java:55)
+	at com.mysql.cj.protocol.a.TimeTrackingPacketSender.send(TimeTrackingPacketSender.java:50)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:584)
+	... 27 more
+ERROR	2019-08-17 19:19:00.482	ALL_EXCEPTION.run() :: 
+org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:580)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:378)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:474)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:289)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy95.save(Unknown Source)
+	at vn.yotel.yoker.service.impl.AbstractBo.save(AbstractBo.java:30)
+	at vn.yotel.yoker.job.UpdateTaixiuUserHistoryThread.run(UpdateTaixiuUserHistoryThread.java:49)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.hibernate.TransactionException: JDBC begin transaction failed: 
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:73)
+	at org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl.begin(LogicalConnectionManagedImpl.java:263)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.begin(JdbcResourceLocalTransactionCoordinatorImpl.java:236)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.begin(TransactionImpl.java:86)
+	at org.hibernate.internal.AbstractSharedSessionContract.beginTransaction(AbstractSharedSessionContract.java:468)
+	at org.springframework.orm.hibernate5.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:535)
+	... 14 more
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: The last packet successfully received from the server was 616,998 milliseconds ago.  The last packet sent successfully to the server was 616,998 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2074)
+	at org.apache.commons.dbcp.DelegatingConnection.setAutoCommit(DelegatingConnection.java:371)
+	at org.apache.commons.dbcp.PoolingDataSource$PoolGuardConnectionWrapper.setAutoCommit(PoolingDataSource.java:328)
+	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.begin(AbstractLogicalConnectionImplementor.java:67)
+	... 19 more
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: The last packet successfully received from the server was 616,998 milliseconds ago.  The last packet sent successfully to the server was 616,998 milliseconds ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
+	at sun.reflect.GeneratedConstructorAccessor124.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:593)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:654)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:986)
+	at com.mysql.cj.protocol.a.NativeProtocol.sendQueryString(NativeProtocol.java:921)
+	at com.mysql.cj.NativeSession.execSQL(NativeSession.java:1154)
+	at com.mysql.cj.jdbc.ConnectionImpl.setAutoCommit(ConnectionImpl.java:2064)
+	... 22 more
+Caused by: java.net.SocketException: Connection reset
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:115)
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:155)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.flush(BufferedOutputStream.java:140)
+	at com.mysql.cj.protocol.a.SimplePacketSender.send(SimplePacketSender.java:55)
+	at com.mysql.cj.protocol.a.TimeTrackingPacketSender.send(TimeTrackingPacketSender.java:50)
+	at com.mysql.cj.protocol.a.NativeProtocol.send(NativeProtocol.java:584)
+	... 27 more

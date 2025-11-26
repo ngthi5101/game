@@ -1,0 +1,301 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Spring Quartz -->
+    <bean name="jvmGCJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.JvmGCJob" />
+    </bean>
+	
+    <bean name="summaryServerKoinJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.SummaryServerKoinJob" />
+    </bean>
+
+    <bean name="summaryUserMoneyJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.SummaryUserMoneyJob" />
+    </bean>
+   
+	<bean name="summaryDailyARPUJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `arpu_daily_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="summaryWeeklyARPUJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `arpu_weekly_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="summaryMonthlyARPUJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `arpu_monthly_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="summaryDailyDPUJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `dpu_daily_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+    
+    <bean name="summaryWeeklyDPUJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `dpu_weekly_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+    
+    <bean name="summaryMonthlyDPUJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `dpu_monthly_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+    
+    
+    <bean name="cashFlowDailySummaryJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `cash_flow_daily_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="cashZoneDailySummaryJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `cash_zone_daily_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="cashFlowDailyGoldSummaryJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `cash_flow_daily_gold_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+	
+	<bean name="SUMMARIZE_10_MINUTEJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `SUMMARIZE_10_MINUTE`();"/>
+            </map>
+        </property>
+    </bean>
+	
+	<bean name="SUMMARIZE_USER_TRANSF_GOLD_IN_DAYJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `SUMMARIZE_USER_TRANSF_GOLD_IN_DAY`('agency_level_1');CALL `SUMMARIZE_USER_TRANSF_GOLD_IN_DAY`('agency_level_2');CALL `SUMMARIZE_USER_TRANSF_GOLD_IN_DAY`('admin');"/>
+            </map>
+        </property>
+    </bean>
+	
+    <bean name="cashZoneDailyGoldSummaryJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `cash_zone_daily_gold_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="serverGoldSummaryJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `server_gold_summary`();"/>
+            </map>
+        </property>
+    </bean>
+    <bean name="dashboardSummaryJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `dashboard_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+	<bean name="roomBetSummaryJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="vn.yotel.yoker.job.ExecuteSQLStatementJob" />
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sqlStatement" value="CALL `pro_room_bet_summary`(subdate(now(), 0));"/>
+            </map>
+        </property>
+    </bean>
+	<!-- Simple Trigger, run every 5 seconds -->
+    <bean id="jvmGCJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jvmGCJob" />
+        <property name="repeatInterval" value="60000" /> <!-- 60s -->
+        <property name="startDelay" value="1000" />
+    </bean>
+	
+    <bean id="summaryServerKoinJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryServerKoinJob" />
+        <property name="repeatInterval" value="1800000" /> <!-- 30 phút -->
+        <property name="startDelay" value="10000" />
+    </bean>
+
+    <bean id="summaryUserMoneyJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryUserMoneyJob" />
+        <property name="repeatInterval" value="300000" /> <!-- 300s -->
+        <property name="startDelay" value="20000" />
+    </bean>
+
+    <bean id="summaryDailyARPUJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryDailyARPUJob" />
+        <property name="repeatInterval" value="300000" /> <!-- 300s -->
+        <property name="startDelay" value="30000" />
+    </bean>
+
+    <bean id="summaryWeeklyARPUJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryWeeklyARPUJob" />
+        <property name="repeatInterval" value="3600000" /> <!-- 3600s -->
+        <property name="startDelay" value="40000" />
+    </bean>
+
+    <bean id="summaryMonthlyARPUJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryMonthlyARPUJob" />
+        <property name="repeatInterval" value="3600000" /> <!-- 3600s -->
+        <property name="startDelay" value="50000" />
+    </bean>
+
+    <bean id="summaryDailyDPUJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryDailyDPUJob" />
+        <property name="repeatInterval" value="3600000" /> <!-- 300s -->
+        <property name="startDelay" value="60000" />
+    </bean> 
+    <bean id="summaryWeeklyDPUJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryWeeklyDPUJob" />
+        <property name="repeatInterval" value="7200000" /> <!-- 300s -->
+        <property name="startDelay" value="70000" />
+    </bean> 
+    <bean id="summaryMonthlyDPUJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="summaryMonthlyDPUJob" />
+        <property name="repeatInterval" value="7200000" /> <!-- 300s -->
+        <property name="startDelay" value="80000" />
+    </bean> 
+   
+    <bean id="cashFlowDailySummaryJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="cashFlowDailySummaryJob" />
+        <property name="repeatInterval" value="1800000" /> <!-- 1h -->
+        <property name="startDelay" value="90000" />
+    </bean>
+    <bean id="cashZoneDailySummaryJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="cashZoneDailySummaryJob" />
+        <property name="repeatInterval" value="1800000" /> <!-- 1h -->
+        <property name="startDelay" value="100000" />
+    </bean>
+    <bean id="cashFlowDailyGoldSummaryJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="cashFlowDailyGoldSummaryJob" />
+        <property name="repeatInterval" value="1800000" /> <!-- 1h -->
+        <property name="startDelay" value="110000" />
+    </bean>
+	<bean id="SUMMARIZE_10_MINUTEJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="SUMMARIZE_10_MINUTEJob" />
+        <property name="repeatInterval" value="300000" /> <!-- 1m -->
+        <property name="startDelay" value="0" />
+    </bean>
+	<bean id="SUMMARIZE_USER_TRANSF_GOLD_IN_DAYJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="SUMMARIZE_USER_TRANSF_GOLD_IN_DAYJob" />
+		<!-- <property name="cronExpression" value="0/30 * * * * ?"/> -->
+		<!-- run every days at 24 H -->
+    	<property name="cronExpression" value="0 0 0 * * ?"/>
+	</bean>
+    <bean id="cashZoneDailyGoldSummaryJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="cashZoneDailyGoldSummaryJob" />
+        <property name="repeatInterval" value="1800000" /> <!-- 1h -->
+        <property name="startDelay" value="120000" />
+    </bean>
+    <bean id="serverGoldSummaryJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="serverGoldSummaryJob" />
+        <property name="repeatInterval" value="1800000" /> <!-- 1h -->
+        <property name="startDelay" value="130000" />
+    </bean>
+    <bean id="dashboardSummaryJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="dashboardSummaryJob" />
+        <property name="repeatInterval" value="1200000" /> <!-- 1h -->
+        <property name="startDelay" value="140000" />
+    </bean>
+    <bean id="roomBetSummaryJobTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="roomBetSummaryJob" />
+        <property name="repeatInterval" value="1200000" /> <!-- 1h -->
+        <property name="startDelay" value="150000" />
+    </bean>
+	<!-- Cron Trigger, run every 5 seconds -->
+<!-- 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="runMeJob" />
+		<property name="cronExpression" value="0/5 * * * * ?" />
+	</bean> -->
+	
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" destroy-method="destroy">
+<!--        <property name="jobDetails">
+            <list>
+                <ref bean="jvmGCJob" />
+                <ref bean="summaryServerKoinJob" />
+                <ref bean="summaryUserMoneyJob" />
+                <ref bean="summaryDailyARPUJob" />
+                <ref bean="summaryWeeklyARPUJob" />
+                <ref bean="summaryMonthlyARPUJob" />
+                <ref bean="summaryDailyDPUJob" />
+                <ref bean="summaryWeeklyDPUJob" />
+                <ref bean="summaryMonthlyDPUJob" />
+                <ref bean="cashFlowDailySummaryJob" />
+                <ref bean="cashZoneDailySummaryJob" />
+                <ref bean="cashFlowDailyGoldSummaryJob" />
+				<ref bean="SUMMARIZE_10_MINUTEJob" />
+                <ref bean="cashZoneDailyGoldSummaryJob" />
+                <ref bean="serverGoldSummaryJob" />
+                <ref bean="dashboardSummaryJob" />
+                <ref bean="roomBetSummaryJob" />
+				<ref bean="SUMMARIZE_USER_TRANSF_GOLD_IN_DAYJob" />
+            </list>
+        </property> -->
+        <property name="triggers">
+            <list>
+                <ref bean="jvmGCJobTrigger" />
+                <ref bean="summaryServerKoinJobTrigger" />
+                <ref bean="summaryUserMoneyJobTrigger" />
+                <ref bean="summaryDailyARPUJobTrigger" />
+                <ref bean="summaryWeeklyARPUJobTrigger" />
+                <ref bean="summaryMonthlyARPUJobTrigger" />
+                <ref bean="summaryDailyDPUJobTrigger" />
+                <ref bean="summaryWeeklyDPUJobTrigger" />
+                <ref bean="summaryMonthlyDPUJobTrigger" />
+                <ref bean="cashFlowDailySummaryJobTrigger" />
+                <ref bean="cashZoneDailySummaryJobTrigger" />
+                <ref bean="cashFlowDailyGoldSummaryJobTrigger" />
+				<ref bean="SUMMARIZE_10_MINUTEJobTrigger" />
+                <ref bean="cashZoneDailyGoldSummaryJobTrigger" />
+                <ref bean="serverGoldSummaryJobTrigger" />
+                <ref bean="dashboardSummaryJobTrigger" />
+                <ref bean="roomBetSummaryJobTrigger" />
+				<ref bean="SUMMARIZE_USER_TRANSF_GOLD_IN_DAYJobTrigger" />
+            </list>
+        </property>
+    </bean>
+</beans>

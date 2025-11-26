@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<bean name="cardExchangeClient" class="vn.yotel.yoker.payment.CardExchangeClient"></bean>
+	<bean name="cardChargingClient" class="vn.yotel.yoker.payment.CardChargingClient"></bean>
+<!--	<bean name="epayCardExchangeClient" class="vn.yotel.yoker.payment.epay.EPayCardExchangeClient">
+		<constructor-arg type="String" value="${epay.topup.partner-name}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.topup.url}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.topup.key-private-rsa}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.topup.key-3des}"></constructor-arg>
+	</bean>
+	<bean name="epayCardChargingClient" class="vn.yotel.yoker.payment.epay.EPayCardChargingClient">
+		<constructor-arg type="String" value="${epay.user}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.pass}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.partnerid}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.mpin}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.url}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.publickey}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.privatekey}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.cardlist}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.padding}"></constructor-arg>
+		<constructor-arg type="String" value="${epay.partnerCode}"></constructor-arg>
+	</bean>-->
+</beans>

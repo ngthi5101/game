@@ -1,0 +1,172 @@
+2019-08-11 01:19:25.987,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"12233445566"}] 
+2019-08-11 01:19:26.013,127.0.0.1,1,0 
+2019-08-11 01:56:11.842,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwdqwdwqdwqd"}] 
+2019-08-11 01:56:11.863,127.0.0.1,1,0 
+2019-08-11 09:08:05.905,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 09:08:05.926,127.0.0.1,1,0 
+2019-08-11 09:11:43.992,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:11:44.021,127.0.0.1,1,0 
+2019-08-11 09:15:55.302,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:15:55.308,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 09:15:55.312,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 09:15:55.313,127.0.0.1,1,0 
+2019-08-11 09:17:32.874,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:17:32.882,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 09:17:32.893,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 09:17:32.895,127.0.0.1,1,0 
+2019-08-11 09:21:09.302,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:21:09.308,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 09:21:09.312,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 09:21:09.314,127.0.0.1,1,0 
+2019-08-11 09:22:18.172,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:22:18.178,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 09:22:18.181,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 09:22:18.182,127.0.0.1,1,0 
+2019-08-11 09:28:12.256,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 09:28:12.272,127.0.0.1,1,0 
+2019-08-11 09:30:32.572,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:30:32.577,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 09:30:32.581,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 09:30:32.583,127.0.0.1,1,0 
+2019-08-11 09:31:31.031,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:31:31.036,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 09:31:31.039,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 09:31:31.041,127.0.0.1,1,0 
+2019-08-11 09:40:20.735,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:40:20.740,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 09:40:20.744,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 09:40:20.746,127.0.0.1,1,0 
+2019-08-11 09:51:16.640,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"12233445566"}] 
+2019-08-11 09:51:16.655,127.0.0.1,1,0 
+2019-08-11 09:53:13.506,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 09:53:13.521,127.0.0.1,1,0 
+2019-08-11 13:34:34.696,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":""}] 
+2019-08-11 13:34:34.700, Could not login with given data.  
+2019-08-11 13:34:34.700,127.0.0.1,1,1 
+2019-08-11 13:34:35.615,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":""}] 
+2019-08-11 13:34:35.619, Could not login with given data.  
+2019-08-11 13:34:35.619,127.0.0.1,1,1 
+2019-08-11 14:49:59.298,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 14:49:59.317,127.0.0.1,1,0 
+2019-08-11 15:00:43.405,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 15:00:43.411,Session 0 trying to reconnect. qwertty 
+2019-08-11 15:00:43.428,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 15:00:43.430,127.0.0.1,1,0 
+2019-08-11 15:06:14.262,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 15:06:14.287,127.0.0.1,1,0 
+2019-08-11 15:17:02.786,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-08-11 15:17:02.807,127.0.0.1,1,0 
+2019-08-11 15:17:41.732,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 15:17:41.737,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 15:17:41.743,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 15:17:41.745,127.0.0.1,1,0 
+2019-08-11 15:23:37.297,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-08-11 15:23:37.311,127.0.0.1,1,0 
+2019-08-11 15:31:32.281,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 15:31:32.297,127.0.0.1,1,0 
+2019-08-11 15:38:21.353,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 15:38:21.359,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 15:38:21.371,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 15:38:21.373,127.0.0.1,1,0 
+2019-08-11 15:40:36.721,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"mrsimple01"}] 
+2019-08-11 15:40:36.726,Session 0 trying to reconnect. mrsimple01 
+2019-08-11 15:40:36.730,Tài khoản của bạn đang đăng nhập ở thiết bị khác. mrsimple01 i 127.0.0.1 
+2019-08-11 15:40:36.731,127.0.0.1,1,0 
+2019-08-11 15:42:41.575,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 15:42:41.592,127.0.0.1,1,0 
+2019-08-11 15:59:38.977,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"tym00n02"}] 
+2019-08-11 15:59:38.995,127.0.0.1,1,0 
+2019-08-11 16:00:05.883,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=2101480194, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 16:00:05.905,127.0.0.1,1,0 
+2019-08-11 16:04:59.956,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1610850431, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 16:04:59.977,127.0.0.1,1,0 
+2019-08-11 17:05:33.629,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=514938004, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:05:33.648,127.0.0.1,1,0 
+2019-08-11 17:05:34.200,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=756869703, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:05:34.206,Session 756869703 trying to reconnect. ask123456789 
+2019-08-11 17:05:34.211,Tài khoản của bạn đang đăng nhập ở thiết bị khác. ask123456789 i 127.0.0.1 
+2019-08-11 17:05:34.213,127.0.0.1,1,0 
+2019-08-11 17:05:34.278,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=756869703, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:05:34.283,Session 756869703 trying to reconnect. ask123456789 
+2019-08-11 17:05:34.285,127.0.0.1,1,0 
+2019-08-11 17:05:46.462,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=756869703, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:05:46.467,Session 756869703 trying to reconnect. ask123456789 
+2019-08-11 17:05:46.470,Tài khoản của bạn đang đăng nhập ở thiết bị khác. ask123456789 i 127.0.0.1 
+2019-08-11 17:05:46.472,127.0.0.1,1,0 
+2019-08-11 17:14:56.989,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:14:57.005,127.0.0.1,1,0 
+2019-08-11 17:50:13.689,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=756869703, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:50:13.708,127.0.0.1,1,0 
+2019-08-11 17:50:47.211,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:50:47.217,Session 0 trying to reconnect. qwertty 
+2019-08-11 17:50:47.219,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:50:47.220,127.0.0.1,1,0 
+2019-08-11 17:50:49.035,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:50:49.039,Session 0 trying to reconnect. qwertty 
+2019-08-11 17:50:49.043,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:50:49.045,127.0.0.1,1,0 
+2019-08-11 17:50:59.814,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:50:59.820,Session 0 trying to reconnect. qwertty 
+2019-08-11 17:50:59.826,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:50:59.829,127.0.0.1,1,0 
+2019-08-11 17:53:01.611,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1963359493, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:53:01.617,Session 1963359493 trying to reconnect. ask123456789 
+2019-08-11 17:53:01.617,Tài khoản của bạn đang đăng nhập ở thiết bị khác. ask123456789 i 127.0.0.1 
+2019-08-11 17:53:01.618,127.0.0.1,1,0 
+2019-08-11 17:54:07.713,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1113266244, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:54:07.718,Session 1113266244 trying to reconnect. qwertty 
+2019-08-11 17:54:07.722,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:54:07.723,127.0.0.1,1,0 
+2019-08-11 17:54:30.272,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=474949923, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:54:30.277,Session 474949923 trying to reconnect. qwertty 
+2019-08-11 17:54:30.280,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:54:30.281,127.0.0.1,1,0 
+2019-08-11 17:54:32.190,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=542113757, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:54:32.195,Session 542113757 trying to reconnect. qwertty 
+2019-08-11 17:54:32.198,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:54:32.199,127.0.0.1,1,0 
+2019-08-11 17:54:58.473,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1963359493, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:54:58.479,Session 1963359493 trying to reconnect. ask123456789 
+2019-08-11 17:54:58.481,Tài khoản của bạn đang đăng nhập ở thiết bị khác. ask123456789 i 127.0.0.1 
+2019-08-11 17:54:58.482,127.0.0.1,1,0 
+2019-08-11 17:54:58.482,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1963359493, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:54:58.485,Session 1963359493 trying to reconnect. ask123456789 
+2019-08-11 17:54:58.486,127.0.0.1,1,0 
+2019-08-11 17:54:58.486,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1963359493, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:54:58.490,Session 1963359493 trying to reconnect. ask123456789 
+2019-08-11 17:54:58.490,127.0.0.1,1,0 
+2019-08-11 17:55:14.693,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1963359493, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"ask123456789"}] 
+2019-08-11 17:55:14.700,Session 1963359493 trying to reconnect. ask123456789 
+2019-08-11 17:55:14.704,Tài khoản của bạn đang đăng nhập ở thiết bị khác. ask123456789 i 127.0.0.1 
+2019-08-11 17:55:14.705,127.0.0.1,1,0 
+2019-08-11 17:55:27.111,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=474949923, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:55:27.116,Session 474949923 trying to reconnect. qwertty 
+2019-08-11 17:55:27.118,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:55:27.119,127.0.0.1,1,0 
+2019-08-11 17:55:46.099,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=1113266244, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"qwertty"}] 
+2019-08-11 17:55:46.104,Session 1113266244 trying to reconnect. qwertty 
+2019-08-11 17:55:46.108,Tài khoản của bạn đang đăng nhập ở thiết bị khác. qwertty i 127.0.0.1 
+2019-08-11 17:55:46.110,127.0.0.1,1,0 
+2019-08-11 18:13:32.211,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-08-11 18:13:32.216,dangquang1111 Could not login with given data.  
+2019-08-11 18:13:32.217,127.0.0.1,1,1 
+2019-08-11 18:14:19.079,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-08-11 18:14:19.083,dangquang11 Could not login with given data.  
+2019-08-11 18:14:19.084,127.0.0.1,1,1 
+2019-08-11 18:14:22.879,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-08-11 18:14:22.882,dangquang11 Could not login with given data.  
+2019-08-11 18:14:22.882,127.0.0.1,1,1 
+2019-08-11 18:14:51.815,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":""}] 
+2019-08-11 18:14:51.820, Could not login with given data.  
+2019-08-11 18:14:51.821,127.0.0.1,1,1 
+2019-08-11 20:48:44.752,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-08-11 20:48:44.757,dangquang1111 Could not login with given data.  
+2019-08-11 20:48:44.757,127.0.0.1,1,1 
+2019-08-11 20:48:50.811,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang1111"}] 
+2019-08-11 20:48:50.817,dangquang1111 Could not login with given data.  
+2019-08-11 20:48:50.818,127.0.0.1,1,1 
+2019-08-11 20:48:58.683,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"dangquang11"}] 
+2019-08-11 20:48:58.688,dangquang11 Could not login with given data.  
+2019-08-11 20:48:58.689,127.0.0.1,1,1 
+2019-08-11 21:40:39.975,fromIp:127.0.0.1,0,0,YokerRequestMessage [requestType=AUTH, sessionId=0, requestId=0]PayLoad={"apiKey":"wo3peulgtv3z0xhed","loginType":1,"os_version":"1.0.0","g2fa":"","model":"","refcode":null,"provider_code":"gamecode","client_version":"1.0.0","platform":"PC","device_uuid":"","username":"12233445566"}] 
+2019-08-11 21:40:40.008,127.0.0.1,1,0 

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}" />
+
+        <title data-th-text="#{admin.page.title}">Yoker - Dealer Config</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+        <link rel="stylesheet" type="text/css" media="all" href="bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}"/>
+        <link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+            <div data-th-replace="fragments/sb-admin :: top-nav"></div>
+            <div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Card</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="panel-body">
+                        <form role="form" method="post" th:action="@{/config/nap_cards.html}">
+                            <!--<div class="row">
+                                    <div class="col-lg-2">
+                                            <label>&nbsp;</label>
+                                            <div>
+                                                    <button type="submit" class="btn btn-info">Tìm</button>
+                                            </div>
+                                    </div>
+                            </div> -->
+                            <!-- .row -->
+                        </form>
+                        <hr />
+                        <form role="form" method="post" th:action="@{/config/create_mobile_cards.html}">
+                                <div class="row">
+                                        <div class="col-md-3">
+                                                <label>Nhà mạng</label>
+                                                <select name="provider_id">
+                                                    <option value="VTT">Viettel</option>
+                                                    <option value="VMS">Mobiphone</option>
+                                                    <option value="VINA">Vinaphone</option>
+                                                </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                                <label>Mệnh giá</label>
+                                                <select name="amount">
+                                                    <option value="20000">20k</option>
+                                                    <option value="50000">50k</option>
+                                                    <option value="100000">100k</option>
+                                                    <option value="200000">200k</option>
+                                                    <option value="500000">500k</option>
+                                                    
+                                                </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                                <label>Mã thẻ</label>
+                                                <input name="pin" type="text" />
+                                        </div>
+                                        <div class="col-md-3">
+                                                <label>Seri</label>
+                                                <input name="seri" type="text" />
+                                        </div>
+                                        <div class="col-md-3">
+                                                <div>
+                                                        <button type="submit" class="btn btn-info">Tạo</button>
+                                                </div>
+                                        </div>
+                                </div>
+                                <!-- .row -->
+                        </form>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" method="POST" th:action="@{/config/nap_cards.html}">
+                            <div class="panel panel-info">
+
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="table-responsive">
+                                            <table class="display responsive" id="dataTables">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Nhà mạng</th>
+                                                        <th>Giá trị</th>
+                                                        <th>Mã thẻ</th>
+                                                        <th>Seri</th>
+                                                        <th>Ngày tạo</th>
+                                                        <th>Ngày đổi</th>
+                                                        <th>ID người dùng</th>
+                                                        <th>Tên người dùng</th>
+                                                        <!--														<th class="hidden">trans_id</th>
+                                                                                                                                                                        <th class="hidden">raw_data</th>-->
+                                                    </tr>
+                                                </thead>
+                                                <tbody th:if="${cards} != null">
+                                                    <tr th:each="oneCard, iterStat : ${cards}">
+                                                        <td th:text="${oneCard.id}"></td>
+                                                        <td>
+                                                            <div th:switch="'' + ${oneCard.provider_id}">
+                                                                <span th:case="1" class="row_status">Viettel</span>
+                                                                <span th:case="2" class="row_status">MobiPhone</span>
+                                                                <span th:case="3" class="row_status">VinaPhone</span>
+                                                            </div>
+                                                        </td>
+                                                        <td th:text="${oneCard.amount}"></td>
+                                                        <td th:text="${oneCard.pin}"></td>
+                                                        <td th:text="${oneCard.seri}"></td>
+                                                        <td th:text="${oneCard.date_create}"></td>
+                                                        <td th:text="${oneCard.date_use}"></td>
+                                                        <td th:text="${oneCard.user_id}"></td>
+                                                        <td th:text="${oneCard.user_fullname}"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.row (nested) -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </form>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+        <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+        <script type="text/javascript" src="bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+        <script type="text/javascript" src="bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+        <script src="js/sb-admin.js" th:src="@{/resources/bootstrap-daterangepicker/bootstrap-datepicker.min.js}"></script>
+        <!-- export data -->
+        <script src="js/plugins/dataTables/excellentexport.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/excellentexport.min.js}"></script>
+        <script>
+            // Chặn nhấn phím enter
+            $(document).keypress(
+                    function (event) {
+                        if (event.which == '13') {
+                            event.preventDefault();
+                        }
+                    });
+            $(document).ready(function () {
+                $('.row_status').each((i, o) => {
+                    if ($(o).text() == "Đã đổi") {
+                        $(o).parents('tr').addClass('charged');
+                    }
+                });
+                $('#dataTables').dataTable({
+                    responsive: true
+                });
+                $("#day").datepicker({
+                    format: "yyyy-MM-dd",
+                    autoclose: true,
+                    todayHighlight: true
+                });
+
+                $('.format_gold').each((i, o) => {
+                    let text = $(o).text();
+                    $(o).text(numberWithCommas(text));
+                });
+            });
+            $('#reservationtime').daterangepicker({
+                timePicker: false,
+                format: 'YYYY/MM/DD'
+            }, function (start, end, label) {
+                console.log('A date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                $('#from_date').val(start.format('YYYY-MM-DD'));
+                $('#to_date').val(end.format('YYYY-MM-DD'));
+            });
+            function OnlyCodesColumn() {
+                $('#dataTables').toggleClass("onlycodescolumn");
+            }
+            const numberWithCommas = (x) => {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            String.prototype.replaceAll = function (search, replacement) {
+                var target = this;
+                return target.replace(new RegExp(search, 'g'), replacement);
+            };
+        </script>
+        <style>
+            #dataTables.onlycodescolumn tr th, #dataTables.onlycodescolumn tr td{display:none;}
+            #dataTables.onlycodescolumn tr th.alway_show, #dataTables.onlycodescolumn tr td.alway_show{display:table-cell !important;}
+            tr.charged td{    background: #ff7373c9 !important;}
+            tr.charged td .row_status{color:red;font-weight: bold;}
+        </style>
+    </body>
+
+</html>

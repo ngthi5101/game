@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+		
+	<!-- this bean must not be lazily initialized if the exporting is to happen -->
+<!-- 	<bean id="mBeanExporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+		<property name="namingStrategy" ref="namingStrategy" />
+	</bean>
+
+	<bean id="namingStrategy" class="org.springframework.jmx.export.naming.IdentityNamingStrategy"/> -->
+        
+	<!-- <bean id="namingStrategy" class="org.springframework.jmx.export.naming.KeyNamingStrategy">
+	    <property name="mappings">
+	        <props>
+	            <prop key="someSpringBean">desired.packageName:name=desiredBeanName</prop>
+	        </props>
+	    </property>
+	</bean> -->
+
+	<!-- Now expose the server for remote access via RMI 
+		Local access: service:jmx:rmi://localhost/jndi/rmi://localhost:2828/myconnector 
+		Remote access: service:jmx:rmi:///jndi/rmi://your.host:2828/myconnector 
+		or service:jmx:rmi://localhost/jndi/rmi://localhost:2828/myconnector -->
+<!-- 	<bean class="org.springframework.jmx.support.ConnectorServerFactoryBean" depends-on="rmiRegistry">
+		<property name="objectName" value="connector:name=rmi" />
+		<property name="serviceUrl" value="service:jmx:rmi://localhost/jndi/rmi://localhost:${rmi.port}/myconnector" />
+	</bean>
+
+	<bean id="rmiRegistry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+		<property name="port" value="${rmi.port}" />
+	</bean> -->
+	
+	<bean id="log4jUtil" class="vn.yotel.yoker.util.Log4jUtil">
+		<property name="logFile" value="log4j.properties" />
+	</bean>
+
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:messages.properties</value>
+			</list>
+		</property>
+		<property name="cacheSeconds" value="1" />
+	</bean>
+
+</beans>

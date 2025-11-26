@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+	
+    <title data-th-text="#{admin.page.title}">Dashboard - Trang không tồn tại</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0; background-color: rgb(3, 179, 178);">
+            <div class="navbar-header">
+                <img src="" style="position:absolute; margin-top: 8px; margin-left: 10px;" th:src="@{/resources/dashboard_files/logo.png}"></img>
+        		<a class="navbar-brand"  style="color:white; margin-left: 35px;"> Dashboard</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+		        <li class="dropdown">
+		            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+		            </a>
+		            <ul class="dropdown-menu dropdown-user">
+		                <li><a href="login.html" th:href="@{/j_spring_security_logout}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+		                </li>
+		            </ul>
+		            <!-- /.dropdown-user -->
+		        </li>
+		        <!-- /.dropdown -->
+    		</ul>
+        </nav>
+        <div id="page-wrapper">
+        	
+	            <div class="row">
+	                <div class="col-lg-12">
+	                	<h1 class="page-header">Địa chỉ truy cập không tồn tại</h1>
+	                    <!-- /.panel-heading -->
+	                     <div class="alert alert-danger alert-dismissable">
+	                         Địa chỉ truy cập không tồn tại.<a href="javascript:history.back();" class="alert-link"> Trở về trang trước</a>.
+	                     </div>
+	                    <!-- .panel-body -->
+	                </div>
+	                <!-- /.col-lg-12 -->
+	            </div>
+	            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+    <script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+    <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+    
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script src="js/demo/dashboard-demo.js" th:src="@{/resources/sb-admin-v2/js/demo/dashboard-demo.js}"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+	function doSearchUser() {
+		window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+	    return false;
+	};        
+    </script>
+
+</body>
+
+</html>

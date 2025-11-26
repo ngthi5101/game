@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "MYRIADPRO-BMF",
+    "texture": "1e405cf0b",
+    "rect": [
+      3,
+      3,
+      333,
+      505
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      333,
+      505
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

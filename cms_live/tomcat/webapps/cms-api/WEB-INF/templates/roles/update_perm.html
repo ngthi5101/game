@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title data-th-text="#{admin.page.title}">Title</title>
+
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="bootstrap-daterangepicker/daterangepicker-bs3.css"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="css/plugins/timeline/timeline.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div sec:authorize="hasRole('ROLE_UPLOAD')">
+			<div data-th-replace="fragments/sb-upload :: top-nav"></div>
+			<div data-th-replace="fragments/sb-upload :: vert-nav-admin"></div>
+		</div>
+		<div sec:authorize="hasRole('ROLE_PUBLISH')">
+			<div data-th-replace="fragments/sb-publish :: top-nav"></div>
+			<div data-th-replace="fragments/sb-publish :: vert-nav-admin"></div>
+		</div>
+		<div sec:authorize="hasRole('ROLE_PARTNER')">
+			<div data-th-replace="fragments/sb-partner :: top-nav"></div>
+			<div data-th-replace="fragments/sb-partner :: vert-nav-admin"></div>
+		</div>
+        <div sec:authorize="hasRole('ROLE_REPORT')"> 
+            	<div data-th-replace="fragments/sb-report :: top-nav"></div>             
+                <div data-th-replace="fragments/sb-report :: vert-nav-admin"></div>
+        </div>
+		<div id="page-wrapper">
+			<form name="update_perm_form" class="form-horizontal"
+				action="./perm.html" th:action="@{./update_perm.html}" method="post">
+				<fieldset>
+					<legend>Tạo quyền</legend>
+					<div class="form-group">
+						<label class="col-lg-2 control-label">Tên</label>
+						<div class="col-lg-10">
+							<input class="form-control" id="pName" name="pName" type="text" th:value="${pName}" ></input>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-10 col-lg-offset-2">
+							<button class="btn btn-default" type="reset">Hủy</button>
+							<button type="submit" class="btn btn-primary">Lưu</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="alert alert-warning" th:if="${err} != null">
+								<span th:text="${err}">Lỗi</span>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="js/plugins/morris/raphael-2.1.0.min.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="js/plugins/morris/morris.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+	<!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+	<script type="text/javascript"
+		src="bootstrap-daterangepicker/moment.js"
+		th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+	<script type="text/javascript"
+		src="bootstrap-daterangepicker/daterangepicker.js"
+		th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+
+</body>
+
+</html>

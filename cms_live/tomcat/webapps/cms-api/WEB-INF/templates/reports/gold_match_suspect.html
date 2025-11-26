@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Trận đánh bất thường</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="../font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+        <link rel="stylesheet" type="text/css" media="all" href="../bootstrap-daterangepicker/daterangepicker-bs3.css" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}"/>
+        <link href="../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="../css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+        <link href="../bootstrapformhelpers/css/bootstrap-formhelpers.min.css" rel="stylesheet" th:href="@{/resources/bootstrapformhelpers/css/bootstrap-formhelpers.min.css}"/>
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="../css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+		
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>		
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header"><span>Trận đánh bất thường</span></h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">                
+                    <div class="panel-body">
+                        <form role="form" method="post" action="/reports/gold_match_suspect.html" th:action="@{/reports/gold_match_suspect.html}">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>Ngày</label>
+                                    <div class="input-prepend input-group">
+                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                        <input type="text" name = "from_date" id = "from_date" hidden="true" th:value="${from_date}"/>
+                                        <input type="text" style="width: 100%" name="date_range" id="reservationtime" class="form-control span4"
+                                               value="08/01/2013" th:value="${from_date}" readonly="readonly" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>game</label>
+                                    <select name="zone" id="zone" class="form-control">
+                                        <option th:each="zone : ${zones}" 
+                                                th:value="${zone.id}"
+                                                th:text="${zone.description}">Lựa chọn</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <label>&nbsp;</label>
+                                    <div>
+                                        <button type="submit" class="btn btn-info">Xem thông tin</button>
+                                    </div>
+                                </div>	
+                            </div>
+                            <br/>
+                        </form>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="panel-body">  
+                        <div id="morris-sms-chartHis"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div hidden="true" id = "zoneId" th:text="${zoneId}">
+                    </div>
+                </div>                         
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-green" th:if="${dashboards} != null">
+                            <div class="panel-heading">
+                                Tổng số trận đánh: <span style="color: red;" th:text="${#numbers.formatDecimal(dashboards.size(), 0, 'COMMA', 0, 'POINT')}"></span>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id = "tblCardTopup">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>MatchId</th>
+                                                <th>Gold change</th>
+                                                <th>Nguyên nhân</th>
+                                                <th>Game</th>
+                                                <th>Phòng</th>
+                                                <th>Ngày</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="oneCard, iterStat : ${dashboards}">
+                                                <td th:text="${iterStat.count}">1</td>
+                                                <td>
+												<a href= "/match/detail.html?user_id=1'" th:href="@{'/match/detail.html?match_id=' + ${oneCard.mathId}}" th:text="${oneCard.mathId}">Abc</a>
+												</td>
+                                                <td th:text="${oneCard.goldChange}">123456</td>
+                                                <td th:text="${oneCard.reason}">123456</td>
+                                                <td th:text="${oneCard.descZone}">123456</td>
+                                                <td th:text="${oneCard.nameRoom}">123456</td>
+                                                <td th:text="${oneCard.date}">123456</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>   
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="../js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="../js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="../js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="../bootstrapformhelpers/js/bootstrap-formhelpers.js" th:src="@{/resources/bootstrapformhelpers/js/bootstrap-formhelpers.js}"></script>
+        <script type="text/javascript" src="../bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+        <script type="text/javascript" src="../bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="../js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+        <script src="../js/plugins/dataTables/dataTables.bootstrap.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.bootstrap.js}"></script>
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="../js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+        <!-- Page-Level Demo Scripts - Forms - Use for reference -->
+        <script type="text/javascript">  
+            $(document).ready(function() {
+                $('#tblCardTopup').dataTable();
+                $('#reservationtime').daterangepicker({ singleDatePicker: true,format: 'YYYY/MM/DD' }
+                , function(start, end, label) {
+                    console.log(start.toISOString(), end.toISOString(), label);
+                    $('#from_date').val(start.format('YYYY-MM-DD'));
+                });      
+                var  zonId = $("#zoneId").html();
+                $("#zone").val(zonId);
+            }); 
+        </script>
+    </body>
+
+</html>

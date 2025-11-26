@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<context:property-placeholder location="classpath:netty.properties"/>
+	<!-- Netty options for server bootstrap -->
+	<util:map id="tcpChannelOptions" map-class="java.util.HashMap">
+		<entry>
+			<key><util:constant static-field="io.netty.channel.ChannelOption.SO_KEEPALIVE"/></key>
+			<value type="java.lang.Boolean">${so.keepalive}</value>
+		</entry>
+		<entry>
+			<key><util:constant static-field="io.netty.channel.ChannelOption.SO_BACKLOG"/></key>
+			<value type="java.lang.Integer">${so.backlog}</value>
+		</entry>
+	</util:map>
+
+	<util:map id="udpChannelOptions" map-class="java.util.HashMap">
+		<entry>
+			<key><util:constant static-field="io.netty.channel.ChannelOption.SO_SNDBUF"/></key>
+			<value type="java.lang.Integer">${so.sndbuf}</value>
+		</entry>
+		<entry>
+			<key><util:constant static-field="io.netty.channel.ChannelOption.SO_RCVBUF"/></key>
+			<value type="java.lang.Integer">${so.rcvbuf}</value>
+		</entry>
+		<entry>
+			<key><util:constant static-field="io.netty.channel.ChannelOption.SO_BROADCAST"/></key>
+			<value type="java.lang.Boolean">${so.broadcast}</value>
+		</entry>
+	</util:map>
+	
+	<bean id="tcpConfig" class="io.nadron.server.netty.NettyConfig">
+		<property name="channelOptions" ref="tcpChannelOptions"/>
+		<property name="bossGroup" ref="bossGroup"/>
+		<property name="workerGroup" ref="workerGroup"/>
+		<property name="portNumber" value="${tcp.port}"/>
+	</bean>
+	
+	<bean id="udpConfig" class="io.nadron.server.netty.NettyConfig">
+		<property name="channelOptions" ref="udpChannelOptions"/>
+		<property name="bossGroup" ref="bossGroup"/>
+		<property name="portNumber" value="${udp.port}"/>
+	</bean>
+
+</beans>

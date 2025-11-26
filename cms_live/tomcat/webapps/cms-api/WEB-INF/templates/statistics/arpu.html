@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/favicon-96x96.png"
+	th:href="@{/resources/dashboard_files/favicon.png}" />
+
+<title data-th-text="#{admin.page.title}">Yoker - ARPU</title>
+
+<!-- Core CSS - Include with every page -->
+<link href="../css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="../font-awesome/css/font-awesome.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+<link href="../bootstrap-daterangepicker/daterangepicker-bs3.css"
+	rel="stylesheet" type="text/css" media="all"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+<!-- /css for datatable -->
+<link rel="stylesheet" type="text/css"
+	href="../resources/datatable/css/jquery.dataTables.css"
+	th:href="@{/resources/datatable/css/jquery.dataTables.css}" />
+<!-- /js for datatable -->
+<link rel="stylesheet" type="text/css"
+	href="../resources/datatable/js/jquery.dataTables.min.js"
+	th:href="@{/resources/datatable/js/jquery.dataTables.min.js}" />
+<link rel="stylesheet" type="text/css"
+	href="../resources/datatable/js/jquery.js"
+	th:href="@{/resources/datatable/js/jquery.js}" />
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="../css/plugins/dataTables/dataTables.bootstrap.css"
+	rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}" />
+<link href="../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="../css/plugins/timeline/timeline.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="../css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 4">
+			<div data-th-replace="solieu/sb-solieu :: top-nav"></div>
+			<div data-th-replace="solieu/sb-solieu :: vert-nav-admin"></div>
+		</div>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="page-header">ARPU - Average Revenue Per User</h2>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<div class="row">
+				<div class="panel-body">
+					<form role="form" method="post" action="/statistics/arpu.html"
+						th:action="@{/statistics/arpu.html}">
+						<div class="row">
+							<div class="col-lg-4">
+								<label>&nbsp;</label> <label>Từ ngày - đến ngày</label>
+								<div class="input-prepend input-group form-group">
+									<span class="add-on input-group-addon"><i
+										class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> <input
+										type="text" name="from_date" id="from_date" hidden="true"
+										th:value="${from_date}" /> <input type="text" name="to_date"
+										id="to_date" hidden="true" th:value="${to_date}" /> <input
+										type="text" style="width: 100%" name="date_range"
+										id="reservationtime" class="form-control"
+										value="08/01/2013 - 08/01/2013"
+										th:value="${from_date} + ' - ' + ${to_date}"
+										readonly="readonly" />
+								</div>
+							</div>
+							<div class="col-lg-1">
+								<label>&nbsp;</label>
+								<div>
+									<button type="submit" class="btn btn-info pull-left">Xem</button>
+								</div>
+							</div>
+							<div class="col-lg-1">
+								<label>&nbsp;</label>
+								<div>
+									<a class="btn btn-info" download="arpu" href="#"
+										onclick="return ExcellentExport.excel(this, 'tblArpu', 'Sheet Name Here');">Xuất
+										file excel</a>
+								</div>
+							</div>
+						</div>
+						<br />
+					</form>
+					<!-- /.row (nested) -->
+				</div>
+				<!-- /.panel-body -->
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<i class="fa fa-bar-chart-o fa-fw"></i> Biểu Đồ
+							<div class="pull-right">
+								<div class="btn-group">
+									<button type="button" class="btn btn-success btn-xs"
+										id="option1" autofocus="autofocus">Hàng ngày</button>
+									<button type="button" class="btn btn-success btn-xs"
+										id="option2">Tuần</button>
+									<button type="button" class="btn btn-success btn-xs"
+										id="option3">Tháng</button>
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div id="morris-line-chart-arpu"></div>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- col-lg-12 -->
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">Số liệu</div>
+						<div class="panel-body">
+							<div class="table-responsive">
+								<div id="tblUser"></div>
+							</div>
+						</div>
+
+					</div>
+					<!--  /.panel -->
+				</div>
+				<!--   /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+			<div hidden="true" id="jsonDataDay" th:text="${msgDay}"></div>
+			<div hidden="true" id="jsonDataWeek" th:text="${msgWeek}"></div>
+			<div hidden="true" id="jsonDataMonth" th:text="${msgMonth}"></div>
+
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="../js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="../js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="../js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="../js/plugins/morris/raphael-2.1.0.min.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="../js/plugins/morris/morris.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="../js/plugins/dataTables/jquery.dataTables.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="../js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+	<!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+	<script type="text/javascript"
+		src="../bootstrap-daterangepicker/moment.js"
+		th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+	<script type="text/javascript"
+		src="../bootstrap-daterangepicker/daterangepicker.js"
+		th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+	<script src="#"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/excellentexport.min.js}"></script>
+
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		var data = [];
+		/*]]>*/
+	</script>
+	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	<script>
+		var graph = Morris.Line({
+			element : 'morris-line-chart-arpu',
+			data : data,
+			xkey : 'date',
+			ykeys : [ 'arpu' ],
+			labels : [ 'ARPU' ],
+			parseTime : false,
+			ymin : 0,
+			ymax : 'auto',
+			hideHover : true
+		});
+		$(document).ready(function() {
+			data = $("#jsonDataDay").html();
+			data = $.parseJSON(data);
+			if (data.status == "0") {
+				graph.setData(data.data);
+				setDataTable(data.data);
+			}
+
+		});
+		$('#option1').on('click', function() {
+			data = $("#jsonDataDay").html();
+			data = $.parseJSON(data);
+			if (data.status == "0") {
+				graph.setData(data.data);
+				setDataTable(data.data);
+			}
+		});
+		$('#option2').on('click', function() {
+			data = $("#jsonDataWeek").html();
+			data = $.parseJSON(data);
+			if (data.status == "0") {
+				graph.setData(data.data);
+				setDataTable(data.data);
+			}
+		});
+		$('#option3').on('click', function() {
+			data = $("#jsonDataMonth").html();
+			data = $.parseJSON(data);
+			if (data.status == "0") {
+				graph.setData(data.data);
+				setDataTable(data.data);
+			}
+		});
+		$('#reservationtime').daterangepicker(
+				{
+					timePicker : false,
+					format : 'YYYY/MM/DD'
+				},
+				function(start, end, label) {
+					console.log('A date range was chosen: '
+							+ start.format('YYYY-MM-DD') + ' to '
+							+ end.format('YYYY-MM-DD'));
+					$('#from_date').val(start.format('YYYY-MM-DD'));
+					$('#to_date').val(end.format('YYYY-MM-DD'));
+				});
+		function setDataTable(xData) {
+			$('#tblUser')
+					.html(
+							'<table cellpadding="0" cellspacing="0" border="0" class="display" id="tblArpu"></table>');
+			$('#tblArpu').dataTable({
+				"data" : xData,
+				"columns" : [ {
+					"title" : "Ngày",
+					"data" : "date"
+				}, {
+					"title" : "Số người dùng đăng nhập",
+					"data" : "numberactiveuser"
+				}, {
+					"title" : "Doanh thu từ thẻ",
+					"data" : "sumcardmoney"
+				}, {
+					"title" : "Doanh thu từ SMS",
+					"data" : "sumsmsmoney"
+				}, {
+					"title" : "Tổng doanh thu",
+					"data" : "revenue"
+				}, {
+					"title" : "ARPU",
+					"data" : "arpu"
+				} ]
+			});
+		}
+	</script>
+</body>
+
+</html>

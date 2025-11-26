@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "dong1",
+    "texture": "12debd993",
+    "rect": [
+      611,
+      3,
+      756,
+      235
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      756,
+      235
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

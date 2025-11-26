@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "thang",
+    "texture": "14662c3e2",
+    "rect": [
+      230,
+      3,
+      394,
+      116
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      394,
+      116
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

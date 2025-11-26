@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="refresh" content="300" /> <!-- Refresh every 5 minutes -->
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+		<title data-th-text="#{admin.page.title}">CMS - Cấu hình</title>
+
+		<!-- Core CSS - Include with every page -->
+		<link href="css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+		<!-- SB Admin CSS - Include with every page -->
+		<link href="css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+		<div id="wrapper">
+			<div th:if="${userType} == 1">
+				<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+				<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			</div>
+			<div th:if="${userType} == 2">
+				<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+				<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			</div>		
+			<div th:if="${userType} == 3">
+				<div data-th-replace="cskh/sb-care :: top-nav"></div>
+				<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+			</div>
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">XÓC ĐĨA</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								Tham số
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-lg-11 col-md-offset-1">
+										<form role="form" class="form-horizontal" method="post" th:action="@{/config/change_xocdia_result.html}">
+											<input type="hidden" value="send" name="action" />
+											<span style="color:red" th:text="${message != null} ? ${message}" ></span>
+											<span th:text="${result_data}" id="json_data">abc</span>
+											<div class="row">
+												<div class="col-sm-12">
+													<table>
+														<thead>
+															<tr>
+																<th>ID Phòng</th>
+																<th>Mức Bet</th>
+																<th>Tổng số người</th>
+																<th>Tổng số tiền cược</th>
+																<th>Trạng thái</th>
+																<th>Time Countdown</th>
+															</tr>
+														</thead>
+														<tbody id="list_room_cont">
+														</tbody>
+													</table>
+													<br/><hr/><br/><br/>
+												</div>
+											</div>
+											<div class="row">
+												<div class="form-group">                                            	
+													<div class="col-sm-8">
+														<style th:inline="text">
+															label{font-weight:normal;}
+															.host{  [[${host_url}]]   }
+															.tick{display: none;color: green;font-size: 17px;font-weight: bolder;}
+															#list_room_cont td{cursor: pointer;}
+															#list_room_cont tr:hover{border:2px solid #000}
+														</style>
+														<table>
+															<thead>
+																<tr>
+																	<th colspan="4">&nbsp;</th>
+																	<th class="total_bet_chan">&nbsp;</th>
+																	<th class="total_bet_le">&nbsp;</th>
+																	<th class="total_bet_batrang">&nbsp;</th>
+																	<th class="total_bet_bale">&nbsp;</th>
+																	<th class="total_bet_bontrang">&nbsp;</th>
+																	<th class="total_bet_bondo">&nbsp;</th>
+																</tr>
+																<tr>
+																	<th>ID</th>
+																	<th>Tên</th>
+																	<th>Tài khoản</th>
+																	<th>Mã đại lý</th>
+																	<th>CHẴN</th>
+																	<th>LẺ</th>
+																	<th>3 TRẮNG</th>
+																	<th>3 ĐỎ</th>
+																	<th>4 TRẮNG</th>
+																	<th>4 ĐỎ</th>
+																</tr>
+															</thead>
+															<tbody class="bet_cont"></tbody>
+														</table>
+													</div>
+													<div class="col-sm-4">
+														<p>Phòng đang theo dõi: </p>
+														<input type="text" name="room_id" class="input_room_id" readonly="true"/>
+														<p>Thời gian tới phiên tiếp theo: <span class="gold_text count_down">0</span><span class="tick time_stage"></span></p>
+														<!--	                                        	<label>Chọn kết quả cho Tài Xỉu</label>-->
+														<div style="font-weight:700;"><input type="radio" value="random" name="type_result" checked="true" class="form-control type_result radio_sub result_radio"/> Random <span class="tick">(v)</span></div>
+														<div style="font-weight:700;"><input type="radio" value="manual" name="type_result" class="form-control type_result radio_sub result_radio"/> Tự chọn kết quả <span class="tick">(v)</span></div>
+														<table>
+															<tbody>
+																<tr>
+																	<td><label for="kq_1">Kết quả: 
+																			<span class="tick" style="display:inline-block;"></span></label><br/>
+																		<select id="kq_1" name="kq_1">
+																			<option value="0">Chưa chọn</option>
+																			<option value="1">Chẵn</option>
+																			<!-- <option value="2">Lẻ</option> -->
+																			<option value="3">Bốn Trắng</option>
+																			<option value="4">Bốn Đỏ</option>
+																			<option value="5">Ba Trắng</option>
+																			<option value="6">Ba Đỏ</option>
+																		</select>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<div style="font-weight:700;"><input type="radio" value="auto" name="type_result" class="form-control type_result radio_sub result_radio"/> Tự động chọn kết quả đc đặt ít nhất<span class="tick">(v)</span></div>
+														<br/>
+														<label><input type="radio" name="reset_result" value="1" class="reset_result" checked="true" />1 Phiên tiếp theo <span class="tick">(v)</span></label><br/>
+														<label><input type="radio" name="reset_result" value="0" class="reset_result" />Tất cả các phiên tiếp theo <span class="tick">(v)</span></label><br/>
+														<button type="submit" class="btn btn-success">Gửi</button>
+													</div>
+												</div>
+												<div>
+													<hr/>
+													<div class="col-sm-12">
+														
+													</div>
+												</div>
+
+											</div>
+										</form>
+									</div>
+									<!-- /.col-lg-6 (nested) -->
+								</div>
+								<!-- /.row (nested) -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#page-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+		<!-- Core Scripts - Include with every page -->
+		<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+		<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+		<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+		<!-- Page-Level Plugin Scripts - Tables -->
+		<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+		<!-- SB Admin Scripts - Include with every page -->
+		<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			var data = null;
+			var expect_result = /*[[${expect_result}]]*/ '';
+			var base_link = window.location.origin;
+			$(document).ready(() => {
+				let json_data = $('#json_data').text();
+				var result_data = json_data !== "" ? JSON.parse(json_data) : {};
+				console.log("document ready");
+				QueryXocDiaStatus();
+				
+				// Sự kiện click xem chi tiết phòng
+				$("#list_room_cont").on("click", "tr", setIdRoomDetail);
+			});
+			var countDown;
+			function QueryXocDiaStatus() {
+				$.get('get_xocdia_status.html', (data_str) => {
+					while (data_str.indexOf(",,") != -1) {
+						console.log("clear ,,")
+						data_str = data_str.replaceAll(",,", ",");
+					}
+					while (data_str.indexOf("},]") != -1) {
+						console.log("clear },]")
+						data_str = data_str.replaceAll("},]", "}]");
+					}
+					while (data_str.indexOf("[,") != -1) {
+						console.log("clear [,")
+						data_str = data_str.replaceAll("\\[,", "[");
+					}
+//					console.log("Ok, data_str: " + data_str)
+					if (data_str === "")
+						data = null;
+					else
+						data = JSON.parse(data_str);
+					console.log(data);
+					var list_room = data.list_room;
+					
+					$('#list_room_cont').html('')
+					if (list_room != null) {
+						for(let i in list_room){
+							let room = list_room[i];
+							let html_str = '<tr id="room_'+room.id+'">'
+									+"<td>"+room.id+"</td>"
+									+"<td>"+room.bet+"</td>"
+									+"<td>"+room.listUserBet.length+"</td>"
+									+"<td>"+room.totalBet+"</td>"
+									+"<td>"+room.stage+"</td>"
+									+"<td>"+room.timeCountDown+"</td>"
+									+'</tr>';
+							$('#list_room_cont').append(html_str);
+							setTimeout(()=>{
+								$('#room_'+room.id).data('room', room);
+							}, 0);
+							
+							if(detail_room_id === 0)
+								detail_room_id = room.id;
+							if(detail_room_id === room.id)
+								viewRoomDetail(room);
+						}
+					}
+				});
+				setTimeout(QueryXocDiaStatus, 1000);
+			}
+			function setIdRoomDetail(e){
+				let room = $(e.currentTarget).data("room");
+				detail_room_id = room.id;
+				$('.time_stage').show();
+			}
+			var detail_room_id = 0;
+			function viewRoomDetail(room){				
+				
+				$('.input_room_id').val(room.id);
+				
+				countDown = parseInt(room.timeCountDown);
+				if (countDown !== -1) {
+//						countDown--;
+					$('.count_down').text(countDown);
+				}
+
+				var stage = "";
+				switch (data.stage) {
+					case -1:
+						stage = "ĐÃ DỪNG";
+						break;
+					case 0:
+						stage = "DEAL";
+						break;
+					case 1:
+						stage = "SET_BET";
+						break;
+					case 2:
+						stage = "STOP_SET_BET";
+						break;
+					case 3:
+						stage = "END_MATCH";
+						break;
+					case 4:
+						stage = "CALCULATE";
+						break;
+					case 5:
+						stage = "BUY_POT";
+						break;
+					default: 
+						stage = "TRẠNG THÁI";
+				}
+				$('.time_stage').text("(" + stage + ")");
+				
+				$('.bet_cont').html('');
+				// Hiển thị dữ liệu người dùng đặt cược
+				if(room.listUserBet.length > 0)
+				for(let i=0; i<room.listUserBet.length; i++){
+					let bet_data = room.listUserBet[i];
+					let html_str = '<tr>';
+					html_str += '<td><a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + bet_data.id + '">'+bet_data.id+'</a></td>';
+					html_str += '<td><a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + bet_data.id + '">'+bet_data.fullname+'</a></td>';
+					html_str += '<td>'+bet_data.gold+'</td>';
+					html_str += '<td><a href="'+base_link+'/cms-api/users/edit_user.html?user_id=' + bet_data.agency + '">'+bet_data.agency+'</a></td>';
+					html_str += '<td>'+bet_data.bet_1+'</td>';
+					html_str += '<td>'+bet_data.bet_2+'</td>';
+					html_str += '<td>'+bet_data.bet_3+'</td>';
+					html_str += '<td>'+bet_data.bet_4+'</td>';
+					html_str += '<td>'+bet_data.bet_5+'</td>';
+					html_str += '<td>'+bet_data.bet_6+'</td>';
+					html_str += '</tr>';
+					$('.bet_cont').append(html_str);
+				}
+			
+				// Hiện kết quả server ghi nhận
+				let kq_text_ele = $('#kq_1').siblings('label').find('.tick');
+				kq_text_ele.text('');
+				$('.reset_result').siblings('.tick').hide();
+				$('.type_result').siblings('.tick').hide();
+				if(room.setXdResult){
+					let kq_text = '';
+					switch(room.setXdResult.kq_1){
+						case 1:
+							kq_text = 'CHẴN';break;
+						case 2:
+							kq_text = 'LẺ';break;
+						case 3:
+							kq_text = 'BỐN TRẮNG';break;
+						case 4:
+							kq_text = 'BỐN ĐỎ';break;
+						case 5:
+							kq_text = 'BA TRẮNG';break;
+						case 6:
+							kq_text = 'BA ĐỎ';break;
+					}
+					kq_text_ele.text("("+kq_text+")");
+					$('.reset_result[value="'+room.setXdResult.reset_result+'"]').siblings('.tick').show();
+					$('.type_result[value="'+room.setXdResult.type_result+'"]').siblings('.tick').show();
+				}
+			}
+			const numberWithCommas = (x) => {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+			String.prototype.replaceAll = function (search, replacement) {
+				var target = this;
+				return target.replace(new RegExp(search, 'g'), replacement);
+			};
+			/*]]>*/
+		</script>
+		<style>table td, table th{padding: 6px 9px;border: 1px solid #000;}
+			.gold_text{font-size: 27px;font-weight: bold;color: #fb2222;}
+			.radio_sub{width: 15px;display: inline-block;height: 15px;vertical-align: sub;}
+			.tick{display:none;color: green;font-size: 17px;font-weight: bolder;}
+			#json_data{display: block;}
+		</style>
+    </body>
+
+</html>

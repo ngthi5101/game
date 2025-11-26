@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/favicon-96x96.png"
+	th:href="@{/resources/dashboard_files/favicon.png}" />
+<title data-th-text="#{admin.page.title}">Title</title>
+
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="bootstrap-daterangepicker/daterangepicker-bs3.css"
+	th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="css/plugins/timeline/timeline.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet"
+	th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Sửa thông tin</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<form id="UserForm" class="form-horizontal"
+						action="/users/update_users"
+						th:action="@{/users/update_users.html}" th:object="${authUser}"
+						method="POST">
+						<fieldset>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="alert alert-warning" th:if="${err} != null">
+										<span th:text="${err}">Lỗi</span>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-info">
+								<div class="panel-heading">
+									<ul class="nav nav-pills">
+										<li><p>Thông tin</p></li>
+										<li class="pull-right"><a class="btn btn-danger btn-lg"
+											href="javascript:history.back()" title="Bỏ qua"
+											th:text="#{button.action.cancel}"> <i class="fa fa-check">
+											</i>
+										</a></li>
+										<li class="pull-right"><button
+												class="btn btn-info btn-lg" type="submit" title="Lưu"
+												th:text="#{button.action.save}">
+												<i class="fa fa-check"> </i>
+											</button></li>
+									</ul>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-8 col-md-offset-1">
+											<div class="form-group">
+												<label class="col-lg-4 control-label">Tên đăng nhập</label>
+												<input type="text" th:field="*{id}" th:value="*{id}"
+													hidden="true" /> <input type="text" th:field="*{password}"
+													th:value="*{password}" hidden="true" /> <input type="text"
+													th:field="*{salt}" th:value="*{salt}" hidden="true" />
+												<div class="col-lg-8">
+													<input class="form-control" placeholder="Username"
+														type="text" th:field="*{userName}" th:value="*{userName}"
+														readonly="readonly" />
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputFullName" class="col-lg-4 control-label">Họ
+													tên</label>
+												<div class="col-lg-8">
+													<input class="form-control" type="text"
+														th:field="*{fullName}" th:value="*{fullName}"></input>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="inputEmail" class="col-lg-4 control-label">Email</label>
+												<div class="col-lg-8">
+													<input class="form-control" type="email"
+														th:field="*{email}"></input>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-lg-4 control-label">Giới tính</label>
+												<div class="col-lg-8">
+													<ul class="list-inline">
+														<li><input name="gender" id="optionsRadios1"
+															value="1" th:checked="#{true}" type="radio"
+															th:field="*{gender}"> Nam</input></li>
+														<li><input name="gender" id="optionsRadios2"
+															value="0" type="radio" th:field="*{gender}">Nữ</input></li>
+													</ul>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="description" class="col-sm-4 control-label">
+													Loại tài khoản </label>
+												<div class="col-sm-8">
+													<select name="type" class="form-control"
+														th:field="*{userType}">
+														<option value="1">Quản trị</option>
+														<option value="2">Vận hành</option>
+														<option value="3">Chăm sóc khách hàng</option>
+														<option value="4">Số liệu</option>
+														<option value="5">Đối tác</option>
+														<option value="6">Đối tác cấp 2</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="description" class="col-sm-4 control-label">Quyền
+													sử dụng</label>
+												<div class="col-sm-8">
+													<ul class="list-inline">
+														<li th:each="role : ${roles}"><input type="checkbox"
+															name="roles" th:value="${role.id}"
+															th:checked="${#lists.contains(listRoleId, role.id)}" /> <label
+															th:text="${role.name}">ROLE_USER</label></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- end panel-body -->
+							</div>
+							<!-- end panel-->
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div hidden="true" id="hid_partner" th:text="${partner_id}"></div>
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="js/plugins/morris/raphael-2.1.0.min.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="js/plugins/morris/morris.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+	<!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+	<script type="text/javascript"
+		src="bootstrap-daterangepicker/moment.js"
+		th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+	<script type="text/javascript"
+		src="bootstrap-daterangepicker/daterangepicker.js"
+		th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							partner_id = $('#hid_partner').html();
+							$('#partner').val(partner_id);
+							// validate signup form on keyup and submit
+							$("#UserForm")
+									.validate(
+											{
+												rules : {
+													userName : {
+														required : true,
+														minlength : 2
+													},
+													password : {
+														required : true,
+														minlength : 5
+													},
+													re_password : {
+														required : true,
+														minlength : 5,
+														equalTo : "#password"
+													},
+													fullName : "required",
+													email : {
+														required : true,
+														email : true
+													},
+													gender : {
+														minlength : 1
+													},
+													authRoles : {
+														required : true,
+														minlength : 1
+													},
+												},
+												messages : {
+													userName : {
+														required : "Please enter a username",
+														minlength : "Your username must consist of at least 2 characters"
+													},
+													password : {
+														required : "Please provide a password",
+														minlength : "Your password must be at least 5 characters long"
+													},
+													re_password : {
+														required : "Please provide a password",
+														minlength : "Your password must be at least 5 characters long",
+														equalTo : "Please enter the same password as above"
+													},
+													fullName : "Please enter a fullname",
+													email : "Please enter a valid email address",
+													gender : "Please select at checkbox",
+													authRoles : "Please select a role"
+												}
+											});
+						});
+	</script>
+</body>
+
+</html>

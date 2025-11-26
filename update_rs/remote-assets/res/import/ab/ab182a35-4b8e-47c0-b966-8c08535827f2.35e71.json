@@ -1,0 +1,122 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "s3",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "s3",
+    "_children": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_level": 1,
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 1
+        },
+        "_spriteFrame": {
+          "__uuid__": "a8g8LMvEZBCpH0mQwjllyK"
+        },
+        "_sizeMode": 2
+      },
+      {
+        "__type__": "73db0L3xVBHPoRS92rTZSwB",
+        "node": {
+          "__id__": 1
+        },
+        "listAnimation": [
+          {
+            "__id__": 3
+          }
+        ]
+      },
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "abGCo1S45HwLlmjAhTWCfy"
+      },
+      "fileId": "8byb7gvdtPDo6rwFfGtF53"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 137,
+      "height": 121
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 0.9,
+      "y": 0.9,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "light",
+    "_parent": {
+      "__id__": 1
+    },
+    "_level": 2,
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 2
+        },
+        "_spriteFrame": {
+          "__uuid__": "9bMVV1Nz5CWbrikt7tsFOC"
+        },
+        "_sizeMode": 2
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__uuid__": "abGCo1S45HwLlmjAhTWCfy"
+      },
+      "fileId": "fb6a6V4qxAUYcp+/Yu2gfP"
+    },
+    "_opacity": 0,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 137,
+      "height": 121
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  {
+    "__type__": "cc.Animation",
+    "node": {
+      "__id__": 1
+    },
+    "_defaultClip": {
+      "__uuid__": "adiuFqtN5NzYEPR5TEhyMN"
+    },
+    "_clips": [
+      {
+        "__uuid__": "adiuFqtN5NzYEPR5TEhyMN"
+      }
+    ]
+  }
+]

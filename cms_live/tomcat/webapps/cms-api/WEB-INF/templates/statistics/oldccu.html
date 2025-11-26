@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" ng-app="myDashboardApp">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+    <title data-th-text="#{admin.page.title}"> CCU (Concurrent Users)</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+    <link href="../font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+	<link href="../bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" media="all" th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}"/>
+    <!-- /css for datatable -->
+    <link rel="stylesheet" type="text/css" href="../resources/datatable/css/jquery.dataTables.css" th:href="@{/resources/datatable/css/jquery.dataTables.css}"/>
+     <!-- /js for datatable -->
+    <link rel="stylesheet" type="text/css" href="../resources/datatable/js/jquery.dataTables.min.js" th:href="@{/resources/datatable/js/jquery.dataTables.min.js}"/>
+    <link rel="stylesheet" type="text/css" href="../resources/datatable/js/jquery.js" th:href="@{/resources/datatable/js/jquery.js}"/>
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/dataTables.bootstrap.css}"/>
+    <link href="../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+    <link href="../css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="../css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+    <!-- angular --> 
+    <link rel="stylesheet" href="../resources/angular/nv.d3.css" th:href="@{/resources/angular/nv.d3.css}"/>
+    <link rel="stylesheet" href="../resources/angular/ccu.css" th:href="@{/resources/angular/ccu.css}"/>
+     
+</head>
+
+<body>
+
+    <div id="wrapper">
+          	
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 4">
+			<div data-th-replace="solieu/sb-solieu :: top-nav"></div>
+			<div data-th-replace="solieu/sb-solieu :: vert-nav-admin"></div>
+		</div>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">CCU - Concurrent Users</h2>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+			<div class="row">				
+				<div ng-controller="myDashboardCtrl">
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">CCU</h3>
+					  </div>
+					  <div class="panel-body">
+					   <nvd3 options="options" data="data"></nvd3>
+					  </div>
+					</div>
+					<div class="panel panel-green">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">CCU lớn nhất</h3>
+					  </div>
+					  <div class="panel-body">
+						   <ul class="list-group">
+							  <li class="list-group-item">
+							    <span class="badge">{{current_all_user}}</span>
+							    All User
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{current_all_bot}}</span>
+							    All Bot
+							  </li>					
+							  <li class="list-group-item">
+							    <span class="badge">{{max_ccu}}</span>
+							    MaXXX CCU
+							  </li>
+							  <li class="list-group-item">
+							    <span class="badge">{{last_update}}</span>
+							    Date
+							  </li>					
+							</ul>
+					  </div>
+					</div>		
+					<div class="panel panel-yellow">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Lịch sử CCU</h3>
+					  </div>
+					  <div class="panel-body">
+					  <nvd3 options="options_ccu" data="data_ccu"></nvd3>
+					  </div>
+					</div>
+					<div class="panel panel-red">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Lịch sử CCU theo ngày</h3>									
+					  </div>
+					  <div class="panel-body">
+					  <div class="col-lg-4">
+								<label>&nbsp;</label>								
+                                    <label>Từ ngày - đến ngày</label>
+                                    <div class="input-prepend input-group form-group">
+                                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                                        <input type="text" name = "from_date" id = "from_date" hidden="true" th:value="${from_date}"/>
+                                        <input type="text" name = "to_date" id = "to_date" hidden="true"  th:value="${to_date}"/> 
+                                        <input type="text" style="width: 100%" name="date_range" id="reservationtime" class="form-control"
+                                               value="08/01/2015 - 08/01/2015" th:value="${from_date} + ' - ' + ${to_date}" readonly="readonly" />
+                                    </div>                                					
+							</div> 
+					  <nvd3 options="options_ccu_dayly" data="data_ccu_dayly" ></nvd3>
+					  </div>
+					</div>						
+				</div>
+			</div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Core Scripts - Include with every page -->
+    <script src="../js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+    <script src="../js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="../js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+    <script src="../js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="../js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+    
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="../js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script type="text/javascript" src="../bootstrap-daterangepicker/moment.js" th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+	<script type="text/javascript" src="../bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+    
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>   
+    <script src="../resources/angular/moment-with-locales.js" th:href="@{/resources/angular/moment-with-locales.js}"></script>
+
+    <script src="../resources/angular/d3.js" th:href="@{/resources/angular/d3.js}"></script>
+    <script src="../resources/angular/nv.d3.js" th:href="@{/resources/angular/nv.d3.js}"></script> <!-- or use another assembly -->
+    <script src="../resources/angular/angular-nvd3.js" th:href="@{/resources/angular/angular-nvd3.js}"></script>
+
+    <script src="../resources/angular/parse-angular.js" th:href="@{/resources/angular/parse-angular.js}"></script>
+    <script src="../resources/angular/ccu.js" th:href="@{/resources/angular/ccu.js}"></script>
+    <script src="../resources/angular/holder.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    
+    <script type="text/javascript">
+        Parse.initialize("7xZcGFWWb91nrUE8PypB7K8QGdh7B38bxoKijh4r", "0XW0ZGARrwjePzIZ05ax6KgIDzdGDkfjVo4rZaIT");
+    </script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    
+    <script>   
+    </script>
+</body>
+
+</html>

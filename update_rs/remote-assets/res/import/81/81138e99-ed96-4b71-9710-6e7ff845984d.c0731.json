@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "JackpotYellow",
+    "texture": "1e405cf0b",
+    "rect": [
+      181,
+      731,
+      201,
+      172
+    ],
+    "offset": [
+      -1.5,
+      28.5
+    ],
+    "originalSize": [
+      208,
+      233
+    ],
+    "rotated": 1,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

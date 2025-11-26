@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+	<head>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96"
+			  href="/favicon-96x96.png"
+			  th:href="@{/resources/dashboard_files/favicon.png}" />
+
+		<title data-th-text="#{admin.page.title}">Game - User Detail</title>
+
+		<!-- Core CSS - Include with every page -->
+		<link href="../css/bootstrap.min.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+		<link href="../font-awesome/css/font-awesome.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+		<link rel="stylesheet" type="text/css" media="all"
+			  href="../bootstrap-daterangepicker/daterangepicker-bs3.css"
+			  th:href="@{/resources/bootstrap-daterangepicker/daterangepicker-bs3.css}" />
+		<!-- DataTables CSS -->
+		<link href="css/plugins/dataTables.bootstrap.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/jquery.dataTables.min.css}" />
+		<link href="css/plugins/responsive.dataTables.min.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/css/plugins/dataTables/responsive.dataTables.min.css}" />
+		<!-- Page-Level Plugin CSS - Dashboard -->
+		<link href="../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+		<link href="../css/plugins/timeline/timeline.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+		<link href="../bootstrapformhelpers/css/bootstrap-formhelpers.min.css"
+			  rel="stylesheet"
+			  th:href="@{/resources/bootstrapformhelpers/css/bootstrap-formhelpers.min.css}" />
+		<!-- SB Admin CSS - Include with every page -->
+		<link href="../css/sb-admin.css" rel="stylesheet"
+			  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+	</head>
+
+	<body>
+
+		<div id="wrapper">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+			<div id="page-wrapper">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">
+							<span th:text="${user.fullname}"></span>
+						</h1>
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<div class="row" th:if="${get_back_success == true}">
+					<div class="col-lg-12">
+						<div class="alert alert-success">
+							<p>Thực hiện thu hồi gold về hệ thống thành công. Tài khoản: <span th:text="${user.fullname}"></span></p>
+						</div>
+					</div>
+				</div>
+				<div class="row" th:if="${get_back_failure == true}">
+					<div class="col-lg-12">
+						<div class="alert alert-danger">
+							<p>Có lỗi khi thực hiện!  <span th:text="${message}"></span></p>
+						</div>
+					</div>
+				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<form role="form" method="post" action="get_back_gold.html"
+							  th:action="@{/users/get_back_gold.html}">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title pull-left">Thông tin khách hàng</h3>
+									<ul class="list-unstyled">
+										<li class="pull-right"><a class="btn btn-danger btn-sm"
+																  th:href="@{/users/search_users.html}" title="Bỏ qua"
+																  th:text="#{button.action.cancel}"> <i class="fa fa-check">
+												</i>
+											</a></li>
+										<span class="pull-right"> &nbsp;&nbsp;&nbsp; </span>
+										<li class="pull-right" th:if="${userType  == 1 or userType  == 2}"><button class="btn btn-info btn-sm"
+																												   type="submit" title="Lưu" th:text="#{button.action.save}">
+												<i class="fa fa-check"> </i>
+											</button></li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group" hidden="true">
+												<label>Id</label> <input class="form-control"
+																		 th:value="${user.id}" name="user_id" readonly="readonly"
+																		 id="userId" />
+											</div>
+											<div class="form-group">
+												<label>Tên đăng nhập</label> <input class="form-control"
+																					th:value="${user.username}" name="username"
+																					readonly="readonly" />
+											</div>
+											<div class="form-group">
+												<label>Tên hiển thị</label> <input class="form-control"
+																				   th:value="${user.fullname}" name="fullname"
+																				   readonly="readonly" />
+											</div>
+											<div class="form-group">
+												<label>Số điện thoại</label> <input class="form-control"
+																					th:value="${user.mobile}" name="mobile" readonly="readonly" />
+											</div>
+											<div class="form-group">
+												<label>Phiên bản</label> <input class="form-control"
+																				th:value="${user.clientVersion}" name="clientVersion"
+																				readonly="readonly" />
+											</div>
+											<div class="form-group">
+												<label>platform</label> <input class="form-control"
+																			   th:value="${user.platform}" name="platform"
+																			   readonly="readonly" />
+											</div>
+											<div class="form-group">
+												<label>Số Gold hiện tại</label>
+												<input class="form-control format_gold_val"
+													   th:value="${user.gold.gold}" name="gold"
+													   readonly="readonly" />
+											</div>
+											<div class="form-group">
+												<label>Thu hồi số gold</label>
+												<input class="form-control"
+													   th:value="${user.gold.gold}" value="0" name="get_back_gold_number" />
+												<label>Lý do</label>
+												<textarea class="form-control" name="reason"></textarea>
+												<label>Id user nhận gold thu hồi</label>
+												<input class="form-control" value="" name="target_user" />
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label>Ngày đăng ký</label> <input class="form-control"
+																				   th:value="${user.dateCreated}" name="dateCreated"
+																				   readonly="readonly" />
+											</div>
+											<div class="form-group">
+												<label>Đăng nhập lần cuối</label> <input class="form-control"
+																						 th:value="${user.lastLogin}" name="lastLogin"
+																						 readonly="readonly" />
+											</div>
+											<div class="form-group">
+
+												<label>Mã nhà phân phối cấp 1</label> <input
+													class="form-control" th:value="${user.providerCode}"
+													name="providerCode" readonly="readonly" />
+
+											</div>
+											<div class="form-group">
+
+												<label>Mã nhà phân phối cấp 2</label> <input
+													class="form-control" th:value="${user.refcode}"
+													name="refcode" readonly="readonly" />
+
+											</div>
+											<div class="form-group">
+
+												<label>Trạng thái</label> <select name="userStatus"
+																				  id="userStatus" class="form-control"  readonly="readonly" disabled="true">
+													<option th:selected="${user.status == 0}" value="0">ACTIVE</option>
+													<option th:selected="${user.status == 1}" value="1">LOCK</option>
+													<option th:selected="${user.status == 2}" value="2">LOCK_CASHOUT</option>
+													<option th:selected="${user.status == 3}" value="3">LOCK_FREE_SPIN</option>
+													<option th:selected="${user.status == 4}" value="4">LOCK_FREE_POCKER</option>
+												</select>
+											</div>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+								<!-- /.panel-body -->
+							</div>
+						</form>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#page-wrapper -->
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- Core Scripts - Include with every page -->
+		<script src="../js/jquery-1.10.2.js"
+		th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+		<script src="../js/bootstrap.min.js"
+		th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+		<script src="../js/plugins/metisMenu/jquery.metisMenu.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+		<!-- Page-Level Plugin Scripts - Dashboard -->
+		<script src="../bootstrapformhelpers/js/bootstrap-formhelpers.js"
+		th:src="@{/resources/bootstrapformhelpers/js/bootstrap-formhelpers.js}"></script>
+		<script type="text/javascript"
+				src="../bootstrap-daterangepicker/moment.js"
+		th:src="@{/resources/bootstrap-daterangepicker/moment.js}"></script>
+		<script type="text/javascript"
+				src="../bootstrap-daterangepicker/daterangepicker.js"
+		th:src="@{/resources/bootstrap-daterangepicker/daterangepicker.js}"></script>
+		<!-- Page-Level Plugin Scripts - Tables -->
+		<script src="js/plugins/dataTables/jquery.dataTables.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.min.js}"></script>
+		<script src="js/plugins/dataTables/dataTables.bootstrap.js"
+		th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/dataTables.responsive.min.js}"></script>
+		<!-- SB Admin Scripts - Include with every page -->
+		<script src="../js/sb-admin.js"
+		th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			var currUrl = /*[[@{/}]]*/"";
+			var getBackResult = /*[[@{json_result}]]*/"";
+			console.log("getBackResult: ")
+			console.log(getBackResult)
+			/*]]>*/
+		</script>
+
+		<script>
+			$(document).ready(function () {
+									
+				$('.format_gold_val').each((i, o)=>{
+					let text = $(o).val();
+					$(o).val(numberWithCommas(text));
+				});
+			});
+			const numberWithCommas = (x) => {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+			String.prototype.replaceAll = function (search, replacement) {
+				var target = this;
+				return target.replace(new RegExp(search, 'g'), replacement);
+			};
+		</script>
+		<!-- Page-Level Demo Scripts - Forms - Use for reference -->
+
+	</body>
+
+</html>

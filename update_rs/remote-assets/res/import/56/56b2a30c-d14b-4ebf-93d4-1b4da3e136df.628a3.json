@@ -1,0 +1,209 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "BigWinFx",
+    "data": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "BigWinFx",
+    "_children": [
+      {
+        "__id__": 2
+      },
+      {
+        "__id__": 3
+      }
+    ],
+    "_level": 1,
+    "_components": [
+      {
+        "__type__": "c6a92l+3Z9IeKvkG7ldmWBj",
+        "node": {
+          "__id__": 1
+        },
+        "spineNode": {
+          "__id__": 2
+        },
+        "textJackpot": {
+          "__id__": 5
+        },
+        "textJackpotBg": {
+          "__id__": 3
+        }
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "10QnYWMkhP/KsXOetv9MEE"
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "spine",
+    "_parent": {
+      "__id__": 1
+    },
+    "_active": false,
+    "_level": 2,
+    "_components": [
+      {
+        "__type__": "sp.Skeleton",
+        "node": {
+          "__id__": 2
+        },
+        "defaultAnimation": "animation"
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "c49XwlYpNNnK2MDbvmn+cC"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 963,
+      "height": 960
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "y": 83
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 0.7,
+      "y": 0.7,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "JP BG",
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 4
+      }
+    ],
+    "_active": false,
+    "_level": 2,
+    "_components": [
+      {
+        "__type__": "cc.Sprite",
+        "node": {
+          "__id__": 3
+        },
+        "_spriteFrame": {
+          "__uuid__": "3c5QoIiI9G0oKdxddFuvNp"
+        },
+        "_sizeMode": 0
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "afWLyH3JZHMqW+r9nSRbrx"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 600,
+      "height": 70
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "y": -172
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Jackpot",
+    "_parent": {
+      "__id__": 3
+    },
+    "_level": 2,
+    "_components": [
+      {
+        "__id__": 5
+      }
+    ],
+    "_prefab": {
+      "__type__": "cc.PrefabInfo",
+      "root": {
+        "__id__": 1
+      },
+      "asset": {
+        "__id__": 0
+      },
+      "fileId": "52Xda8k1BODJ6PZTKjw9pu"
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 385.5,
+      "height": 60
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -8,
+      "y": 9
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_zIndex": 0
+  },
+  {
+    "__type__": "cc.Label",
+    "node": {
+      "__id__": 4
+    },
+    "_useOriginalSize": false,
+    "_string": "1.000.000",
+    "_N$string": "1.000.000",
+    "_fontSize": 60,
+    "_N$file": {
+      "__uuid__": "d44o8Ib9ROZ7V3pxQMPQ+6"
+    },
+    "_isSystemFontUsed": false,
+    "_spacingX": -30,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1
+  }
+]

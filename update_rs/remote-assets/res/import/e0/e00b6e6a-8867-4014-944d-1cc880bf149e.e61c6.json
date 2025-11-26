@@ -1,0 +1,27 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "xiu",
+    "texture": "12debd993",
+    "rect": [
+      852,
+      185,
+      98,
+      56
+    ],
+    "offset": [
+      0,
+      2.5
+    ],
+    "originalSize": [
+      98,
+      61
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

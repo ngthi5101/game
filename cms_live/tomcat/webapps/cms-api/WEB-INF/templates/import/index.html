@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}"/>	
+
+        <title data-th-text="#{admin.page.title}">Yoker - Nhập tài khoản từ game bài khác</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}"/>
+        <link href="../font-awesome/css/font-awesome.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}"/>
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}"/>
+        <link href="../css/plugins/timeline/timeline.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}"/>
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="../css/sb-admin.css" rel="stylesheet"  th:href="@{/resources/sb-admin-v2/css/sb-admin.css}"/>
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+        	<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+    		<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Thông tin nhập tài khoản Game</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class = "row" th:if="${error_msgs != null}">
+                    <div class="col-lg-12">
+                        <div class="alert alert-warning">
+                            <span th:text="${error_msgs} + ''">Abc</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                Chọn các thông tin
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <form role="form" method="post" action="import_new.html" th:attr="action=@{/import/import_new.html}">
+                                            <div class="form-group" hidden="hidden">
+                                                <label>Quét thư mục</label>
+                                                <input class="form-control" th:value="${scan_dir}" name="scan_dir"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nguồn dữ liệu</label>
+                                                <select name="file" class="form-control">
+                                                    <option th:each="file : ${files}" 
+                                                            th:value="${file}"
+                                                            th:text="${file}">Đường dẫn file</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nhà cung cấp</label>
+                                                <select name="operator" class="form-control input-sm">
+                                                    <option value="VIETTEL">Yotel</option>
+                                                    <option value="VIETTEL">Viettel</option>
+                                                    <option value="MOBIFONE">Mobifone</option>
+                                                    <option value="VINAPHONE">Vinaphone</option>
+                                                    <option value="ANY">ANY</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Từ game</label>
+                                                <select name="from_game" class="form-control input-sm">
+                                                    <option value="VIETTEL">Yosport-Users</option>
+                                                    <option value="IONLINE">IONLINE</option>
+                                                    <option value="BIGONE">BIG ONE</option>
+                                                    <option value="BIGKOOL">BIG KOOL</option>
+                                                    <option value="IWIN">IWIN</option>
+                                                    <option value="TRACHANHQUAN">TRA CHANH QUAN</option>
+                                                    <option value="YOKER_PREV">Yoker Cũ</option>
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Nhập dữ liệu</button>
+                                        </form>
+                                    </div>
+                                    <!-- /.col-lg-6 (nested) -->
+                                </div>
+                                <!-- /.row (nested) -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+
+        <!-- Core Scripts - Include with every page -->
+        <script src="../js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+        <script src="../js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+        <script src="../js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+        <!-- Page-Level Plugin Scripts - Dashboard -->
+        <script src="../js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+        <script src="../js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+        <!-- Page-Level Plugin Scripts - Tables -->
+        <script src="../js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+        <!-- SB Admin Scripts - Include with every page -->
+        <script src="../js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+        <!-- Page-Level Demo Scripts - Forms - Use for reference -->
+        <script>
+            $(document).ready(function() {
+            });
+            function doSearchUser() {
+                window.location.href = 'users.html?fullname=' + $(".custom-search-form > input").val();
+                return false;
+            };        
+        </script>
+    </body>
+
+</html>

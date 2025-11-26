@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" th:href="@{/resources/dashboard_files/favicon.png}" />
+
+<title data-th-text="#{admin.page.title}">Game - Cấu hình</title>
+
+<!-- Core CSS - Include with every page -->
+<link href="css/bootstrap.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/bootstrap.min.css}" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/font-awesome/css/font-awesome.css}" />
+
+<!-- Page-Level Plugin CSS - Dashboard -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/morris/morris-0.4.3.min.css}" />
+<link href="css/plugins/timeline/timeline.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/plugins/timeline/timeline.css}" />
+
+<!-- SB Admin CSS - Include with every page -->
+<link href="css/sb-admin.css" rel="stylesheet" th:href="@{/resources/sb-admin-v2/css/sb-admin.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div th:if="${userType} == 1">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 2">
+			<div data-th-replace="fragments/sb-admin :: top-nav"></div>
+			<div data-th-replace="fragments/sb-admin :: vert-nav-admin"></div>
+		</div>
+		<div th:if="${userType} == 3">
+			<div data-th-replace="cskh/sb-care :: top-nav"></div>
+			<div data-th-replace="cskh/sb-care :: vert-nav-admin"></div>
+		</div>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Khởi tạo hũ</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab" href="#tab100">Slot</a></li>
+								<li ><a data-toggle="tab" href="#tab1k">Spin</a></li>
+								<li ><a data-toggle="tab" href="#tab10k">Poker</a></li>
+							</ul>
+						</div>
+						<div class="panel-body">
+							<div class="tab-content">
+								<div id="tab100" class="tab-pane fade in active">
+									<div class="row">
+										<div class="col-lg-8">
+											<form role="form" method="post" th:action="@{/config/init_fund.html}" th:object="${config}">
+												<div class="form-group">
+                                                <input th:field="*{id}" hidden="true"/>
+	                                            </div>
+	                                            <div class="form-group">
+	                                                <input th:field="*{key}" hidden="true"/>
+	                                            </div>            
+	                                            <div class="form-group">
+	                                                <label>Value</label>
+	                                                <textarea class="form-control" rows="15" th:field="*{value}"></textarea>
+	                                            </div>
+	                                            <div>
+	                                                <button type="submit" name="100" class="btn btn-success">Cập nhật</button>
+	                                            </div>
+											</form>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+										<div class="col-lg-4">
+											<div class="form-group">
+													<label>Chú ý:</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<p class="help-block">init: giá trị khởi tạo hũ</p>
+															<p class="help-block">chipChange: Tiền bắn</p>
+															<p class="help-block">interval: thời gian bắn bắn</p>
+															<p class="help-block">bet: Tiền cược của room</p>
+															<p class="help-block">chipType: 1 là iCash, 0 là xu</p>
+															<p class="help-block">status: 1 là Mở bắn, 0 là dừng bắn</p>
+														</div>
+													</div>
+												</div>
+										</div>
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+								<div id="tab1k" class="tab-pane fade">
+									<div class="row">
+										<div class="col-lg-8 col-md-offset-2">
+											<form role="form" method="post" th:action="@{/config/init_fund.html}" th:object="${config1k}">
+												<div class="form-group">
+													<label>Khởi tạo hũ</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{init}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Thời gian bắn(giây)</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{interval}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Tiền bắn</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<input type="text" class="form-control" th:field="*{chipChange}" />
+														</div>
+													</div>
+												</div>
+												<div class="form-group">	
+	                                        	   	<label>Tắt/bật</label>
+	                                        	   	<div class="row">
+														<div class="col-xs-10">
+															<select th:field="*{status}" class="form-control">
+																<option value="1">On</option>
+																<option value="0">Off</option>
+															</select>
+														</div>
+													</div>
+	                                         	</div>
+												<button th:if="${userType} != 3" type="submit" name="1k" class="btn btn-success col-md-offset-4">Lưu tham số</button>
+											</form>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+								<div id="tab10k" class="tab-pane fade">
+									<div class="row">
+										<div class="col-lg-8">
+											<form role="form" method="post" th:action="@{/config/init_fund.html}" th:object="${config10k}">
+												<div class="form-group">
+                                                <input th:field="*{id}" hidden="true"/>
+	                                            </div>
+	                                            <div class="form-group">
+	                                                <input th:field="*{key}" hidden="true"/>
+	                                            </div>            
+	                                            <div class="form-group">
+	                                                <label>Value</label>
+	                                                <textarea class="form-control" rows="20" th:field="*{value}"></textarea>
+	                                            </div>
+	                                            <div>
+	                                                <button type="submit" name="10k" class="btn btn-success">Cập nhật</button>
+	                                            </div>
+											</form>
+										</div>
+										<!-- /.col-lg-6 (nested) -->
+										<div class="col-lg-3">
+											<div class="form-group">
+													<label>Chú ý:</label>
+													<div class="row">
+														<div class="col-xs-10">
+															<p class="help-block">init: giá trị khởi tạo hũ</p>
+															<p class="help-block">chipChange: Tiền bắn</p>
+															<p class="help-block">interval: thời gian bắn bắn</p>
+															<p class="help-block">bet: Tiền cược của room</p>
+															<p class="help-block">chipType: 1 là iCash, 0 là xu</p>
+															<p class="help-block">status: 1 là Mở bắn, 0 là dừng bắn</p>
+														</div>
+													</div>
+												</div>
+										</div>
+									</div>
+									<!-- /.row (nested) -->
+								</div>
+							</div>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Core Scripts - Include with every page -->
+	<script src="js/jquery-1.10.2.js" th:src="@{/resources/sb-admin-v2/js/jquery-1.10.2.js}"></script>
+	<script src="js/bootstrap.min.js" th:src="@{/resources/sb-admin-v2/js/bootstrap.min.js}"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js" th:src="@{/resources/sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+
+	<!-- Page-Level Plugin Scripts - Dashboard -->
+	<script src="js/plugins/morris/raphael-2.1.0.min.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/raphael-2.1.0.min.js}"></script>
+	<script src="js/plugins/morris/morris.js" th:src="@{/resources/sb-admin-v2/js/plugins/morris/morris.js}"></script>
+	<!-- Page-Level Plugin Scripts - Tables -->
+	<script src="js/plugins/dataTables/jquery.dataTables.js" th:src="@{/resources/sb-admin-v2/js/plugins/dataTables/jquery.dataTables.js}"></script>
+
+
+	<!-- SB Admin Scripts - Include with every page -->
+	<script src="js/sb-admin.js" th:src="@{/resources/sb-admin-v2/js/sb-admin.js}"></script>
+
+
+	<!-- Page-Level Demo Scripts - Forms - Use for reference -->
+	<script>
+		$(document).ready(function() {
+		});
+		function doSearchUser() {
+			window.location.href = 'users.html?fullname='
+					+ $(".custom-search-form > input").val();
+			return false;
+		};
+	</script>
+</body>
+
+</html>
